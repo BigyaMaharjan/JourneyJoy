@@ -9,9 +9,7 @@ namespace JourneyJoy.Models
     {
         public string CustomerID { get; set; }
         public string CustomerName { get; set; }
-
         public string Password { get; set; }
         public string MobileNumber { get; set; }
-
     }
 }
