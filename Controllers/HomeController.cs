@@ -1,4 +1,5 @@
-﻿using JourneyJoy.Models;
+﻿using JourneyJoy.Interface.LogIn;
+using JourneyJoy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,12 @@ namespace JourneyJoy.Controllers
 {
     public class HomeController : Controller
     {
+        ILogIn _loginBuss;
+        public HomeController(ILogIn login)
+        {
+            _loginBuss = login;
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -32,6 +39,7 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult Login(CustomerModel model)
         {
+            var myLogIn = _loginBuss.LogIn(model);
             ViewBag.Message = "Your contact page.";
 
             return View();
