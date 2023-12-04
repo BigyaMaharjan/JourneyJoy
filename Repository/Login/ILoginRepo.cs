@@ -16,7 +16,7 @@ namespace JourneyJoy.Repository.Login
         }
         public CommonModel Login(CustomerModel model)
         {
-            throw new NotImplementedException();
+            return null;
         }
     }
 
