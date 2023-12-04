@@ -18,7 +18,7 @@ namespace JourneyJoy.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("BookVehicle", "Booking");
         }
 
         public ActionResult About()
