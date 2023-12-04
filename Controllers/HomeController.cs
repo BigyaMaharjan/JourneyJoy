@@ -39,7 +39,12 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult Login(CustomerModel model)
         {
+            var error  = new CommonModel();
             var myLogIn = _loginBuss.LogIn(model);
+            if (myLogIn == null)
+            {
+                ViewBag.Message = error.Code;
+            }
             ViewBag.Message = "Your contact page.";
 
             return View();
