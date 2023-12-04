@@ -77,8 +77,6 @@ D:\MY FILES\DOT NET\Car Rental System\JourneyJoy\obj\Debug\JourneyJoy.csproj.Cor
 D:\MY FILES\DOT NET\Car Rental System\JourneyJoy\obj\Debug\JourneyJoy.csproj.CopyComplete
 D:\MY FILES\DOT NET\Car Rental System\JourneyJoy\obj\Debug\JourneyJoy.dll
 D:\MY FILES\DOT NET\Car Rental System\JourneyJoy\obj\Debug\JourneyJoy.pdb
-C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.csproj.AssemblyReference.cache
-C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.csproj.CoreCompileInputs.cache
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\JourneyJoy.dll.config
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\JourneyJoy.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\JourneyJoy.pdb
@@ -165,6 +163,8 @@ C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Mv
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Mvc.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Antlr3.Runtime.pdb
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.csproj.AssemblyReference.cache
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.csproj.CoreCompileInputs.cache
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.csproj.CopyComplete
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Debug\JourneyJoy.pdb

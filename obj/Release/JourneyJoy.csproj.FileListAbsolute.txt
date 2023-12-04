@@ -1,2 +1,0 @@
-C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Release\JourneyJoy.csproj.AssemblyReference.cache
-C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\obj\Release\JourneyJoy.csproj.CoreCompileInputs.cache
