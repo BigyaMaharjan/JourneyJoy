@@ -1,0 +1,151 @@
+﻿<div class="grid gap-6">
+    <div class="text-[#001118] text-sm font-semibold uppercase">
+        User Details
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+        <div class="input-field-common w-[172px] form-group-local">
+            <input type="text" class="form-control-local" required>
+            <label for="username" class="block mb-4 text-sm font-medium text-secondary-100 form-label-local">First Name</label>
+        </div>
+        <div class="input-field-common w-[172px] form-group-local">
+            <input type="text" class="form-control-local" required>
+            <label for="username" class="block mb-4 text-sm font-medium text-secondary-100 form-label-local">Middle Name</label>
+        </div>
+        <div class="input-field-common w-[172px] form-group-local">
+            <input type="text" class="form-control-local" required>
+            <label for="username" class="block mb-4 text-sm font-medium text-secondary-100 form-label-local">Last Name</label>
+        </div>
+        <div class="input-field-common w-[172px] form-group-local">
+            <input type="text" class="form-control-local" required>
+            <label for="username" class="block mb-4 text-sm font-medium text-secondary-100 form-label-local">Email</label>
+        </div>
+        <div class="input-field-common w-[172px] form-group-local">
+            <input type="text" class="form-control-local" required>
+            <label for="username" class="block mb-4 text-sm font-medium text-secondary-100 form-label-local">Phone Number</label>
+        </div>
+    </div>
+    <div class="input-field-common w-[683px]">
+        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
+            Bio
+        </label>
+        <textarea class="w-full " rows="4" placeholder="Your Bio" name="Bio" required>Hey, this is Akira. With visionary clubs like Club Earth, Club GS they revolutionized the industry, leaving an unforgettable legacy.
+“Where beats meet the paradise.”
+        </textarea>
+    </div>
+
+    <!-- image  -->
+    <div class="flex gap-8">
+        <div class="w-[272px] overflow-hidden">
+            <label for="profile" class="block text-sm font-medium mb-3 text-[#333]">
+                Driving Licence
+            </label>
+            <div>
+                <img class="w-[272px] h-[150px] object-cover overflow-hidden border border-[#E6E6E6] rounded-[4px]"
+                     id="uploaded_image" src="~/Content//Assets/image/car/anime.png" alt="profile">
+            </div>
+            <div class="mt-2">
+                <div class="file-upload-common bg-[#F5F5F5] border-none p-2 ">
+                    <label for="file_input" class="bg-[#CC527A] w-[123px] flex-none custom-file-upload pmd-ripple-effect btn-info">
+                        <span>Choose Driving Licence Image</span>
+                    </label>
+                    <input id="file_input" type="file" style="display:none;">
+                    <p class="pl-2" id="file_name_display" class="text-ellipsis-customer"></p>
+                </div>
+                <div class="text-xs text-error mt-[8px]">
+                    Note: Image should be in JPEG format and Maximum file
+                    size
+                    is 5 MB.
+                </div>
+            </div>
+        </div>
+
+        <!-- cover pic  -->
+        @*<div class="w-[481px] overflow-hidden">
+                <label for="cover " class="block text-sm font-medium mb-3 text-[#333]">
+                    Driving Licence (Back)
+                </label>
+                <div>
+                    <img class="w-[481px] h-[150px] object-cover overflow-hidden border border-[#E6E6E6] rounded-[4px]"
+                         id="uploaded_image_cover" src="~/Content//Assets/image/car/anime.png" alt="profile">
+                </div>
+                <div class="mt-2">
+                    <div class="file-upload-common bg-[#F5F5F5] border-none p-2 ">
+                        <label for="file_input_cover" class="bg-[#CC527A] w-[123px] flex-none custom-file-upload ">
+                            <span>Choose Logo</span>
+                        </label>
+                        <input id="file_input_cover" type="file" style="display:none;">
+                        <p class="pl-2" id="file_name_display_cover" class="text-ellipsis-customer"></p>
+                    </div>
+                    <div class="text-xs text-error mt-[8px]">
+                        Note: Image should be in JPEG format and Maximum file
+                        size
+                        is 5 MB.
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+<!-- Jquery js -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Propeller Global js -->
+<script src="https://opensource.propeller.in/components/global/js/global.js"></script>
+
+<!-- Propeller textfield js -->
+<script type="text/javascript" src="https://opensource.propeller.in/components/textfield/js/textfield.js"></script>
+<!-- for profile  -->
+<script>
+    // Get references to the file input, file name display element, and the image element
+    const fileInput = document.getElementById("file_input");
+    const fileNameDisplay = document.getElementById("file_name_display");
+    const uploadedImage = document.getElementById("uploaded_image");
+
+    // Add an event listener to the file input
+    fileInput.addEventListener("change", function () {
+
+        // Check if a file has been selected
+        if (fileInput.files.length > 0) {
+            // Display the name of the selected file
+            fileNameDisplay.textContent = ` ${fileInput.files[0].name}`;
+
+            // Read the selected file and set the image source
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                uploadedImage.src = event.target.result;
+            };
+            reader.readAsDataURL(fileInput.files[0]);
+        } else {
+            // No file selected
+            fileNameDisplay.textContent = "";
+            uploadedImage.src = ""; // Clear the image source
+        }
+    });
+</script>
+<!-- for cover profile  -->
+<script>
+    // Get references to the file input, file name display element, and the image element
+    const fileInputCover = document.getElementById("file_input_cover");
+    const fileNameDisplayCover = document.getElementById("file_name_display_cover");
+    const uploadedImageCover = document.getElementById("uploaded_image_cover");
+
+    // Add an event listener to the file input
+    fileInputCover.addEventListener("change", function () {
+        // Check if a file has been selected
+        if (fileInputCover.files.length > 0) {
+            // Display the name of the selected file
+            fileNameDisplayCover.textContent = ` ${fileInputCover.files[0].name}`;
+
+            // Read the selected file and set the image source
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                uploadedImageCover.src = event.target.result;
+            };
+            reader.readAsDataURL(fileInputCover.files[0]);
+        } else {
+            // No file selected
+            fileNameDisplayCover.textContent = "";
+            uploadedImageCover.src = ""; // Clear the image source
+        }
+    });
+</script>
