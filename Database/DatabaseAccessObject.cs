@@ -8,6 +8,7 @@ using System.Web;
 
 namespace JourneyJoy.Database
 {
+    //Code for Database Connection
     public class DatabaseAccessObject
     {
         public static SqlConnection GetConnection()
@@ -28,11 +29,12 @@ namespace JourneyJoy.Database
             return con;
         }
 
+        //Execution of SQL
         public static DataTable ExeSql(string sql)
         {
-            using (SqlConnection con = GetConnection())
+            using (SqlConnection conn = GetConnection())
             {
-                using (SqlCommand cmd = new SqlCommand(sql, con))
+                using (SqlCommand cmd = new SqlCommand(sql, conn))
                 {
                     using (SqlDataAdapter da = new SqlDataAdapter(cmd))
                     {

@@ -15,18 +15,21 @@ namespace JourneyJoy.Controllers
         {
             _loginBuss = login;
         }
-
+        [HttpGet]
         public ActionResult Index()
         {
-            return RedirectToAction("BookVehicle", "Booking");
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
+            //return RedirectToAction("BookVehicle", "Booking");
             return View();
         }
+
+        [HttpPost]
+        public ActionResult Index(TestModel model)
+        {
+
+            //return RedirectToAction("BookVehicle", "Booking");
+            return View();
+        }
+                
 
         [HttpGet]
         public ActionResult Login()
@@ -39,7 +42,12 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult Login(CustomerModel model)
         {
+            var error  = new CommonModel();
             var myLogIn = _loginBuss.LogIn(model);
+            if (myLogIn == null)
+            {
+                ViewBag.Message = error.Code;
+            }
             ViewBag.Message = "Your contact page.";
 
             return View();
