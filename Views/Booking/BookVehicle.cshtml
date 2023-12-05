@@ -1,360 +1,114 @@
 ﻿@{
     ViewBag.Title = "BookVehicle";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_BookingLayout.cshtml";
 }
 
-<div class="px-8 py-4 grid gap-8">
-    <div class="grid gap-1">
-        <div class="text-[20px] text-[#101828] font-semibold">Edit Profile</div>
-        <div class="text-sm text-[#667085]">Manage your profile informations.</div>
-    </div>
-
-    <div class="flex gap-2">
-        <div class="flex items-center gap-2 profile-steps active" id="step1">
-            <div class="steps-number">
-                1
-            </div>
-            <div class="steps-text">
-                Vechile Information
-            </div>
-            <hr class="setp-divider" />
-
-        </div>
-        <div class="flex items-center gap-2 profile-steps" id="step2">
-            <div class="steps-number">
-                2
-            </div>
-            <div class="steps-text">
-                Driver Info
-            </div>
-            <hr class="setp-divider" />
-
-        </div>
-        <div class="flex items-center gap-2 profile-steps" id="step3">
-            <div class="steps-number">
-                3
-            </div>
-            <div class="steps-text">
-                Driver Documents
-            </div>
-            <hr class="setp-divider" />
-
-        </div>
-        <div class="flex items-center gap-2 profile-steps" id="step4">
-            <div class="steps-number">
-                4
-            </div>
-            <div class="steps-text">
-                Payment
-            </div>
-            <hr class="setp-divider" />
-
-        </div>
-    </div>
-
-    <div id="content1" class="content-section" style="display: block;">
-
-        <?php include("./basic.php") ?>
-    </div>
-    <div id="content2" class="content-section" style="display: none;">
-        <?php include("./social-links.php") ?>
-    </div>
-    <div id="content3" class="content-section" style="display: none;">
-        <div class="grid gap-6">
-            <div class="text-[#001118] text-sm font-semibold uppercase">
-                User Info
+<div class="formbold-main-wrapper">
+    <div class="formbold-form-wrapper">
+        <form action="#" method="POST">
+            <div class="formbold-steps">
+                <ul>
+                    <li class="formbold-step-menu1 active">
+                        <span>1</span>
+                        Vehicle Info
+                    </li>
+                    <li class="formbold-step-menu2">
+                        <span>2</span>
+                        User Info
+                    </li>
+                    <li class="formbold-step-menu3">
+                        <span>3</span>
+                        Payment
+                    </li>
+                </ul>
             </div>
 
-            <div class="grid grid-cols-3 gap-6">
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Full Name
-                    </label>
-                    <input type="text" class="w-full" placeholder="Full Name" name="Full Name" required>
-                </div>
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Username
-                    </label>
-                    <input type="text" class="w-full" placeholder="Username" name="Username" required>
-                </div>
-                <div class="input-field-common w-[272px] ">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Password
-                    </label>
-                    <div class="password-input">
-                        <input type="password" class="w-full pr-8" placeholder="Password" name="Password" required>
-                        <i class="las la-eye password-eye" onclick="togglePassword()"></i>
-                    </div>
-                </div>
-
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Phone Number
-                    </label>
-                    <div class="number-input">
-                        <div class="flag-section">
-                            <div class="japan-flag">
-                                <div></div>
-                            </div>
-                            <div>
-                                +81
-                            </div>
-                            <div class="line-y">
-
-                            </div>
-
-                        </div>
-                        <input type="text" class="w-full" placeholder="Number" name="number" required>
-
-                    </div>
-                </div>
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Email Address
-                    </label>
-                    <input type="text" class="w-full" placeholder="Email Address" name="Email Address" required>
-                </div>
-
-
-            </div>
-        </div>
-    </div>
-    <div id="content4" class="content-section" style="display: none;">
-        <div class="grid gap-6">
-            <div class="text-[#001118] text-sm font-semibold uppercase">
-                Club INFO
-            </div>
-            <div class="grid gap-6">
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Last Order Time
-                        </label>
-                        <input type="time" class="w-full" placeholder="Last Order Time" name="LastOrderTime" required>
-                    </div>
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Last Entry Syokai
-                        </label>
-                        <input type="time" class="w-full" placeholder="Last Entry Syokai" name="LastEntrySyokai" required>
-                    </div>
-
-                </div>
-                <div class="grid grid-cols-3 gap-6">
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Working Hours (From)
-                        </label>
-                        <input type="time" class="w-full" placeholder="Working Hours (From)" name="WorkingHoursForm" required>
-                    </div>
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Working Hours (To)
-                        </label>
-                        <input type="time" class="w-full" placeholder="Working Hours (To)" name="WorkingHoursTo" required>
-                    </div>
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Holiday
-                        </label>
-                        <input type="text" class="w-full" placeholder="Holiday" name="Holiday" required>
-                    </div>
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Plan
-                        </label>
-                        <div class="input-field-common">
-                            <select id="default_select6" style="width: 100%;" class=" default_select text-[#B7B7B7] h-[44px]">
-                                <option>
-                                    Select Plan
-                                </option>
-                                <option value="通常料金 1時間／3,000円">通常料金 1時間／3,000円</option>
-                                <option value="指名料 3,000円">指名料 3,000円</option>
-                                <option value="同伴料 3,000円">France</同伴料 3,000円>
-                                <option value="場内指名	1,000円">場内指名 1,000円</option>
-                                <option value="ドリンク各種	1,000円～">ドリンク各種 1,000円～</option>
-
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Plan Price
-                        </label>
-                        <input type="text" class="w-full" placeholder="Plan Price" name="PlanPrice" required>
-                    </div>
-                    <div class="input-field-common w-[272px]">
-                        <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                            Tax
-                        </label>
-                        <input type="text" class="w-full" placeholder="Tax" name="Tax" required>
-                        <div class="text-[#7D7D7D] text-xs pt-2">Total service tax & consumption tax</div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-[#001118] text-sm font-semibold uppercase">
-                Address
+            <div class="formbold-form-step-1 active">
+                @Html.Partial("_vehicleInfo")
             </div>
 
-            <div class="grid grid-cols-3 gap-6">
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Zip
-                    </label>
-                    <input type="text" class="w-full" placeholder="Zip" name="Zip" required>
-                </div>
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Prefecture
-                    </label>
-                    <div class="input-field-common">
-                        <select id="" style="width: 100%;" class="default_select text-[#B7B7B7] h-[44px]">
-                            <option>
-                                Select Prefecture
-                            </option>
-                            <option value="Prefecture">
-                                Prefecture
-                            </option>
-                            <option value="Prefecture">
-                                Prefecture
-                            </option>
-                            <option value="Prefecture">Prefecture</option>
-
-                        </select>
-                    </div>
-                </div>
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        City
-                    </label>
-                    <div class="input-field-common">
-                        <select id="" style="width: 100%;" class="default_select text-[#B7B7B7] h-[44px]">
-                            <option>
-                                Select City
-                            </option>
-                            <option value="City">
-                                City
-                            </option>
-                            <option value="City">
-                                City
-                            </option>
-                            <option value="City">City</option>
-
-                        </select>
-                    </div>
-                </div>
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Street
-                    </label>
-                    <input type="text" class="w-full" placeholder="Enter street" name="Street" required>
-                </div>
-                <div class="input-field-common w-[272px]">
-                    <label class="block mb-4 text-sm font-medium text-secondary-100 ">
-                        Building & Room No.
-                    </label>
-                    <input type="text" class="w-full" placeholder="Enter building & room no." name="buildingRoom" required>
-                </div>
-
+            <div class="formbold-form-step-2">
+                @Html.Partial("_socialInfo")
             </div>
-        </div>
-    </div>
 
-    <div class="flex justify-between ">
-        <div>
-            <button class="btn btn-primary-normal leading-[12px] rounded-[4px] px-3 text-sm"
-                    id="previousBtn">
-                Previous
-            </button>
-        </div>
-        <div class="flex gap-6">
-            <button class="btn btn-primary-normal rounded-[4px] px-3 text-sm" data-modal-target="default-modal"
-                    data-modal-toggle="default-modal">
-                cancel
-            </button>
-            <button class="btn btn-primary-default rounded-[4px] px-3 text-sm" id="nextBtn">Next</button>
-        </div>
+            <div class="formbold-form-step-3">
+                @Html.Partial("_userInfo")
+            </div>
+
+            <div class="formbold-form-btn-wrapper">
+                <button class="formbold-back-btn">
+                    Back
+                </button>
+
+                <button class="formbold-btn pmd-ripple-effect btn-success">
+                    Next
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_1675_1807)">
+                            <path d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z" fill="white" />
+                        </g>
+                        <defs>
+                            <clipPath id="clip0_1675_1807">
+                                <rect width="16" height="16" fill="white" />
+                            </clipPath>
+                        </defs>
+                    </svg>
+                </button>
+            </div>
+        </form>
     </div>
 </div>
-@section scripts
-{
+@section scripts{
     <script>
-        $(document).ready(function () {
-            $('#toggleButton').trigger('click');
-            // You can also use a delay if needed
-            // setTimeout(function() {
-            //     $('#toggleButton').trigger('click');
-            // }, 2000);
-        });
-    </script>
-    <script>
-        $(document).ready(function () {
-            $('select').select2({
-                minimumResultsForSearch: Infinity
-            });
-        });
-        const steps = document.querySelectorAll('.profile-steps');
-        const nextButton = document.getElementById('nextBtn');
-        const previousButton = document.getElementById('previousBtn');
-        const contentSections = document.querySelectorAll('.content-section');
+        const stepMenuOne = document.querySelector('.formbold-step-menu1')
+        const stepMenuTwo = document.querySelector('.formbold-step-menu2')
+        const stepMenuThree = document.querySelector('.formbold-step-menu3')
 
-        let currentStep = 0;
+        const stepOne = document.querySelector('.formbold-form-step-1')
+        const stepTwo = document.querySelector('.formbold-form-step-2')
+        const stepThree = document.querySelector('.formbold-form-step-3')
 
-        const updateStep = () => {
-            steps.forEach((step, index) => {
-                if (index === currentStep) {
-                    step.classList.add('active');
-                    step.classList.remove('active-green');
-                } else if (index < currentStep) {
-                    step.classList.remove('active');
-                    step.classList.add('active-green');
-                } else {
-                    step.classList.remove('active', 'active-green');
-                }
-            });
+        const formSubmitBtn = document.querySelector('.formbold-btn')
+        const formBackBtn = document.querySelector('.formbold-back-btn')
 
-            contentSections.forEach((section, index) => {
-                if (index === currentStep) {
-                    section.style.display = 'block';
-                } else {
-                    section.style.display = 'none';
-                }
-            });
+        formSubmitBtn.addEventListener("click", function (event) {
+            event.preventDefault()
+            if (stepMenuOne.className == 'formbold-step-menu1 active') {
+                event.preventDefault()
 
-            // Check if currentStep is 1 to hide previousBtn
-            if (currentStep === 0) {
-                previousButton.style.display = 'none';
-            } else {
-                previousButton.style.display = 'inline'; // Or 'block', depending on the button type
+                stepMenuOne.classList.remove('active')
+                stepMenuTwo.classList.add('active')
+
+                stepOne.classList.remove('active')
+                stepTwo.classList.add('active')
+
+                formBackBtn.classList.add('active')
+                formBackBtn.addEventListener("click", function (event) {
+                    event.preventDefault()
+
+                    stepMenuOne.classList.add('active')
+                    stepMenuTwo.classList.remove('active')
+
+                    stepOne.classList.add('active')
+                    stepTwo.classList.remove('active')
+
+                    formBackBtn.classList.remove('active')
+
+                })
+
+            } else if (stepMenuTwo.className == 'formbold-step-menu2 active') {
+                event.preventDefault()
+
+                stepMenuTwo.classList.remove('active')
+                stepMenuThree.classList.add('active')
+
+                stepTwo.classList.remove('active')
+                stepThree.classList.add('active')
+
+                formBackBtn.classList.remove('active')
+                formSubmitBtn.textContent = 'Submit'
+            } else if (stepMenuThree.className == 'formbold-step-menu3 active') {
+                document.querySelector('form').submit()
             }
-            // Change text of nextBtn when at the last step and update its type
-            if (currentStep === steps.length - 1) {
-                nextButton.textContent = 'Save Changes'; // Change the text to 'Save'
-                nextButton.setAttribute('type', 'submit'); // Change the type to 'submit'
-            } else {
-                nextButton.textContent = 'Next'; // Change the text to 'Next'
-                nextButton.setAttribute('type', ''); // Change the type to 'button'
-            }
-
-        };
-
-        nextButton.addEventListener('click', () => {
-            if (currentStep < steps.length - 1) {
-                currentStep++;
-                updateStep();
-            }
-        });
-
-        previousButton.addEventListener('click', () => {
-            if (currentStep > 0) {
-                currentStep--;
-                updateStep();
-            }
-        });
-
-        // Initial state setup
-        updateStep();
+        })
     </script>
 }
