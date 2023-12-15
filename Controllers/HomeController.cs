@@ -52,5 +52,11 @@ namespace JourneyJoy.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult VehicleList()
+        {
+            return View();
+        }
     }
 }

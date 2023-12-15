@@ -142,6 +142,8 @@ C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\roslyn\v
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\roslyn\VBCSCompiler.exe
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Antlr3.Runtime.dll
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFramework.dll
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFramework.SqlServer.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Newtonsoft.Json.dll
@@ -159,6 +161,8 @@ C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Co
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Mvc.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\WebActivatorEx.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\WebGrease.dll
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFramework.xml
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFramework.SqlServer.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Web.Helpers.xml
