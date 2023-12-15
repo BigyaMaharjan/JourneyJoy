@@ -148,6 +148,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Botstrapper.cs" />
+    <Content Include="Content\Assets\css\BaseIndex\Base.css" />
     <Content Include="Content\Assets\css\Error.css" />
     <Content Include="Content\Assets\image\car\anime.png" />
     <Content Include="Content\Assets\image\car\GT.png" />
@@ -156,6 +157,7 @@
     <Content Include="Views\Booking\_vehicleInfo.cshtml" />
     <Content Include="Views\Booking\_socialInfo.cshtml" />
     <Content Include="Views\Booking\_userInfo.cshtml" />
+    <Content Include="Views\Home\VehicleList.cshtml" />
     <None Include="Views\Shared\_BookingLayout.cshtml" />
     <Content Include="Content\Assets\css\club\booking.css" />
     <Content Include="Content\Assets\css\club\club-management.css" />
