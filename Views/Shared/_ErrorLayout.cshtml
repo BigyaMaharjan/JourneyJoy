@@ -1,0 +1,85 @@
+﻿<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Propeller is a front-end responsive framework based on Material design & Bootstrap.">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
+
+    <link rel="stylesheet" href="~/Content/assets/css/Error.css">
+
+    <script src="https://kit.fontawesome.com/3df9cedb79.js" crossorigin="anonymous"></script>
+
+
+    <!-- favicon -->
+    <link rel="icon" href="https://opensource.propeller.in/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Example docs (CSS for helping component example file)-->
+    <link href="https://opensource.propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller card (CSS for helping component example file) -->
+    <link href="https://opensource.propeller.in/components/card/css/card.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller typography -->
+    <link href="https://opensource.propeller.in/components/typography/css/typography.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://opensource.propeller.in/components/icons/css/google-icons.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller dropdown -->
+    <link href="https://opensource.propeller.in/components/dropdown/css/dropdown.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller navbar -->
+    <link href="https://opensource.propeller.in/components/navbar/css/navbar.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller button  -->
+    <link href="https://opensource.propeller.in/components/button/css/button.css" type="text/css" rel="stylesheet" />
+
+
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+
+<body>
+    <div class="container body-content">
+        <section class="page_404">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="col-sm-10 col-sm-offset-1  text-center">
+                            @RenderBody()
+                            <a href="" class="link_404">Go to Home</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <hr />
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <!-- Jquery js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Propeller Global js -->
+    <script src="https://opensource.propeller.in/components/global/js/global.js"></script>
+
+    <!-- Propeller Sidebar js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/sidebar/js/sidebar.js"></script>
+
+    <!-- Propeller Dropdown js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/dropdown/js/dropdown.js"></script>
+
+    <!-- Propeller ripple effect js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/button/js/ripple-effect.js"></script>
+</body>
+</html>
