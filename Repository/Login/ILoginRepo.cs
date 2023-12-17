@@ -16,7 +16,12 @@ namespace JourneyJoy.Repository.Login
         }
         public CommonModel Login(CustomerModel model)
         {
-            return null;
+            var CommonModel = new CommonModel();
+            var SqlCommand = "exe login @flag= 'L' ";
+            SqlCommand += ",@CustomerName=" + model.CustomerName;
+            SqlCommand += ",@Password=" + model.Password;
+            SqlCommand += ",@MobileNumber=" + model.MobileNumber;
+            return CommonModel;
         }
     }
 

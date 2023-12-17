@@ -1,105 +1,351 @@
-﻿@model JourneyJoy.Models.TestModel
-
-@{
-    ViewBag.Title = "Index";
-}
-
-
-@using (Html.BeginForm("Index", "Home", new { }, FormMethod.Post, new { }))
-{
-<!doctype html>
-<html lang="en">
+﻿<!doctype html>
+<html lang="">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Propeller is a front-end responsive framework based on Material design & Bootstrap.">
+    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/Content/assets/css/tailwind.css">
+    @*<link rel="stylesheet" href="~/Content/assets/css/customer/global.css">*@
+    <link rel="stylesheet" href="~/Content/assets/css/IndexCSS/Index.css">
+
+    <script src="https://kit.fontawesome.com/3df9cedb79.js" crossorigin="anonymous"></script>
 
 
-    <!--Google Icon Font-->
-    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- favicon -->
+    <link rel="icon" href="https://opensource.propeller.in/assets/images/favicon.ico" type="image/x-icon">
 
-    <!-- Propeller CSS -->
-    <link rel="stylesheet" href="css/propeller.min.css">
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
 
-    <title>Propeller Basic HTML Template</title>
+    <!-- Example docs (CSS for helping component example file)-->
+    <link href="https://opensource.propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller card (CSS for helping component example file) -->
+    <link href="https://opensource.propeller.in/components/card/css/card.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller typography -->
+    <link href="https://opensource.propeller.in/components/typography/css/typography.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://opensource.propeller.in/components/icons/css/google-icons.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller dropdown -->
+    <link href="https://opensource.propeller.in/components/dropdown/css/dropdown.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller navbar -->
+    <link href="https://opensource.propeller.in/components/navbar/css/navbar.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller button  -->
+    <link href="https://opensource.propeller.in/components/button/css/button.css" type="text/css" rel="stylesheet" />
+
+    <!-- Card Icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.20.0/dist/css/bootstrap-icons.min.css" rel="stylesheet">
+
+    <!-- Date Picker-->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+
+
 </head>
+
 <body>
-    <!--<h1>Hello, world!</h1>-->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS, then Propeller js -->
-    <!--<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script type="text/javascript" src="js/propeller.min.js"></script>-->
-    <!-- Primary button with ripple effect -->
-    <!--<button class="btn pmd-ripple-effect btn-primary" type="button"> Primary </button>-->
-    <!-- Success raised button with ripple effect -->
-    <!--<button class="btn pmd-btn-raised pmd-ripple-effect btn-success" type="button">Success</button>-->
+    <div class="body-content">
+        <div class="grid gap-1 bg-primary text-white">
+            <div class="text-[50px]  font-semibold">JourneyJoy</div>
+            <div class="text-sm ">Get the best car renting service.</div>
 
-    <div class="grid gap-1">
-        <div class="text-[20px] text-[#101828] font-semibold">JourneyJoy</div>
-        <div class="text-sm text-[#667085]">Get the best car renting service.</div>
-    </div>
+            <a href="@Url.Action("Login", "Home")" > LogIn</a>
+            <hr />
+        </div>
 
-    <div class="form-floating">
-        <div class="container">
+        <p>
+
+        </p>
+
+        <div class="form-floating">
+            <div class=" bg-secondary-color-pink">
+                @using (Html.BeginForm("Index", "Home", FormMethod.Post))
+                {
+                    <div class="row">
+                        <div class="col-2">
+                            <input type="text" class="form-control" placeholder="search" id="floatingsearch" name="Search" />
+                        </div>
+                        <div class="col-2">
+                            @*<input type="text" class="form-control" placeholder="PickUp Date" id="floatinglocation" name="Location" />*@
+                            <p>Date: <input type="text" id="datepicker"></p>
+                        </div>
+
+                        <div class="col-2">
+                            <input type="text" class="form-control" placeholder="Time" id="floatingtime" name="Time" />
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" placeholder="DropOff Date" id="floatinglocation" name="Location" />
+                        </div>
+                        <div class="col-2">
+                            <input type="text" class="form-control" placeholder="Time" id="floatingtime" name="Time" />
+                        </div>
+                        <div class="col-2">
+                            <button type="submit" class="form-control btn pmd-ripple-effect btn-primary"> Submit </button>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+        <p>
+
+        </p>
+
+        <div class="col">
             <div class="row">
-                <div class="col-8">
-                    <input type="text" class="form-control" placeholder="search" id="floatingsearch" name="Search" />
+                <div class="card col-3 mr-auto">
+                    <img src="" alt="car icon" />
+
+
+                    <div class="card-body">
+                        <h5 class="card-title"> Flexible Rentals </h5>
+                        <p class="card-text">Cancel or change most bookings for free up to 48 hours before pick-up.</p>
+                    </div>
                 </div>
-                <div class="col-2">
-                    <input type="text" class="form-control" placeholder="Location" id="floatinglocation" name="Location" />
+
+                <div class="card col-3 mr-auto">
+                    <img src="..." alt="screw icon" />
+                    <div class="card-body mb-md-4">
+                        <h5 class="card-title"> Price Match Assurance</h5>
+                        <p class="card-text">Found the same deal for less? We’ll match the price.</p>
+                    </div>
                 </div>
-                <div class="col-2">
-                    <input type="text" class="form-control" placeholder="Time" id="floatingtime" name="Time" />
-                </div>
-                <div class="col-2">
-                    <input type="text" class="form-control" placeholder="Location" id="floatinglocation" name="Location" />
-                </div>
-                <div class="col-2">
-                    <input type="text" class="form-control" placeholder="Time" id="floatingtime" name="Time" />
-                </div>
-                <div>
-                    <button type="submit" class="form-control" placeholder="Submit" id="submitTest"> Submit</button>
+
+                <div class="card col-3 mr-auto">
+                    <img src="..." alt="image here" />
+                    <div class="card-body mb-md-4">
+                        <h5 class="card-title"> Transparent Fees</h5>
+                        <p class="card-text">Know exactly what you’re paying</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <a href="@Url.Action("BookVehicle", "Booking")"> CAR</a>
+        <hr />
+
+
+        <!-- Footer -->
+        <footer class="bg-body-tertiary text-center">
+            <!-- Grid  -->
+            <div class=" p-4 bg-info text-white">
+                <!-- Section: Social media -->
+                <section class="mb-4">
+                    <!-- Facebook -->
+                    <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <!-- Twitter -->
+                    <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+
+                    <!-- Google -->
+                    <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-google"></i>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <!-- Linkedin -->
+                    <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+
+                    <!-- Github -->
+                    <a data-mdb-ripple-init class="btn btn-outline btn-floating m-1" href="#!" role="button">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </section>
+                <!-- Section: Social media -->
+                <!-- Section: Form -->
+                <section class="">
+                    <form action="">
+                        <!--Grid row-->
+                        <!--<div class="row d-flex justify-content-center">-->
+                        <!--Grid column-->
+                        <!--<div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>-->
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <!--<div class="col-md-5 col-12">-->
+                        <!-- Email input -->
+                        <!--<div data-mdb-input-init class="form-outline mb-4">
+                                <input type="email" id="form5Example24" class="form-control" />
+                                <label class="form-label" for="form5Example24">Email address</label>
+                            </div>
+                        </div>-->
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <!--<div class="col-auto">-->
+                        <!-- Submit button -->
+                        <!--<button data-mdb-ripple-init type="submit" class="btn btn-outline mb-4">
+                                Subscribe
+                            </button>
+                        </div>-->
+                        <!--Grid column-->
+                        <!--</div>-->
+                        <!--Grid row-->
+                    </form>
+                </section>
+                <!-- Section: Form -->
+                <!-- Section: Text -->
+                <section class="mb-4">
+                    <p>
+                        Welcome to JourneyJoy, your gateway to seamless and enjoyable car rental experiences. At JourneyJoy, we understand that every journey is unique, and our mission is to transform your travel aspirations into memorable adventures. Whether you're embarking on a road trip, a business venture, or simply need a reliable mode of transportation, JourneyJoy is here to redefine your car rental experience.
+
+
+                    </p>
+                </section>
+                <!-- Section: Text -->
+                <!-- Section: Links -->
+                <section class="">
+                    <!--Grid row-->
+                    <div class="row">
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Links</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a class="text-body" href="#!">Link 1</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 2</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 3</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Links</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a class="text-body" href="#!">Link 1</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 2</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 3</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Links</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a class="text-body" href="#!">Link 1</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 2</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 3</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+                        <!--Grid column-->
+                        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                            <h5 class="text-uppercase">Links</h5>
+
+                            <ul class="list-unstyled mb-0">
+                                <li>
+                                    <a class="text-body" href="#!">Link 1</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 2</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 3</a>
+                                </li>
+                                <li>
+                                    <a class="text-body" href="#!">Link 4</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <!--Grid column-->
+                    </div>
+                    <!--Grid row-->
+                </section>
+                <!-- Section: Links -->
+            </div>
+            <!-- Grid  -->
+            @*<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+                    © 2023 Copyright:
+                    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+                </div>*@
+
+
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+        <!-- Footer -->
     </div>
 
-    <div class="card mb-md-4 ">
-        <img src="..." alt="image here" />
-
-        <div class="card-body">
-            <h5 class="card-title"> Flexible Rentals</h5>
-            <p class="card-text">Cancel or change most bookings for free up to 48 hours before pick-up.</p>
-        </div>
-    </div>
-
-    <div class="card mb-md-4 ">
-        <img src="..." alt="image here" />
-        <div class="card-body mb-md-4">
-            <h5 class="card-title"> Price Match Assurance</h5>
-            <p class="card-text">Found the same deal for less? We’ll match the price.</p>
-        </div>
-    </div>
-
-    <div class="card mb-md-4 ">
-        <img src="..." alt="image here" />
-        <div class="card-body mb-md-4">
-            <h5 class="card-title"> Transparent Fees</h5>
-            <p class="card-text">Know exactly what you’re paying</p>
-        </div>
-    </div>
 
 
+    <!-- Jquery js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Propeller Global js -->
+    <script src="https://opensource.propeller.in/components/global/js/global.js"></script>
+
+    <!-- Propeller Sidebar js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/sidebar/js/sidebar.js"></script>
+
+    <!-- Propeller Dropdown js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/dropdown/js/dropdown.js"></script>
+
+    <!-- Propeller ripple effect js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/button/js/ripple-effect.js"></script>
 
 
-    <input type="text" placeholder="Location" id="location" name="Location" />
-    <input type="text" placeholder="Time" id="time" name="Time" />
-    <button type="submit" id="submitTest"> Submit</button>
-    <a href="@Url.Action("BookVehicle", "Booking")"> CAR</a>    
+    <!-- Date picker -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 </body>
 </html>
-}
+
+@*<script>
+    $(function () {
+        $("#datepicker").datepicker();
+    });
+</script>*@
+
