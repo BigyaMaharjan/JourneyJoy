@@ -110,18 +110,18 @@ namespace JourneyJoy.Controllers
             {
                 if (dbloginResponse.Code == 0)
                 {
-                    var response = dbloginResponse.Data.MapObject<LogInResponseModel>();
-                    Session["CustomerID"] = response.CustomerID;
-                    Session["Username"] = response.Username;
-                    Session["Email"] = response.Email;
-                    Session["ProfileImage"] = response.ProfileImage;
-                    Session["Title"] = response.Title;
-                    Session["MobileNumber"] = response.MobileNumber;
-                    Session["Country"] = response.Country;
-                    Session["City"] = response.City;
-                    Session["PostCode"] = response.PostCode;
-                    Session["UserType"] = response.UserType;
-                    Session["DriverLicenceNumber"] = response.DriverLicenceNumber;
+                    //var response = dbloginResponse.Data.MapObject<LogInResponseModel>();
+                    //Session["CustomerID"] = response.CustomerID;
+                    //Session["Username"] = response.Username;
+                    //Session["Email"] = response.Email;
+                    //Session["ProfileImage"] = response.ProfileImage;
+                    //Session["Title"] = response.Title;
+                    //Session["MobileNumber"] = response.MobileNumber;
+                    //Session["Country"] = response.Country;
+                    //Session["City"] = response.City;
+                    //Session["PostCode"] = response.PostCode;
+                    //Session["UserType"] = response.UserType;
+                    //Session["DriverLicenceNumber"] = response.DriverLicenceNumber;
                     return new Tuple<string, string, bool>("DashBoard", "User", true);
                 }
                 else

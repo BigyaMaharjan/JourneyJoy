@@ -1,4 +1,4 @@
-﻿@model JourneyJoy.Models.CustomerModel
+﻿@model JourneyJoy.Models.LogInModel
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LogInLayout.cshtml";
@@ -26,15 +26,15 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6">
                         <div class="form-group-local">
-                            <input type="text" class="form-control-local txt-color" id="MobileNumber" name="MobileNumber">
-                            <label for="MobileNumber" class="form-label-local">Username</label>
-                            @Html.ValidationMessageFor(x => x.MobileNumber, "", new { style = "color:#889b64;" })
+                            <input type="text" class="form-control-local txt-color" id="LogInID" name="LogInID">
+                            <label for="LogInId" class="form-label-local">LogInId</label>
+                            @Html.ValidationMessageFor(x => x.LogInID, "", new { style = "color:#889b64;" })
                         </div>
                         <br />
                         <div class="form-group-local">
-                            <input type="password" class="form-control-local txt-color" id="password" name="Password">
+                            <input type="password" class="form-control-local txt-color" id="password" name="password">
                             <label for="password" class="form-label-local">Password</label>
-                            @Html.ValidationMessageFor(x => x.Password, "", new { style = "color:#889b64;" })
+                            @Html.ValidationMessageFor(x => x.password, "", new { style = "color:#889b64;" })
                         </div>
                         <br />
                         <button type="submit" class="bn5 alRight">Log In</button>
