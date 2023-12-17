@@ -19,3 +19,12 @@
 /* Propeller icons */
 @import "http://fonts.googleapis.com/icon?family=Material+Icons";
 @import "http://propeller.in/components/icons/css/google-icons.css";
+
+/* Propeller typography */
+@import "https://opensource.propeller.in/components/typography/css/typography.css";
+
+/* Propeller buttons */
+@import "https://opensource.propeller.in/components/button/css/button.css";
+
+/* Propeller alert */
+@import "https://opensource.propeller.in/components/alert/css/alert.css";
