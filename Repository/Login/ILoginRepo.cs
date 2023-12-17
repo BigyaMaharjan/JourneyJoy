@@ -14,7 +14,7 @@ namespace JourneyJoy.Repository.Login
         {
             _dao = new DatabaseAccessObject();
         }
-        public CommonModel Login(CustomerModel model)
+        public CommonModel Login(LogInModel model)
         {
             var CommonModel = new CommonModel();
             var SqlCommand = "exe login @flag= 'L' ";
@@ -28,7 +28,7 @@ namespace JourneyJoy.Repository.Login
     #region INTERFACE
     public interface ILoginRepo
     {
-        CommonModel Login(CustomerModel model);
+        CommonModel Login(LogInModel model);
     }
     #endregion
 }

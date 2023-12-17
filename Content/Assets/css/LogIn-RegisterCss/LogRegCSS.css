@@ -1,0 +1,223 @@
+﻿* {
+    margin: 0px;
+}
+
+html, body {
+    height: 100%;
+}
+
+/* CLEAR FIX */
+html {
+    box-sizing: border-box;
+}
+
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/*Username N Passport CSS*/
+
+.txt-color {
+    color: #998444;
+}
+
+.form-group-local {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.form-control-local {
+    width: 100%;
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: none;
+    border-bottom: 2px solid #467899;
+    background-color: transparent;
+    outline: none;
+    transition: border-bottom-color 0.3s;
+}
+
+    .form-control-local:focus {
+        border-bottom-color: #6A64F1;
+    }
+
+.form-label-local {
+    position: absolute;
+    top: 0.25rem;
+    left: 0.5rem;
+    font-size: 1rem;
+    color: #7f8c8d;
+    pointer-events: none;
+    transition: top 0.3s, font-size 0.3s;
+}
+
+.form-control-local:focus + .form-label-local,
+.form-control-local:valid + .form-label-local {
+    top: -1rem;
+    font-size: 0.75rem;
+    color: #3498db;
+}
+
+/*LogIn Button*/
+
+.alRight {
+    float: right
+}
+
+.bn5 {
+    padding: 0.6em 2em;
+    border: none;
+    outline: none;
+    color: rgb(255, 255, 255);
+    background: #111;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    border-radius: 10px;
+}
+
+    .bn5:before {
+        content: "";
+        background: linear-gradient( 45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000 );
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        background-size: 400%;
+        z-index: -1;
+        filter: blur(5px);
+        width: calc(100% + 4px);
+        height: calc(100% + 4px);
+        animation: glowingbn5 20s linear infinite;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 10px;
+    }
+
+@keyframes glowingbn5 {
+    0% {
+        background-position: 0 0;
+    }
+
+    50% {
+        background-position: 400% 0;
+    }
+
+    100% {
+        background-position: 0 0;
+    }
+}
+
+.bn5:active {
+    color: #000;
+}
+
+    .bn5:active:after {
+        background: transparent;
+    }
+
+.bn5:hover:before {
+    opacity: 1;
+}
+
+.bn5:after {
+    z-index: -1;
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #191919;
+    left: 0;
+    top: 0;
+    border-radius: 10px;
+}
+
+/*div container (SPLIT)*/
+
+.split-container {
+    height: 100%;
+    width: 100%;
+}
+
+/* all the relevant sections to gallery go here */
+
+.gallery-group {
+    height: 100%;
+    display: none;
+}
+
+.gallery {
+    position: relative;
+    height: 100VH;
+    width: 50%;
+    float: left;
+    display: flex;
+}
+
+    .gallery div {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        margin: auto;
+    }
+
+    .gallery img {
+        width: 100%;
+        height: 100VH;
+        object-fit: cover;
+    }
+
+.overlay-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    font-size: 32px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 1; /* Place the overlay text in front of the image */
+    color: white;
+}
+
+.overlay-text-bottom {
+    position: absolute;
+    bottom: -445px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1; /* Place the overlay text in front of the image */
+    color: #4d4020 !important;
+}
+
+/* END OF GALLERY GROUP */
+
+/* NerdLog group */
+
+.NerdLog {
+    background-color: #232323;
+    height: 100VH;
+    width: 50%;
+    float: left;
+    display: flex;
+}
+
+    .NerdLog div {
+        margin: auto;
+    }
+
+/* END OF NerdLog GROUP */

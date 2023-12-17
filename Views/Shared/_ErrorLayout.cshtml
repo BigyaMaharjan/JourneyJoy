@@ -1,12 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!doctype html>
+<html lang="">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Propeller is a front-end responsive framework based on Material design & Bootstrap.">
     <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
 
-    <link rel="stylesheet" href="~/Content/assets/css/BaseIndex/Base.css">
+    <link rel="stylesheet" href="~/Content/assets/css/Error.css">
 
     <script src="https://kit.fontawesome.com/3df9cedb79.js" crossorigin="anonymous"></script>
 
@@ -43,42 +43,23 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
+
 <body>
-    @*<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
+    <div class="container body-content">
+        <section class="page_404">
             <div class="container">
-                @Html.ActionLink("Application Name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li>@Html.ActionLink("Home", "Index", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("About", "About", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                        <li>@Html.ActionLink("Login", "Login", "Home", new { area = "" }, new { @class = "nav-link" })</li>
-                    </ul>
+                <div class="row">
+                    <div class="col-sm-12 ">
+                        <div class="col-sm-10 col-sm-offset-1  text-center">
+                            @RenderBody()
+                            <a href="" class="link_404">Go to Home</a>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </nav>*@
-    <!-- Nav menu with user information -->
-    <nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-brand navbar-brand-custome">Brand</a>
-                @Html.ActionLink("LogOut", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-            </div>
-        </div>
-        <div class="pmd-sidebar-overlay"></div>
-    </nav>
-    <div class="container body-content">
-        @RenderBody()
+        </section>
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
     </div>
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -100,17 +81,5 @@
 
     <!-- Propeller ripple effect js -->
     <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/button/js/ripple-effect.js"></script>
-
-    <!-- Propeller Global js -->
-    <script src="http://propeller.in/components/global/js/global.js"></script>
-
-    <!-- Sidebar js -->
-    <script type="text/javascript" language="javascript" src="http://propeller.in/components/sidebar/js/sidebar.js"></script>
-
-    <!-- Propeller Dropdown js -->
-    <script type="text/javascript" language="javascript" src="http://propeller.in/components/dropdown/js/dropdown.js"></script>
-
-    <!-- Propeller ripple effect js -->
-    <script type="text/javascript" language="javascript" src="http://propeller.in/components/button/js/ripple-effect.js"></script>
 </body>
 </html>

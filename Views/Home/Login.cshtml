@@ -1,70 +1,77 @@
 ﻿@model JourneyJoy.Models.CustomerModel
 @{
     ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LogInLayout.cshtml";
+    //var _ScheduleData = Model.ScheduleDetail as CRS.CLUB.APPLICATION.Models.ClubManagement.ScheduleManagementModel;
+
+    //var yourDateFromDatabase = _EventData.EventDate;
 }
 
-<!doctype html>
-<html lang="">
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="Propeller is a front-end responsive framework based on Material design & Bootstrap.">
-    <meta content="width=device-width, initial-scale=1, user-scalable=no" name="viewport">
-
-    <link rel="stylesheet" href="~/Content/assets/css/tailwind.css">
-    @*<link rel="stylesheet" href="~/Content/assets/css/customer/global.css">*@
-    <link rel="stylesheet" href="~/Content/assets/css/IndexCSS/Index.css">
-
-    <script src="https://kit.fontawesome.com/3df9cedb79.js" crossorigin="anonymous"></script>
-
-
-    <!-- favicon -->
-    <link rel="icon" href="https://opensource.propeller.in/assets/images/favicon.ico" type="image/x-icon">
-
-    <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-
-    <!-- Example docs (CSS for helping component example file)-->
-    <link href="https://opensource.propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller card (CSS for helping component example file) -->
-    <link href="https://opensource.propeller.in/components/card/css/card.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller typography -->
-    <link href="https://opensource.propeller.in/components/typography/css/typography.css" type="text/css" rel="stylesheet" />
-
-    <!-- Google Icon Font -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://opensource.propeller.in/components/icons/css/google-icons.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller dropdown -->
-    <link href="https://opensource.propeller.in/components/dropdown/css/dropdown.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller navbar -->
-    <link href="https://opensource.propeller.in/components/navbar/css/navbar.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller button  -->
-    <link href="https://opensource.propeller.in/components/button/css/button.css" type="text/css" rel="stylesheet" />
-</head>
-<body>
-    @using (Html.BeginForm("Login", "Home", new { }, FormMethod.Post, new { }))
+<div class="split-container">
+    <div class="gallery">
+        <div>
+            <img src="~/Content/assets/image/car/anime.png" alt="Bg_Image" class="img" />
+            <div class="overlay-text">
+                <p>Welcome To JJ</p>
+            </div>
+        </div>
+        <div class="overlay-text-bottom">
+            <p>&copy; @DateTime.Now.Year - JJ</p>
+        </div>
+    </div>
+    @using (Html.BeginForm("Login", "Home", FormMethod.Post))
     {
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">User Name</label>
-            <input type="text" class="form-control" id="CustomerName" aria-describedby="emailHelp" name="CustomerName">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div class="NerdLog">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-6">
+                        <div class="form-group-local">
+                            <input type="text" class="form-control-local txt-color" id="MobileNumber" name="MobileNumber">
+                            <label for="MobileNumber" class="form-label-local">Username</label>
+                            @Html.ValidationMessageFor(x => x.MobileNumber, "", new { style = "color:#889b64;" })
+                        </div>
+                        <br />
+                        <div class="form-group-local">
+                            <input type="password" class="form-control-local txt-color" id="password" name="Password">
+                            <label for="password" class="form-label-local">Password</label>
+                            @Html.ValidationMessageFor(x => x.Password, "", new { style = "color:#889b64;" })
+                        </div>
+                        <br />
+                        <button type="submit" class="bn5 alRight">Log In</button>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputMobileNumber" class="form-label">Mobile Number</label>
-            <input type="text" class="form-control" id="exampleInputMobileNumber" name="MobileNumber">
-        </div>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
     }
-</body>
-</html>
+    <div class="Register-hide">
+        @using (Html.BeginForm("Register", "Home", new { }, FormMethod.Post, new { }))
+        {
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">User Name</label>
+                <input type="text" class="form-control" id="CustomerName" aria-describedby="emailHelp" name="CustomerName">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="Password">
+            </div>
+            <div class="mb-3 form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            </div>
+            @Html.ValidationMessage("LogInError")
+            <button type="submit" class="btn btn-primary">Submit</button>
+        }
+    </div>
+</div>
+
+@section scripts{
+    @*<script>
+            $(document).ready(function () {
+                $("#addDate").val("@yourDateFromDatabase");
+            });
+        </script>*@
+    <script>
+        $('.Register-hide').hide();
+    </script>
+}
