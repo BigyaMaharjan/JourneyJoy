@@ -12,7 +12,7 @@ namespace JourneyJoy.Interface.LogIn
     {
         ILoginRepo _Repo;
 
-        public  CommonModel LogIn(CustomerModel model)
+        public  CommonModel LogIn(LogInModel model)
         {
             return _Repo.Login(model);
         }
@@ -21,7 +21,7 @@ namespace JourneyJoy.Interface.LogIn
     #region INTERFACE
     public interface ILogIn
     {
-        CommonModel LogIn(CustomerModel model);
+        CommonModel LogIn(LogInModel model);
     }
     #endregion
 }

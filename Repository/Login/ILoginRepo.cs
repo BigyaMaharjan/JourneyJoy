@@ -14,7 +14,7 @@ namespace JourneyJoy.Repository.Login
         {
             _dao = new DatabaseAccessObject();
         }
-        public CommonModel Login(CustomerModel model)
+        public CommonModel Login(LogInModel model)
         {
             return null;
         }
@@ -23,7 +23,7 @@ namespace JourneyJoy.Repository.Login
     #region INTERFACE
     public interface ILoginRepo
     {
-        CommonModel Login(CustomerModel model);
+        CommonModel Login(LogInModel model);
     }
     #endregion
 }

@@ -147,6 +147,7 @@ C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFr
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Microsoft.Web.Infrastructure.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Newtonsoft.Json.dll
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Reactive.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Runtime.CompilerServices.Unsafe.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Threading.Tasks.Extensions.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Web.Helpers.dll
@@ -156,6 +157,7 @@ C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.W
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Web.WebPages.Deployment.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Web.WebPages.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Web.WebPages.Razor.dll
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Toaster.NET.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Abstractions.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Container.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\Unity.Mvc.dll
@@ -163,6 +165,7 @@ C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\WebActiv
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\WebGrease.dll
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFramework.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\EntityFramework.SqlServer.xml
+C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Reactive.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Threading.Tasks.Extensions.xml
 C:\Users\Prashant Shrestha\Documents\Projects\MyPersonal\JourneyJoy\bin\System.Web.Helpers.xml
