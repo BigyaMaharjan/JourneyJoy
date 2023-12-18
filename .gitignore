@@ -361,3 +361,9 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# ignores all .suo files
+.suo
+
+# ignore all directories with the name Debug
+Debug/
