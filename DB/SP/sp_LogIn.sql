@@ -10,18 +10,23 @@ CREATE PROC sp_LogIn
 		IF @CustomerName IS NULL 
 		BEGIN
 			SELECT 100 code , 
-				'CustomerName is Required!' message
+				'Customer name is Required !' message
 				RETURN 
 		END
 		IF @Password IS NULL 
 		BEGIN
 			SELECT 99 code , 
-				'Password is Required!' message
+				'Password is Required !' message
 				RETURN 
 		END
-		SELECT 000 code,
-			'success' message,
-			* FROM [dbo].[tbl_Customer]
-		WHERE CustomerName = @CustomerName
+		IF EXISTS (SELECT 'X' FROM tbl_Customer
+			WHERE CustomerName = @CustomerName)
+			SELECT 000 code,
+				'success' message,
+				* FROM [dbo].[tbl_Customer]  WITH (NOLOCK)
+			WHERE CustomerName = @CustomerName
+		ELSE
+			SELECT 1 code,
+			'Password or Username wrong' message
 	END
  END
