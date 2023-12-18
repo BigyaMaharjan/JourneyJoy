@@ -12,6 +12,11 @@ namespace JourneyJoy.Interface.LogIn
     {
         ILoginRepo _Repo;
 
+        public Login(LoginRepo repo)
+        {
+            _Repo = repo;
+        }
+
         public  CommonModel LogIn(LogInModel model)
         {
             return _Repo.Login(model);
