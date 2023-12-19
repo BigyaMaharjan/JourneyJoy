@@ -1,9 +1,115 @@
-﻿
+﻿@model JourneyJoy.Models.LogInResponseModel
+
 @{
     ViewBag.Title = "DashBoard";
-    Layout = "~/Views/Shared/_IndexLayout.cshtml";
+    Layout = "~/Views/Shared/_IndexLayout.cshtml"
+    ;
 }
 
-<h2>DashBoard</h2>
-<p>Add what u want</p>
+<head>
+    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+
+    @*custome local CSS*@
+    <link rel="stylesheet" href="~/Content/assets/css/index.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
+    @*Some Extra Links*@
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <script src="https://kit.fontawesome.com/3df9cedb79.js" crossorigin="anonymous"></script>
+
+    <!-- favicon -->
+    <link rel="icon" href="https://opensource.propeller.in/assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
+
+    <!-- Example docs (CSS for helping component example file)-->
+    <link href="https://opensource.propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller card (CSS for helping component example file) -->
+    <link href="https://opensource.propeller.in/components/card/css/card.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller typography -->
+    <link href="https://opensource.propeller.in/components/typography/css/typography.css" type="text/css" rel="stylesheet" />
+
+    <!-- Google Icon Font -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <link href="https://opensource.propeller.in/components/icons/css/google-icons.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller dropdown -->
+    <link href="https://opensource.propeller.in/components/dropdown/css/dropdown.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller navbar -->
+    <link href="https://opensource.propeller.in/components/navbar/css/navbar.css" type="text/css" rel="stylesheet" />
+
+    <!-- Propeller button  -->
+    <link href="https://opensource.propeller.in/components/button/css/button.css" type="text/css" rel="stylesheet" />
+    <!-- Jquery js -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Bootstrap js -->
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Propeller Global js -->
+    <script src="https://opensource.propeller.in/components/global/js/global.js"></script>
+
+    <!-- Propeller Sidebar js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/sidebar/js/sidebar.js"></script>
+
+    <!-- Propeller Dropdown js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/dropdown/js/dropdown.js"></script>
+
+    <!-- Propeller ripple effect js -->
+    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/button/js/ripple-effect.js"></script>
+
+    <!-- Toaster js -->
+    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+    DashBoard
+</head>
+
+
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <form class="d-flex ms-auto">
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Button</button>
+                    </div>
+                </div>
+            </form>
+
+            <ul class="navbar-nav mb-2 ml-lg-0">
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Dropdown
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Action</a>
+                        <a class="dropdown-item" href="#">Another action</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+
+            </ul>
+
+        </div>
+    </nav>
+</body>
+
 
