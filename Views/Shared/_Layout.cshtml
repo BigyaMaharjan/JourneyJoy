@@ -61,17 +61,8 @@
             </div>
         </nav>*@
     <!-- Nav menu with user information -->
-    <nav class="navbar navbar-inverse navbar-fixed-top pmd-navbar pmd-z-depth">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
-                <a href="javascript:void(0);" class="navbar-brand navbar-brand-custome">Brand</a>
-                @Html.ActionLink("LogOut", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
-            </div>
-        </div>
-        <div class="pmd-sidebar-overlay"></div>
-    </nav>
-    <div class="container body-content">
+    
+    <div class="body-content">
         @RenderBody()
         <hr />
         <footer>
