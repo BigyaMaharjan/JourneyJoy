@@ -171,6 +171,13 @@
     <Content Include="Content\Assets\image\Error\!Location.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="DB\SP\sp_LogIn.sql" />
+    <Content Include="DB\Tables\tbl_LocationList.sql" />
+    <Content Include="DB\Tables\tbl_ReserveVehicle.sql" />
+    <Content Include="DB\Tables\tbl_Transaction.sql" />
+    <Content Include="DB\Tables\tbl_UserDetail.sql" />
+    <Content Include="DB\Tables\tbl_VehicleDetail.sql" />
+    <Content Include="DB\Tables\TestHelp.sql" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Views\Booking\_vehicleInfo.cshtml" />
@@ -179,6 +186,7 @@
     <Content Include="Views\Home\VehicleList.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include=".gitignore" />
     <None Include="Views\Shared\_BookingLayout.cshtml" />
     <Content Include="Content\Assets\css\forms.css" />
     <Content Include="Content\Assets\css\global.css" />
