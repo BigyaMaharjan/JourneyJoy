@@ -171,6 +171,16 @@
     <Content Include="Content\Assets\image\Error\!Location.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="DB\SP\sproc_customer_registration.sql" />
+    <Content Include="DB\SP\sp_LogIn.sql" />
+    <Content Include="DB\SP\SQLQuery2 useless.sql" />
+    <Content Include="DB\Tables\tbl_error_log.sql" />
+    <Content Include="DB\Tables\tbl_LocationList.sql" />
+    <Content Include="DB\Tables\tbl_ReserveVehicle.sql" />
+    <Content Include="DB\Tables\tbl_Transaction.sql" />
+    <Content Include="DB\Tables\tbl_UserDetail.sql" />
+    <Content Include="DB\Tables\tbl_VehicleDetail.sql" />
+    <Content Include="DB\Tables\TestHelp.sql" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Scripts\toastr.min.js" />
     <Content Include="Views\Booking\_vehicleInfo.cshtml" />
@@ -269,6 +279,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DB\Table\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
