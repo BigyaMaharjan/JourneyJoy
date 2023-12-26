@@ -17,3 +17,4 @@ CREATE TABLE [dbo].[tbl_VehicleDetail](
 	[UpdatedDate] [varchar](50) NULL,
 	[UpdatedBy] [varchar](50) NULL
 	);
+
