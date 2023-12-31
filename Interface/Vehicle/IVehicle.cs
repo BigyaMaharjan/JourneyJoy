@@ -1,4 +1,5 @@
 ﻿using JourneyJoy.Models;
+using JourneyJoy.Repository.Login;
 using JourneyJoy.Repository.Vehicle;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,11 @@ namespace JourneyJoy.Interface.Vehicle
     public class Vehicle : IVehicle
     {
         IVehicleRepo _Repo;
+
+        public Vehicle(VehicleRepo repo)
+        {
+            _Repo = repo;
+        }
         public CommonModel GetVehicleList(RentSearchModel model)
         {
             return _Repo.GetVehicleList(model);

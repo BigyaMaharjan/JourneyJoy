@@ -166,7 +166,11 @@
     <Content Include="Content\Assets\css\LogIn-RegisterCss\LogRegCSS.css" />
     <Content Include="Content\Assets\css\UserCss\DashBoard.css" />
     <Content Include="Content\Assets\image\car\anime.png" />
+    <Content Include="Content\Assets\image\car\calender.png.png" />
+    <Content Include="Content\Assets\image\car\free.png" />
     <Content Include="Content\Assets\image\car\GT.png" />
+    <Content Include="Content\Assets\image\car\money.png.jpg" />
+    <Content Include="Content\Assets\image\car\screw.png.jpg" />
     <Content Include="Content\Assets\image\Error\!Car.jpg" />
     <Content Include="Content\Assets\image\Error\!Location.png" />
     <Content Include="Content\toastr.css" />
