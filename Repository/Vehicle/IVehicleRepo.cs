@@ -19,13 +19,13 @@ namespace JourneyJoy.Repository.Vehicle
         public CommonModel GetVehicleList(RentSearchModel model)
         {
             var SearchedList = new List<VehicleModel>();
-            var SQL = "Exec sp_vehicle_management @Flag='gl'"; // gl- Get List
-            SQL += ",@FromLocation=" + _dao.FilterString(model.FromLocation);
-            SQL += ",@ToLocation=" + _dao.FilterString(model.ToLocation);
-            SQL += ",@FromTime=" + _dao.FilterString(model.FromTime);
-            SQL += ",@ToTime=" + _dao.FilterString(model.ToTime);
-            SQL += ",@FromDate=" + _dao.FilterString(model.FromDate);
-            SQL += ",@ToDate=" + _dao.FilterString(model.ToDate);
+            var SQL = "Exec sp_SearchVehicleList  @Flag='S'"; // gl- Get List
+            SQL += ",@LocationId=" + _dao.FilterString(model.FromLocation);
+            //SQL += ",@ToLocation=" + _dao.FilterString(model.ToLocation);
+            //SQL += ",@FromTime=" + _dao.FilterString(model.FromTime);
+            //SQL += ",@ToTime=" + _dao.FilterString(model.ToTime);
+            //SQL += ",@FromDate=" + _dao.FilterString(model.FromDate);
+            //SQL += ",@ToDate=" + _dao.FilterString(model.ToDate);
             var dbresponse = _dao.ExecuteDataTable(SQL);
             if (dbresponse != null)
             {
@@ -34,13 +34,13 @@ namespace JourneyJoy.Repository.Vehicle
                     SearchedList.Add(new VehicleModel()
                     {
                         VehicleType = _dao.ParseColumnValue(item, "VehicleType").ToString(),
-                        VehicleMdl = _dao.ParseColumnValue(item, "VehicleMdl").ToString(),
-                        CarCapacity = _dao.ParseColumnValue(item, "CarCapacity").ToString(),
+                        VehicleMdl = _dao.ParseColumnValue(item, "VehicleModel").ToString(),
+                        CarCapacity = _dao.ParseColumnValue(item, "VehicleCapacity").ToString(),
                         Rating = _dao.ParseColumnValue(item, "Rating").ToString(),
                         TotalSeats = _dao.ParseColumnValue(item, "TotalSeats").ToString(),
                         TotalMilage = _dao.ParseColumnValue(item, "TotalMilage").ToString(),
                         TotalPrice = _dao.ParseColumnValue(item, "TotalPrice").ToString(),
-                        Image = _dao.ParseColumnValue(item, "Image").ToString(),
+                        Image = _dao.ParseColumnValue(item, "ProfileImage").ToString(),
                     });
                 }
                 return new CommonModel()
