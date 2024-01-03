@@ -169,7 +169,10 @@
     <Content Include="Content\Assets\image\car\calender.png.png" />
     <Content Include="Content\Assets\image\car\free.png" />
     <Content Include="Content\Assets\image\car\GT.png" />
+    <Content Include="Content\Assets\image\car\JourneyJoyLogo.png" />
+    <Content Include="Content\Assets\image\car\maruti suzuki alto.png" />
     <Content Include="Content\Assets\image\car\money.png.jpg" />
+    <Content Include="Content\Assets\image\car\Person.png" />
     <Content Include="Content\Assets\image\car\screw.png.jpg" />
     <Content Include="Content\Assets\image\Error\!Car.jpg" />
     <Content Include="Content\Assets\image\Error\!Location.png" />
