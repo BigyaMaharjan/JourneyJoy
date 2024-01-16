@@ -14,3 +14,5 @@ CREATE TABLE dbo.tbl_Transaction
     [ActionIP] VARCHAR(50) NULL,
     [ActionPlatform] VARCHAR(20) NULL
 )
+
+

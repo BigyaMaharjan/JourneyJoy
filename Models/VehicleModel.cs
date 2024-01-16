@@ -11,8 +11,8 @@ namespace JourneyJoy.Models
         public string VehicleMdl { get; set; } //Model as duke 250 / 360
         public string CarCapacity { get; set; }
         public string Rating { get; set; }
-        public string TotalSeats { get; set; }
         public string TotalMilage { get; set; }
+        public string TotalSeats { get; set; }
         public string TotalPrice { get; set; }
         public string Image { get; set; }
         public string VehicleID { get; set; }

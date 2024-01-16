@@ -166,11 +166,28 @@
     <Content Include="Content\Assets\css\LogIn-RegisterCss\LogRegCSS.css" />
     <Content Include="Content\Assets\css\UserCss\DashBoard.css" />
     <Content Include="Content\Assets\image\car\anime.png" />
+    <Content Include="Content\Assets\image\car\calender.png.png" />
+    <Content Include="Content\Assets\image\car\free.png" />
     <Content Include="Content\Assets\image\car\GT.png" />
+    <Content Include="Content\Assets\image\car\JourneyJoyLogo.png" />
+    <Content Include="Content\Assets\image\car\maruti suzuki alto.png" />
+    <Content Include="Content\Assets\image\car\money.png.jpg" />
+    <Content Include="Content\Assets\image\car\Person.png" />
+    <Content Include="Content\Assets\image\car\screw.png.jpg" />
     <Content Include="Content\Assets\image\Error\!Car.jpg" />
     <Content Include="Content\Assets\image\Error\!Location.png" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="DB\SP\sproc_customer_registration.sql" />
+    <Content Include="DB\SP\sp_LogIn.sql" />
+    <Content Include="DB\SP\SQLQuery2 useless.sql" />
+    <Content Include="DB\Tables\tbl_error_log.sql" />
+    <Content Include="DB\Tables\tbl_LocationList.sql" />
+    <Content Include="DB\Tables\tbl_ReserveVehicle.sql" />
+    <Content Include="DB\Tables\tbl_Transaction.sql" />
+    <Content Include="DB\Tables\tbl_UserDetail.sql" />
+    <Content Include="DB\Tables\tbl_VehicleDetail.sql" />
+    <Content Include="DB\Tables\TestHelp.sql" />
     <Content Include="DB\SP\sp_LogIn.sql" />
     <Content Include="DB\Tables\tbl_LocationList.sql" />
     <Content Include="DB\Tables\tbl_ReserveVehicle.sql" />
@@ -277,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="DB\Table\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

@@ -152,10 +152,12 @@ namespace JourneyJoy.Controllers
         #endregion
 
         #region Vehicle Search 
-        public ActionResult VehicleList(VehicleModel model)
+        [HttpPost]
+        public ActionResult VehicleList(RentSearchModel model)
         {
-            List<VehicleModel> responseList = TempData["ResponseList"] as List<VehicleModel>;
-            return View(responseList);
+            var Vehicle = _VehicleBuss.GetVehicleList(model);
+            //List<VehicleModel> responseList = Vehicle.Data;
+            return View(Vehicle.Data);
         }
         #endregion
     }
