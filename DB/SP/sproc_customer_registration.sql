@@ -87,7 +87,7 @@ BEGIN TRY
         COMMIT TRANSACTION @TransactionName;
 
         SELECT 0 Code,
-               'Registration successfull' Message,
+               'Registration successfull' Message
         RETURN;
     END;
 END TRY
