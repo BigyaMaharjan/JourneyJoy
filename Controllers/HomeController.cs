@@ -31,6 +31,18 @@ namespace JourneyJoy.Controllers
             return View();
         }
 
+        #region Contact Us
+        [HttpGet]
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Category()
+        {
+            return View();
+        }
+        #endregion
         [HttpPost]
         public ActionResult Index(RentSearchModel model)
         {
