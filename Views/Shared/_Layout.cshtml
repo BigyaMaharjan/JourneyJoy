@@ -70,6 +70,8 @@
     </header>
     <!-- ***** Header Area End ***** -->
     @RenderBody()
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
     <footer>
         <div class="container">
             <div class="row">

@@ -82,7 +82,6 @@ namespace JourneyJoy.Controllers
         #endregion
 
         #region LogIn/ LogOut | Register
-
         [HttpPost]
         public ActionResult Register(CustomerModel model)
         {
@@ -108,6 +107,12 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult Login(LogInModel model)
         {
+            ModelState.Remove("Firstname");
+            ModelState.Remove("Lastname");
+            ModelState.Remove("Lastname");
+            ModelState.Remove("Mobilenumber");
+            ModelState.Remove("Email");
+            ModelState.Remove("confirmpassword");
             if (ModelState.IsValid)
             {
                 var userCheck = LogInCheck(model);
