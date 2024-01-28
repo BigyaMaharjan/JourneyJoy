@@ -1,4 +1,4 @@
-﻿@model JourneyJoy.Models.RentSearchModel
+﻿@model  IEnumerable<JourneyJoy.Models.VehicleModel>
 
 @{
     ViewBag.Title = "Index";
@@ -14,8 +14,10 @@
                     <h2>Find Nearby Places &amp; Things</h2>
                 </div>
             </div>
-            <div class="col-lg-12">
-                <form id="search-form" name="gs" method="submit" role="search" action="#">
+            @using (Html.BeginForm("VehicleList", "Home", FormMethod.Post, new { @role = "form", @id = "search-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-lg-12">
                     <div class="row">
                         <div class="col-lg-3 align-self-center">
                             <fieldset>
@@ -49,8 +51,8 @@
                             </fieldset>
                         </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            }
             <div class="col-lg-10 offset-lg-1">
                 <ul class="categories">
                     <li><a href="category.html"><span class="icon"><img src="assets/images/search-icon-01.png" alt="Home"></span> Apartments</a></li>
@@ -63,6 +65,7 @@
         </div>
     </div>
 </div>
+
 <div class="popular-categories">
     <div class="container">
         <div class="row">
@@ -234,90 +237,51 @@
                 <div class="owl-carousel owl-listing">
                     <div class="item">
                         <div class="row">
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-01.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>1. First Apartment Unit</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(18) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $450 - $950 / month with taxes</span>
-                                        <span class="details">Details: <em>2760 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 4 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 4 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
+                            @{
+                                var j = 1;
+                            }
+                            @if (Model != null)
+                            {
+                                if (Model.Count() > 0)
+                                {
+                                    foreach (var x in Model)
+                                    {
+                                        <div class="col-lg-12">
+                                            <div class="listing-item">
+                                                <div class="left-image">
+                                                    <a href="#"><img src="~/Content/Assets/images/listing-03.jpg" alt=""></a>
+                                                </div>
+                                                <div class="right-content align-self-center">
+                                                    <a href="#"><h4>@j.  @x.VehicleType</h4></a>
+                                                    <h6>by: @x.CreatedBy</h6>
+                                                    <ul class="rate">
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li>(18) Reviews</li>
+                                                    </ul>
+                                                    <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $@x.TotalPrice / month with taxes</span>
+                                                    <span class="details">Details: <em>@x.Detail</em></span>
+                                                    <ul class="info">
+                                                        <li><img src="~/Content/Assets/images/listing-icon-02.png" alt=""> @x.CarCapacity</li>
+                                                        <li><img src="~/Content/Assets/images/listing-icon-03.png" alt=""> @x.TotalMilage</li>
+                                                    </ul>
+                                                    <div class="main-white-button">
+                                                        <a href="contact.html"><i class="fa fa-eye"></i> Book Now</a>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-02.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>2. Another House of Gaming</h4></a>
-                                        <h6>by: Top Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(24) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $1,400 - $3,500 / month with taxes</span>
-                                        <span class="details">Details: <em>3650 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 4 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 3 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-03.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>3. Secret Place Hidden House</h4></a>
-                                        <h6>by: Best Property</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(36) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $1,500 - $3,600 / month with taxes</span>
-                                        <span class="details">Details: <em>5500 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 4 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 3 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        j++;
+                                    }
+                                }
+                                else
+                                {
+                                    <p>No Record Found</p>
+                                }
+                            }
                         </div>
                     </div>
                     <div class="item">

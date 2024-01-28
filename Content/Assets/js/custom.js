@@ -73,13 +73,21 @@
 
         $('#js-preloader').addClass('loaded');
 
+	 });
+
+    $(".flip").click(function () {
+        $(".card").each(function (index) {
+            if ($(this).hasClass("front")) {
+                $(this).removeClass("front");
+                $(this).addClass("back");
+                return;
+            }
+            if ($(this).hasClass("back")) {
+                $(this).removeClass("back");
+                $(this).addClass("front");
+                return;
+            }
+        });
     });
-
-	
-
-	
-
-
-
 
 })(window.jQuery);

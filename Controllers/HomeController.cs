@@ -2,14 +2,9 @@
 using JourneyJoy.Interface.Vehicle;
 using JourneyJoy.Models;
 using JourneyJoy.Static;
-using kp.Toaster;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reactive;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace JourneyJoy.Controllers
 {
@@ -28,6 +23,20 @@ namespace JourneyJoy.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            List<VehicleModel> recVehicle = new List<VehicleModel>();
+            var GetCVehicle = _VehicleBuss.GetRecentlyAddedVehicleList();
+            if (GetCVehicle != null)
+            {
+                if (GetCVehicle.Code == ResponseCode.SUCCESS)
+                {
+                    recVehicle = GetCVehicle.Data.MapObjects<VehicleModel>();
+                    return View(recVehicle);                   
+                }
+                else
+                {
+                    return View();
+                }
+            }            
             return View();
         }
 
@@ -167,9 +176,10 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult VehicleList(RentSearchModel model)
         {
-            var Vehicle = _VehicleBuss.GetVehicleList(model);
+            //var Vehicle = _VehicleBuss.GetVehicleList(model);
             //List<VehicleModel> responseList = Vehicle.Data;
-            return View(Vehicle.Data);
+            //return View(Vehicle.Data);
+            return View();
         }
         #endregion
     }

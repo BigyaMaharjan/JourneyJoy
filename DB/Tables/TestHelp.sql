@@ -184,3 +184,26 @@ VALUES
 
 
   --https://en.wikipedia.org/wiki/List_of_cities_in_Nepal#Map
+  ALTER TABLE tbl_VehicleDetail
+DROP COLUMN Price;
+
+ ALTER TABLE tbl_VehicleDetail
+ADD Detail Varchar(500);
+ ALTER TABLE tbl_VehicleDetail
+ADD Price Varchar(10);
+
+--Multiple Insert
+ INSERT INTO tbl_VehicleDetail
+  (
+	  [VehicleType],
+	  [Rating],
+	  [Title],
+	  [TotalPrice],
+	  [CreatedBy],
+	  [CreatedDate],
+	  [IsAvailable]
+  )
+VALUES
+  ('Car', '3', 'SUV','1200','SHINIGAMI',GETDATE(),1),
+  ('Car', '5', '4X4','1300','SHINIGAMI',GETDATE(),1),
+  ('Car', '5', 'BMW','1300','SHINIGAMI',GETDATE(),1)

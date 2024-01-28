@@ -157,6 +157,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Botstrapper.cs" />
+    <Compile Include="Controllers\LogInRegisterController.cs" />
     <Compile Include="Controllers\SearchedListController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Interface\Vehicle\IVehicle.cs" />
@@ -173,6 +174,7 @@
     <Content Include="Content\Assets\css\owl.css" />
     <Content Include="Content\Assets\css\templatemo-plot-listing.css" />
     <Content Include="Content\Assets\css\_Base.css" />
+    <Content Include="Content\Assets\css\_layout.css" />
     <Content Include="Content\Assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Assets\fonts\slick.svg" />
@@ -222,6 +224,8 @@
     <Content Include="Content\Assets\js\animation.js" />
     <Content Include="Content\Assets\js\booking.js" />
     <Content Include="Content\Assets\js\custom.js" />
+    <Content Include="Content\Assets\js\flatpickr.js" />
+    <Content Include="Content\Assets\js\global.js" />
     <Content Include="Content\Assets\js\imagesloaded.js" />
     <Content Include="Content\Assets\js\isotope.js" />
     <Content Include="Content\Assets\js\main.js" />
@@ -232,6 +236,9 @@
     <Content Include="Content\vendor\bootstrap\css\bootstrap.min.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\vendor\datepicker\daterangepicker.css" />
+    <Content Include="Content\vendor\datepicker\daterangepicker.js" />
+    <Content Include="Content\vendor\datepicker\moment.min.js" />
     <Content Include="Content\vendor\jquery\jquery.js" />
     <Content Include="Content\vendor\jquery\jquery.min.js" />
     <Content Include="Content\vendor\jquery\jquery.slim.js" />
@@ -281,6 +288,7 @@
     <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Home\Category.cshtml" />
     <Content Include="Views\SearchedList\VehicleList.cshtml" />
+    <Content Include="Views\LogInRegister\LogInRegister.cshtml" />
     <None Include="Views\Shared\_BookingLayout.cshtml" />
     <Compile Include="Controllers\BookingController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />

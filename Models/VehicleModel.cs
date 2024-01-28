@@ -5,7 +5,7 @@ using System.Web;
 
 namespace JourneyJoy.Models
 {
-    public class VehicleModel
+    public class VehicleModel : BaseModel
     {
         public string VehicleType { get; set; } // Car, Bike, Zeep, SUV,Scooter
         public string VehicleMdl { get; set; } //Model as duke 250 / 360
@@ -16,5 +16,6 @@ namespace JourneyJoy.Models
         public string TotalPrice { get; set; }
         public string Image { get; set; }
         public string VehicleID { get; set; }
+        public string Detail { get; set; }
     }
 }

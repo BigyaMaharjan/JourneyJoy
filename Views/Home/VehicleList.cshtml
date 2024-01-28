@@ -1,11 +1,11 @@
-﻿@model IEnumerable<JourneyJoy.Models.VehicleModel>
+﻿@*@model IEnumerable<JourneyJoy.Models.VehicleModel>*@
     
 @{
     ViewBag.Title = "VehicleList";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-@foreach (var X in Model as IEnumerable<JourneyJoy.Models.VehicleModel>)
+@*@foreach (var X in Model as IEnumerable<JourneyJoy.Models.VehicleModel>)
 {
     @X.CarCapacity;
     @X.Rating;
@@ -15,7 +15,7 @@
     @X.VehicleType;
     @X.VehicleID;
     @X.VehicleMdl;
-}
+}*@
 <p>Need to LOOP VehicleList from DB</p>
 <p>Now need SEXY Layout</p>
 <h2>VehicleList</h2>
