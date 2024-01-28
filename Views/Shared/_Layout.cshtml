@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="~/Content/Assets/css/templatemo-plot-listing.css">
     <link rel="stylesheet" href="~/Content/Assets/css/animated.css">
     <link rel="stylesheet" href="~/Content/Assets/css/owl.css">
+    <link rel="stylesheet" href="~/Content/Assets/css/_layout.css">
+
+    <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
+    <link href="~/Content/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
 </head>
 
 <body>
@@ -46,10 +50,14 @@
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li><a href="index.html" class="active">Home</a></li>
-                            <li><a href="@Url.Action("Category","Home")"">Category</a></li>
-                            <li><a href="@Url.Action("VehicleList","SearchedList")">Listing</a></li>
+                            <li><a href="@Url.Action("Category","Home")">Category</a></li>
+                            @*<li><a href="@Url.Action("VehicleList","SearchedList")">Listing</a></li>*@
                             <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
-                            <li><div class="main-white-button"><a href="#"><i class="fa fa-plus"></i> Add Your Listing</a></div></li>
+                            <li>
+                                <div class="main-white-button">
+                                    <a href="@Url.Action("LogInRegister","LogInRegister")"><i class="fa fa-user"></i> Log In / Register</a>
+                                </div>
+                            </li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -123,13 +131,19 @@
         </div>
     </footer>
 
-
     <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
     <script src="~/Content/vendor/jquery/jquery.min.js"></script>
     <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="~/Content/Assets/js/owl-carousel.js"></script>
     <script src="~/Content/Assets/js/animation.js"></script>
     <script src="~/Content/Assets/js/imagesloaded.js"></script>
     <script src="~/Content/Assets/js/custom.js"></script>
+    <script src="~/Content/vendor/datepicker/moment.min.js"></script>
+    <script src="~/Content/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/Content/Assets/js/main.js"></script>
 </body>
 </html>
