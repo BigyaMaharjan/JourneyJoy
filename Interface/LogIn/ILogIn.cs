@@ -1,10 +1,5 @@
 ﻿using JourneyJoy.Models;
 using JourneyJoy.Repository.Login;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JourneyJoy.Interface.LogIn
 {
@@ -21,12 +16,18 @@ namespace JourneyJoy.Interface.LogIn
         {
             return _Repo.Login(model);
         }
+
+        public CommonModel RegisterNewUser(LogInModel model)
+        {
+            return _Repo.RegisterNewUser(model);
+        }
     }
 
     #region INTERFACE
     public interface ILogIn
     {
         CommonModel LogIn(LogInModel model);
+        CommonModel RegisterNewUser(LogInModel model);
     }
     #endregion
 }

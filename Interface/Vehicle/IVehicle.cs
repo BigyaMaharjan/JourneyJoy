@@ -1,11 +1,5 @@
 ﻿using JourneyJoy.Models;
-using JourneyJoy.Repository.Login;
 using JourneyJoy.Repository.Vehicle;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace JourneyJoy.Interface.Vehicle
 {
@@ -17,6 +11,12 @@ namespace JourneyJoy.Interface.Vehicle
         {
             _Repo = repo;
         }
+
+        public CommonModel GetRecentlyAddedVehicleList()
+        {
+            return _Repo.GetRecentlyAddedVehicleList();
+        }
+
         public CommonModel GetVehicleList(RentSearchModel model)
         {
             return _Repo.GetVehicleList(model);
@@ -27,6 +27,7 @@ namespace JourneyJoy.Interface.Vehicle
     public interface IVehicle
     {
         CommonModel GetVehicleList(RentSearchModel model);
+        CommonModel GetRecentlyAddedVehicleList();
     }
     #endregion
 }

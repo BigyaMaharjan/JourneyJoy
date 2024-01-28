@@ -2,14 +2,9 @@
 using JourneyJoy.Interface.Vehicle;
 using JourneyJoy.Models;
 using JourneyJoy.Static;
-using kp.Toaster;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Reactive;
-using System.Web;
 using System.Web.Mvc;
-using System.Web.UI;
 
 namespace JourneyJoy.Controllers
 {
@@ -28,9 +23,35 @@ namespace JourneyJoy.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            List<VehicleModel> recVehicle = new List<VehicleModel>();
+            var GetCVehicle = _VehicleBuss.GetRecentlyAddedVehicleList();
+            if (GetCVehicle != null)
+            {
+                if (GetCVehicle.Code == ResponseCode.SUCCESS)
+                {
+                    recVehicle = GetCVehicle.Data.MapObjects<VehicleModel>();
+                    return View(recVehicle);                   
+                }
+                else
+                {
+                    return View();
+                }
+            }            
             return View();
         }
 
+        #region Contact Us
+        [HttpGet]
+        public ActionResult ContactUs()
+        {
+            return View();
+        }
+        [HttpGet]
+        public ActionResult Category()
+        {
+            return View();
+        }
+        #endregion
         [HttpPost]
         public ActionResult Index(RentSearchModel model)
         {
@@ -61,7 +82,6 @@ namespace JourneyJoy.Controllers
         #endregion
 
         #region LogIn/ LogOut | Register
-
         [HttpPost]
         public ActionResult Register(CustomerModel model)
         {
@@ -87,6 +107,12 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult Login(LogInModel model)
         {
+            ModelState.Remove("Firstname");
+            ModelState.Remove("Lastname");
+            ModelState.Remove("Lastname");
+            ModelState.Remove("Mobilenumber");
+            ModelState.Remove("Email");
+            ModelState.Remove("confirmpassword");
             if (ModelState.IsValid)
             {
                 var userCheck = LogInCheck(model);
@@ -155,9 +181,10 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult VehicleList(RentSearchModel model)
         {
-            var Vehicle = _VehicleBuss.GetVehicleList(model);
+            //var Vehicle = _VehicleBuss.GetVehicleList(model);
             //List<VehicleModel> responseList = Vehicle.Data;
-            return View(Vehicle.Data);
+            //return View(Vehicle.Data);
+            return View();
         }
         #endregion
     }

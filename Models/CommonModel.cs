@@ -15,6 +15,13 @@ namespace JourneyJoy.Models
         WARINIG = 2,
         EXCEPTION = 999
     }
+    public class BaseModel
+    {
+        public string CreatedDate { get; set; }
+        public string CreatedBy { get; set; }
+        public string UpdatedDate { get; set; }
+        public string UpdatedBy { get; set;}
+    }
     public class CommonModel
     {
         public string ID { get; set; }
