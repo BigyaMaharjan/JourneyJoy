@@ -21,6 +21,7 @@ namespace JourneyJoy.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(LogInModel model)
         {
             ModelState.Remove("LogInID");
