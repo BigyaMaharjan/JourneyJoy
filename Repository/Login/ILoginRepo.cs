@@ -15,7 +15,7 @@ namespace JourneyJoy.Repository.Login
             var CommonModel = new CommonModel();
             var ResponseModel = new LogInResponseModel();
             var SqlCommand = "exec sp_LogIn @flag= 'L' ";
-            SqlCommand += ",@CustomerName=" + _dao.FilterString(model.Mobilenumber);
+            SqlCommand += ",@CustomerName=" + _dao.FilterString(model.Firstname);
             SqlCommand += ",@Password=" + _dao.FilterString(model.password);
             var Response = _dao.ExecuteDataRow(SqlCommand);
             if (Response != null)
@@ -67,7 +67,7 @@ namespace JourneyJoy.Repository.Login
             var CommonModel = new CommonModel();
             var ResponseModel = new LogInResponseModel();
             var SqlCommand = "exec sp_LogIn @flag= 'reg' "; //customer registration
-            SqlCommand += ",@Firstname=" + _dao.FilterString(model.Firstname);
+            SqlCommand += ",@CustomerName=" + _dao.FilterString(model.Firstname);
             SqlCommand += ",@Lastname=" + _dao.FilterString(model.Lastname);
             SqlCommand += ",@Mobilenumber=" + _dao.FilterString(model.Mobilenumber);
             SqlCommand += ",@Email=" + _dao.FilterString(model.Email);
