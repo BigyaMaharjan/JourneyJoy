@@ -1,4 +1,5 @@
-﻿using System;
+﻿using JourneyJoy.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +14,23 @@ namespace JourneyJoy.Controllers
         public ActionResult DashBoard()
         {
             TempData["message"] = "LogInSuccess";
-            return View();
+            LogInResponseModel model = new LogInResponseModel();
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult UpdateUserProfile(LogInResponseModel model)
+        {
+            if (ModelState.IsValid)
+            {
+
+                return RedirectToAction("DashBoard");
+            }
+            else
+            {
+
+                return View(model);
+            }
         }
         [HttpGet]
         public ActionResult GetOrderList()
