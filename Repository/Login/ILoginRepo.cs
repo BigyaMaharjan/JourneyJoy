@@ -34,7 +34,6 @@ namespace JourneyJoy.Repository.Login
                     ResponseModel.DriverLicenceNumber = _dao.ParseColumnValue(Response, "DriverLicenceNumber").ToString();
                     ResponseModel.Country = _dao.ParseColumnValue(Response, "Country").ToString();
                     ResponseModel.City = _dao.ParseColumnValue(Response, "City").ToString();
-                    ResponseModel.PostCode = _dao.ParseColumnValue(Response, "PostCode").ToString();
                     ResponseModel.Bio = _dao.ParseColumnValue(Response, "Bio").ToString();
                     ResponseModel.UserType = _dao.ParseColumnValue(Response, "UserType").ToString();
                     return new CommonModel()
