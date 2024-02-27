@@ -53,11 +53,22 @@
                             <li><a href="@Url.Action("Category","Home")">Category</a></li>
                             @*<li><a href="@Url.Action("VehicleList","SearchedList")">Listing</a></li>*@
                             <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
-                            <li>
-                                <div class="main-white-button">
-                                    <a href="@Url.Action("LogInRegister","LogInRegister")"><i class="fa fa-user"></i> Log In / Register</a>
-                                </div>
-                            </li>
+                            @if (@Session["UserName"] != null)
+                            {
+                                <li>
+                                    <div class="main-white-button">
+                                        <a href="@Url.Action("DashBoard","User")"><i class="fa fa-user"></i> Profile</a>
+                                    </div>
+                                </li>
+                            }
+                            else
+                            {
+                                <li>
+                                    <div class="main-white-button">
+                                        <a href="@Url.Action("LogInRegister","LogInRegister")"><i class="fa fa-user"></i> Log In / Register</a>
+                                    </div>
+                                </li>
+                            }
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

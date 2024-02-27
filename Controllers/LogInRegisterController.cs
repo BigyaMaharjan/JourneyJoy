@@ -21,6 +21,7 @@ namespace JourneyJoy.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Register(LogInModel model)
         {
             ModelState.Remove("LogInID");
@@ -84,7 +85,6 @@ namespace JourneyJoy.Controllers
                     Session["MobileNumber"] = response.MobileNumber;
                     Session["Country"] = response.Country;
                     Session["City"] = response.City;
-                    Session["PostCode"] = response.PostCode;
                     Session["UserType"] = response.UserType;
                     Session["DriverLicenceNumber"] = response.DriverLicenceNumber;
                     return new Tuple<string, string, bool>("DashBoard", "User", true);

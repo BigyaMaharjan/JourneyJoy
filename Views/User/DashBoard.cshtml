@@ -2,104 +2,311 @@
 
 @{
     ViewBag.Title = "DashBoard";
-    Layout = "~/Views/Shared/_IndexLayout.cshtml"
-    ;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<head>
-    <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
-
-    @*custome local CSS*@
-    <link rel="stylesheet" href="~/Content/assets/css/index.css">
-    <link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet" />
-    @*Some Extra Links*@
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
-
-    <script src="https://kit.fontawesome.com/3df9cedb79.js" crossorigin="anonymous"></script>
-
-    <!-- favicon -->
-    <link rel="icon" href="https://opensource.propeller.in/assets/images/favicon.ico" type="image/x-icon">
-
-    <!-- Bootstrap -->
-    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css" rel="stylesheet" />
-
-    <!-- Example docs (CSS for helping component example file)-->
-    <link href="https://opensource.propeller.in/docs/css/example-docs.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller card (CSS for helping component example file) -->
-    <link href="https://opensource.propeller.in/components/card/css/card.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller typography -->
-    <link href="https://opensource.propeller.in/components/typography/css/typography.css" type="text/css" rel="stylesheet" />
-
-    <!-- Google Icon Font -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
-    <link href="https://opensource.propeller.in/components/icons/css/google-icons.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller dropdown -->
-    <link href="https://opensource.propeller.in/components/dropdown/css/dropdown.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller navbar -->
-    <link href="https://opensource.propeller.in/components/navbar/css/navbar.css" type="text/css" rel="stylesheet" />
-
-    <!-- Propeller button  -->
-    <link href="https://opensource.propeller.in/components/button/css/button.css" type="text/css" rel="stylesheet" />
-    <!-- Jquery js -->
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
-    <!-- Bootstrap js -->
-    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-    <!-- Propeller Global js -->
-    <script src="https://opensource.propeller.in/components/global/js/global.js"></script>
-
-    <!-- Propeller Sidebar js -->
-    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/sidebar/js/sidebar.js"></script>
-
-    <!-- Propeller Dropdown js -->
-    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/dropdown/js/dropdown.js"></script>
-
-    <!-- Propeller ripple effect js -->
-    <script type="text/javascript" language="javascript" src="https://opensource.propeller.in/components/button/js/ripple-effect.js"></script>
-
-    <!-- Toaster js -->
-    <script src="//code.jquery.com/jquery-2.2.4.min.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-    DashBoard
-</head>
-
-<body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <form class="d-flex ms-auto">
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search" aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button">Button</button>
+<div class="page-heading">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="top-text header-text">
+                    <h6>Hello @Session["UserName"] !</h6>
+                    <fh2>Welcome</fh2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .inmiddle {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    input:disabled {
+        background: #dddddd !important;
+    }
+    input:enabled {
+        background: none !important;
+    }
+</style>
+<div class="category-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="naccs">
+                    <div class="grid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu inmiddle">
+                                    <div class="first-thumb active">
+                                        <div class="thumb">
+                                            <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>Profile</h4></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="thumb">
+                                            <span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt=""><h4>Bookings</h4></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="nacc">
+                                    <li class="active">
+                                        <div>
+                                            <div class="thumb">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="top-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="top-icon">
+                                                                        <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>@Session["UserName"] Profile</h4></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="main-white-button">
+                                                                        @*<button id="updateProfileButton"><i class="fa fa-plus"></i> Update Profile</button>*@
+                                                                        <a href="#" id="updateProfileButton"><i class="fa fa-plus"></i> Update Profile</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="description">
+                                                            <div class="row">
+                                                                <div class="col-lg-3">
+                                                                    <div id="map">
+                                                                        <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-9 align-self-center">
+                                                                    @using (Html.BeginForm("UserLogin", "LogInRegister", FormMethod.Post, new { @Id = "contact" }))
+                                                                    {
+                                                                        @Html.AntiForgeryToken();
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="Username" id="Username" placeholder="Username" autocomplete="on" required disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <input type="email" name="Email" id="Email" placeholder="Email" autocomplete="on" required disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="CurrentAddress" id="MobileNumber" placeholder="Your Mobilenumber" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="Gender" id="Gender" placeholder="Your Gender" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="Title" id="Title" placeholder="Your Title" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="Country" id="Country" placeholder="Your Country" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="City" id="City" placeholder="Your City" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="DriverLicenceNumber" id="DriverLicenceNumber" placeholder="Your DriverLicenceNumber" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="Bio" id="Bio" placeholder="Your Bio" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    <input type="text" name="ProfileImage" id="ProfileImage" placeholder="Your ProfileImage" required="" disabled>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                                                                                <fieldset>
+                                                                                    <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane"></i> Update Profile</button>
+                                                                                </fieldset>
+                                                                            </div>
+                                                                        </div>
+                                                                    }
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="thumb">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="top-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="top-icon">
+                                                                        <span class="icon"><img src="assets/images/search-icon-02.png" alt=""><h4>Food &amp; Life</h4></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="main-white-button">
+                                                                        <a href="#"><i class="fa fa-plus"></i> Check Our Listings</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="description">
+                                                            <div class="row">
+                                                                <div class="col-lg-9">
+                                                                    <h4>Description for Food and Life</h4>
+                                                                    <p>Plot Listing template is a responsive website layout that included four HTML pages. Please tell your friends about TemplateMo website. You can download and apply this template for your dynamic CMS websites.</p>
+                                                                    <br>
+                                                                    <p>
+                                                                        <strong>Did you know?</strong>
+                                                                        <br>You can get the best free HTML templates on Too CSS blog. Visit the blog pages and explore fresh and latest website templates.
+                                                                    </p>
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <div class="text-icon">
+                                                                        <h4><img src="assets/images/listing-icon-heading.png" alt=""> Total Listings</h4>
+                                                                    </div>
+                                                                    <span class="list-item">This Week: 124 Listings &amp; 84 Sales<br>This Month: 1,040 Listings &amp; 720 Sales<br>This Year: 10,640 Listings &amp; 9,600 Sales</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="general-info">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <h4>General Info</h4>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ak incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidat doerski. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+                                                                    <span class="list-item">
+                                                                        * Listing should have all the proper documents before being checked in.
+                                                                        <br>** Listing will be checked by our team members.
+                                                                        <br>*** After being sold, it should imediately be removed from our site and properly monitored.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="thumb">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="top-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="top-icon">
+                                                                        <span class="icon"><img src="assets/images/search-icon-03.png" alt=""><h4>Cars</h4></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="main-white-button">
+                                                                        <a href="#"><i class="fa fa-plus"></i> Check Our Listings</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="description">
+                                                            <div class="row">
+                                                                <div class="col-lg-9">
+                                                                    <h4>Description about cars</h4>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ak incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidat doerski. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <div class="text-icon">
+                                                                        <h4><img src="assets/images/listing-icon-heading.png" alt=""> Total Listings</h4>
+                                                                    </div>
+                                                                    <span class="list-item">This Week: 800 Listings &amp; 400 Sales<br>This Month: 1,600 Listings &amp; 1,200 Sales<br>This Year: 14,000 Listings &amp; 12,000 Sales</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="general-info">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <h4>General Info. about cars</h4>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ak incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidat doerski. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+                                                                    <span class="list-item">
+                                                                        * Listing should have all the proper documents before being checked in.
+                                                                        <br>** Listing will be checked by our team members.
+                                                                        <br>*** After being sold, it should imediately be removed from our site and properly monitored.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </form>
-            <ul class="navbar-nav mb-2 ml-lg-0">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
-            </ul>
+            </div>
         </div>
-    </nav>
-</body>
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#form-submit').hide();
+        });
+
+        document.getElementById("updateProfileButton").addEventListener("click", function () {
+            event.preventDefault(); // Prevent the default action (navigating to the "#" anchor)
+            var inputField = document.getElementById("Username");
+            var inputField2 = document.getElementById("Email");
+            var inputField3 = document.getElementById("MobileNumber");
+            var inputField4 = document.getElementById("Gender");
+            var inputField5 = document.getElementById("Title");
+            var inputField7 = document.getElementById("ProfileImage");
+            var inputField8 = document.getElementById("Bio");
+            var inputField9 = document.getElementById("DriverLicenceNumber");
+            var inputField10 = document.getElementById("Country");
+            var inputField11 = document.getElementById("City");
+            var inputField12 = document.getElementById("CurrentAddress");
+            inputField.disabled = !inputField.disabled;
+            inputField2.disabled = !inputField2.disabled;
+            inputField3.disabled = !inputField3.disabled;
+            inputField4.disabled = !inputField4.disabled;
+            inputField5.disabled = !inputField5.disabled;
+            inputField7.disabled = !inputField7.disabled;
+            inputField8.disabled = !inputField8.disabled;
+            inputField9.disabled = !inputField9.disabled;
+            inputField10.disabled = !inputField10.disabled;
+            inputField11.disabled = !inputField11.disabled;
+            inputField12.disabled = !inputField12.disabled;
+            $('#form-submit').show();
+        });
+    </script>
