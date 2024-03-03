@@ -24,19 +24,19 @@ namespace JourneyJoy.Controllers
         public ActionResult Index()
         {
             List<VehicleModel> recVehicle = new List<VehicleModel>();
-            var GetCVehicle = _VehicleBuss.GetRecentlyAddedVehicleList();
-            if (GetCVehicle != null)
-            {
-                if (GetCVehicle.Code == ResponseCode.SUCCESS)
-                {
-                    recVehicle = GetCVehicle.Data.MapObjects<VehicleModel>();
-                    return View(recVehicle);                   
-                }
-                else
-                {
-                    return View();
-                }
-            }            
+            /*var GetCVehicle = _VehicleBuss.GetRecentlyAddedVehicleList()*/;
+            //if (GetCVehicle != null)
+            //{
+            //    if (GetCVehicle.Code == ResponseCode.SUCCESS)
+            //    {
+            //        recVehicle = GetCVehicle.Data.MapObjects<VehicleModel>();
+            //        return View(recVehicle);                   
+            //    }
+            //    else
+            //    {
+            //        return View();
+            //    }
+            //}            
             return View();
         }
 
