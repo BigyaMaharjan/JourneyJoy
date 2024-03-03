@@ -182,6 +182,7 @@
     <Content Include="Content\Assets\images\listing-icon-02.png" />
     <Content Include="Content\Assets\images\listing-icon-03.png" />
     <Content Include="Content\Assets\images\listing-icon-heading.png" />
+    <Content Include="Content\Assets\images\scooter-icon.png" />
     <Content Include="Content\Assets\images\search-icon-01.png" />
     <Content Include="Content\Assets\images\search-icon-02.png" />
     <Content Include="Content\Assets\images\search-icon-03.png" />
