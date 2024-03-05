@@ -22,30 +22,32 @@
                         <div class="col-lg-3 align-self-center">
                             <fieldset>
                                 <select name="area" class="form-select" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
-                                    <option selected>All Areas</option>
-                                    <option value="New Village">New Village</option>
-                                    <option value="Old Town">Old Town</option>
-                                    <option value="Modern City">Modern City</option>
+                                    <option selected>Choose Location</option>
+                                    @foreach (var location in ViewBag.LocationList)
+                                    {
+                                        <option value="@location.Value">@location.Key</option>
+                                    }
                                 </select>
                             </fieldset>
                         </div>
-                        <div class="col-lg-3 align-self-center">
+                        @*<div class="col-lg-3 align-self-center">
                             <fieldset>
                                 <input type="address" name="address" class="searchText" placeholder="Enter a location" autocomplete="on" required>
                             </fieldset>
-                        </div>
+                        </div>*@
                         <div class="col-lg-3 align-self-center">
                             <fieldset>
                                 <select name="price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
-                                    <option selected>Price Range</option>
-                                    <option value="$100 - $250">$100 - $250</option>
-                                    <option value="$250 - $500">$250 - $500</option>
-                                    <option value="$500 - $1000">$500 - $1,000</option>
-                                    <option value="$1000+">$1,000 or more</option>
+                                    <option selected>Choose Vehicle Type</option>
+                                    <option value="Bike">Bike</option>
+                                    <option value="Van">Van</option>
+                                    <option value="Car">Car</option>
+                                    <option value="Bus">Bus</option>
+                                    <option value="Scooter">Scooter</option>
                                 </select>
                             </fieldset>
                         </div>
-                        <div class="col-lg-3">
+                        <div class="col-lg-6">
                             <fieldset>
                                 <button class="main-button"><i class="fa fa-search"></i> Search Now</button>
                             </fieldset>
@@ -55,175 +57,17 @@
             }
             <div class="col-lg-10 offset-lg-1">
                 <ul class="categories">
-                    <li><a href="category.html"><span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt="Bike"></span> Bike</a></li>
-                    <li><a href="listing.html"><span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt="Van"></span> Van </a></li>
-                    <li><a href="#"><span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt="Cars"></span> Cars</a></li>
-                    <li><a href="#"><span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt="Bus"></span> Bus </a></li>
-                    <li><a href="#"><span class="icon"><img src="~/Content/Assets/images/search-icon-03.pngpng" alt="Scooter"></span> Scooter </a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Bike" })"><span class="icon"><img src="~/Content/Assets/images/bike.png" alt="Bike"></span> Bike</a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Van" })"><span class="icon"><img src="~/Content/Assets/images/van.png" alt="Van"></span> Van </a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Cars" })"><span class="icon"><img src="~/Content/Assets/images/car.png" alt="Cars"></span> Cars</a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Bus" })"><span class="icon"><img src="~/Content/Assets/images/Bus.png" alt="Bus"></span> Bus </a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Scooter" })"><span class="icon"><img src="~/Content/Assets/images/scooter-icon.png" alt="Scooter"></span> Scooter </a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-<div class="popular-categories">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-heading">
-                    <h2>Popular Categories</h2>
-                    <h6>Check Them Out</h6>
-                </div>
-            </div>
-            <div class="col-lg-12">
-                <div class="naccs">
-                    <div class="grid">
-                        <div class="row">
-                            <div class="col-lg-3">
-                                <div class="menu">
-                                    <div class="first-thumb active">
-                                        <div class="thumb">
-                                            <span class="icon"><img src="assets/images/search-icon-01.png" alt=""></span>
-                                            Bike
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="thumb">
-                                            <span class="icon"><img src="assets/images/search-icon-02.png" alt=""></span>
-                                            Van
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="thumb">
-                                            <span class="icon"><img src="assets/images/search-icon-03.png" alt=""></span>
-                                            Cars
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <div class="thumb">
-                                            <span class="icon"><img src="assets/images/search-icon-04.png" alt=""></span>
-                                            Bus
-                                        </div>
-                                    </div>
-                                    <div class="last-thumb">
-                                        <div class="thumb">
-                                            <span class="icon"><img src="assets/images/search-icon-05.png" alt=""></span>
-                                            Scooter
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-9 align-self-center">
-                                <ul class="nacc">
-                                    <li class="active">
-                                        <div>
-                                            <div class="thumb">
-                                                <div class="row">
-                                                    <div class="col-lg-5 align-self-center">
-                                                        <div class="left-text">
-                                                            <h4>One Of The Most Trending Stuffs Right Now!</h4>
-                                                            <p>Whether you prefer the raw power of a sportbike, the rugged versatility of an adventure bike, or the classic allure of a cruiser, we offer a range of motorbike options to suit your individual riding style and preferences. Choose from leading brands and models renowned for their agility, comfort, and handling capabilities.</p>
-                                                            <div class="main-white-button"><a href="#"><i class="fa fa-eye"></i> Discover More</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-7 align-self-center">
-                                                        <div class="right-image">
-                                                            <img src="assets/images/tabs-image-01.jpg" alt="Bike">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <div class="thumb">
-                                                <div class="row">
-                                                    <div class="col-lg-5 align-self-center">
-                                                        <div class="left-text">
-                                                            <h4>Spacious and Comfortable Interiors</h4>
-                                                            <p>Experience the ultimate in comfort and convenience with our spacious van interiors, designed to accommodate passengers and cargo with ease. Whether you're transporting luggage, sports equipment, or large groups of passengers, our vans provide ample room to stretch out, relax, and enjoy the journey.</p>
-                                                            <div class="main-white-button"><a href="#"><i class="fa fa-eye"></i> Explore More</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-7 align-self-center">
-                                                        <div class="right-image">
-                                                            <img src="assets/images/tabs-image-02.jpg" alt="Van">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <div class="thumb">
-                                                <div class="row">
-                                                    <div class="col-lg-5 align-self-center">
-                                                        <div class="left-text">
-                                                            <h4>Best car rentals for your trips!</h4>
-                                                            <p>Elevate your travel experience and make every moment count with our premium car rental service. Whether you're embarking on a romantic getaway, exploring scenic landscapes, or simply cruising in style, our luxurious cars provide the perfect combination of comfort, performance, and sophistication. Start planning your next journey with us and experience the ultimate in luxury travel.</p>
-                                                            <div class="main-white-button"><a href="listing.html"><i class="fa fa-eye"></i> More Listing</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-7 align-self-center">
-                                                        <div class="right-image">
-                                                            <img src="assets/images/tabs-image-03.jpg" alt="cars">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <div class="thumb">
-                                                <div class="row">
-                                                    <div class="col-lg-5 align-self-center">
-                                                        <div class="left-text">
-                                                            <h4>Experience Comfort and Convenience with Our Bus Rental Service</h4>
-                                                            <p>Booking your bus rental is quick, easy, and convenient. Simply contact our friendly team to discuss your transportation needs, and we'll work with you to customize a rental package that fits your schedule, budget, and preferences. With flexible rental options and competitive rates, we make it effortless to arrange transportation for your group.</p>
-                                                            <div class="main-white-button"><a href="#"><i class="fa fa-eye"></i> Discover More</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-7 align-self-center">
-                                                        <div class="right-image">
-                                                            <img src="assets/images/tabs-image-04.jpg" alt="Bus">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div>
-                                            <div class="thumb">
-                                                <div class="row">
-                                                    <div class="col-lg-5 align-self-center">
-                                                        <div class="left-text">
-                                                            <h4>Efficient and Eco-Friendly Mobility</h4>
-                                                            <p>Our scooters are designed for efficiency and sustainability, offering eco-friendly transportation solutions that reduce carbon emissions and minimize environmental impact. With fuel-efficient engines and low emissions, our scooters provide a sustainable alternative for urban commuters, tourists, and leisure riders alike.</p>
-                                                            <div class="main-white-button"><a rel="nofollow" href="https://templatemo.com/contact"><i class="fa fa-eye"></i> Read More</a></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-7 align-self-center">
-                                                        <div class="right-image">
-                                                            <img src="~/Content/Assets/images/scooter-icon.png" alt="Scooter">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 <div class="recent-listing">
     <div class="container">
         <div class="row">
@@ -236,7 +80,7 @@
             <div class="col-lg-12">
                 <div class="owl-carousel owl-listing">
                     <div class="item">
-                        @*<div class="row">
+                        <div class="row">
                             @{
                                 var j = 1;
                             }
@@ -249,7 +93,7 @@
                                         <div class="col-lg-12">
                                             <div class="listing-item">
                                                 <div class="left-image">
-                                                    <a href="#"><img src="~/Content/Assets/images/listing-03.jpg" alt=""></a>
+                                                    <a href="#"><img src="~/Content/Assets/images/car1.jpg" alt=""></a>
                                                 </div>
                                                 <div class="right-content align-self-center">
                                                     <a href="#"><h4>@j.  @x.VehicleType</h4></a>
@@ -282,7 +126,7 @@
                                     <p>No Record Found</p>
                                 }
                             }
-                        </div>*@
+                        </div>
                     </div>
                     <div class="item">
                         <div class="row">

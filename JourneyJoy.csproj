@@ -151,7 +151,9 @@
     <Compile Include="Controllers\LogInRegisterController.cs" />
     <Compile Include="Controllers\SearchedListController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Interface\Booking\IBooking.cs" />
     <Compile Include="Interface\Vehicle\IVehicle.cs" />
+    <Compile Include="Repository\Booking\IBookingRepo.cs" />
     <Compile Include="Repository\Vehicle\IVehicleRepo.cs" />
     <Compile Include="Static\StaticMethods.cs" />
     <Content Include="Content\Assets\css\animated.css" />
@@ -170,7 +172,12 @@
     <Content Include="Content\Assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Assets\fonts\slick.svg" />
     <Content Include="Content\Assets\images\banner-bg.jpg" />
+    <Content Include="Content\Assets\images\bike.png" />
     <Content Include="Content\Assets\images\black-logo.png" />
+    <Content Include="Content\Assets\images\Bus.png" />
+    <Content Include="Content\Assets\images\car.png" />
+    <Content Include="Content\Assets\images\car1.jpg" />
+    <Content Include="Content\Assets\images\car2.jpg" />
     <Content Include="Content\Assets\images\heading-bg.jpg" />
     <Content Include="Content\Assets\images\listing-01.jpg" />
     <Content Include="Content\Assets\images\listing-02.jpg" />
@@ -188,11 +195,9 @@
     <Content Include="Content\Assets\images\search-icon-03.png" />
     <Content Include="Content\Assets\images\search-icon-04.png" />
     <Content Include="Content\Assets\images\search-icon-05.png" />
-    <Content Include="Content\Assets\images\tabs-image-01.jpg" />
-    <Content Include="Content\Assets\images\tabs-image-02.jpg" />
     <Content Include="Content\Assets\images\tabs-image-03.jpg" />
-    <Content Include="Content\Assets\images\tabs-image-04.jpg" />
     <Content Include="Content\Assets\images\tabs-image-05.jpg" />
+    <Content Include="Content\Assets\images\van.png" />
     <Content Include="Content\Assets\images\white-logo.png" />
     <Content Include="Content\Assets\image\BaseImages\call.svg" />
     <Content Include="Content\Assets\image\BaseImages\email.svg" />

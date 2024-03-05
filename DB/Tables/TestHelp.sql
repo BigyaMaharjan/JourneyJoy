@@ -193,7 +193,8 @@ ADD Detail Varchar(500);
 ADD Price Varchar(10);
 
 --Multiple Insert
- INSERT INTO tbl_VehicleDetail
+
+			   INSERT INTO tbl_VehicleDetail
   (
 	  [VehicleType],
 	  [Rating],
@@ -201,9 +202,15 @@ ADD Price Varchar(10);
 	  [TotalPrice],
 	  [CreatedBy],
 	  [CreatedDate],
-	  [IsAvailable]
+	  [IsAvailable],
+	  [VehicleModel],
+	  [VehicleCapacity],
+	  [TotalSeats],
+	  [TotalMilage],
+	  [City]
   )
 VALUES
-  ('Car', '3', 'SUV','1200','SHINIGAMI',GETDATE(),1),
-  ('Car', '5', '4X4','1300','SHINIGAMI',GETDATE(),1),
-  ('Car', '5', 'BMW','1300','SHINIGAMI',GETDATE(),1)
+  ('Bike', '3', 'Yahama','3200','SHINIGAMI',GETDATE(),1,'ok','2','2','25','KYM'),
+  ('Van', '5', 'Suzuki','300','SHINIGAMI',GETDATE(),1,'A6','6','6','25','KYM'),
+  ('Car', '5', 'AUDI','2000','SHINIGAMI',GETDATE(),1,'R3','8','8','75','KYM'),
+  ('Bus', '5', 'TATA','1600','SHINIGAMI',GETDATE(),1,'Silverline','50','50','55','KYM')
