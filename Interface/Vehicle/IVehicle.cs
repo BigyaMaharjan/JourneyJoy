@@ -1,5 +1,6 @@
 ﻿using JourneyJoy.Models;
 using JourneyJoy.Repository.Vehicle;
+using System.Collections.Generic;
 
 namespace JourneyJoy.Interface.Vehicle
 {
@@ -12,9 +13,24 @@ namespace JourneyJoy.Interface.Vehicle
             _Repo = repo;
         }
 
+        public Dictionary<string, string> GetLocationList()
+        {
+            return _Repo.GetLocationList();
+        }
+
         public CommonModel GetRecentlyAddedVehicleList()
         {
             return _Repo.GetRecentlyAddedVehicleList();
+        }
+
+        public CommonModel GetVehicleById(string ID)
+        {
+            return _Repo.GetVehicleById(ID);
+        }
+
+        public CommonModel GetVehicleByType(string type)
+        {
+            return _Repo.GetVehicleByType(type);
         }
 
         public CommonModel GetVehicleList(RentSearchModel model)
@@ -28,6 +44,9 @@ namespace JourneyJoy.Interface.Vehicle
     {
         CommonModel GetVehicleList(RentSearchModel model);
         CommonModel GetRecentlyAddedVehicleList();
+        Dictionary<string, string> GetLocationList();
+        CommonModel GetVehicleByType(string type);
+        CommonModel GetVehicleById(string ID);
     }
     #endregion
 }
