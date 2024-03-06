@@ -1,20 +1,26 @@
-﻿using JourneyJoy.Interface.Vehicle;
-using System;
-using System.Collections.Generic;
+﻿using JourneyJoy.Interface.Booking;
+using JourneyJoy.Interface.Vehicle;
+using JourneyJoy.Models;
+using System.IO;
 using System.Linq;
+using System;
 using System.Web;
 using System.Web.Mvc;
+using System.Drawing.Drawing2D;
+using System.Drawing;
 
 namespace JourneyJoy.Controllers
 {
     public class BookingController : Controller
     {
         IVehicle _VehicleBuss;
-        public BookingController(IVehicle vehicle)
+        IBooking _BookingBuss;
+        public BookingController(IVehicle vehicle, IBooking booking)
         {
             _VehicleBuss = vehicle;
+            _BookingBuss = booking;
         }
-        // GET: Booking
+
         public ActionResult BookVehicle(string VID)
         {
             if (!string.IsNullOrEmpty(VID))
@@ -39,6 +45,73 @@ namespace JourneyJoy.Controllers
             //{
             //    return RedirectToAction("LogInRegister", "LogInRegister");
             //}
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult ConfirmBooking(BookingModel model, HttpPostedFileBase file)
+        {
+            var ss = Request.Files.Count;
+            string FileLocationPath = "/Content/Assets/UserUpload/";
+            for (int i = 0; i < Request.Files.Count; i++)
+            {
+                file = Request.Files[i];
+            }
+            if (file != null && file.ContentLength > 0)
+            {
+                var contentType = file.ContentType;
+                var allowedContenttype = new[] { "image/jpeg", "image/png", "image/jpg" };
+                var ext = Path.GetExtension(file.FileName);
+                string filepath;
+                if (allowedContenttype.Contains(contentType.ToLower()))
+                {
+                    string datet = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                    string myfilename = "JJUpload" + datet + ext.ToLower();
+                    filepath = Path.Combine(Server.MapPath(FileLocationPath), myfilename);
+                    model.Image = filepath + myfilename;
+                }
+                else
+                {
+                    //this.ShowPopup(1, "File Must be .jpg,.png,.jpeg");
+                    return Json(new { Code = "0" });
+                }
+                var dbresp = _BookingBuss.SaveBooking(model);
+                if (dbresp.Code == 0)
+                {
+                    ResizeImage(file, filepath);
+                    //return Json(new { Code = "0" });
+                    return RedirectToAction("Index");
+                }
+            }
+            return View();
+        }
+
+        public void ResizeImage(HttpPostedFileBase file, string toStream)//double scaleFactor,
+        {
+            if (file.ContentLength > 1 * 1024 * 1024)//1 MB
+            {
+                var image = Image.FromStream(file.InputStream);
+                var newWidth = (int)(600);
+                var newHeight = (int)(600);
+                var thumbnailBitmap = new Bitmap(newWidth, newHeight);
+
+                var thumbnailGraph = Graphics.FromImage(thumbnailBitmap);
+                thumbnailGraph.CompositingQuality = CompositingQuality.HighQuality;
+                thumbnailGraph.SmoothingMode = SmoothingMode.HighQuality;
+                thumbnailGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
+
+                var imageRectangle = new Rectangle(0, 0, newWidth, newHeight);
+                thumbnailGraph.DrawImage(image, imageRectangle);
+
+                thumbnailBitmap.Save(toStream, image.RawFormat);//image.RawFormat
+
+                thumbnailGraph.Dispose();
+                thumbnailBitmap.Dispose();
+                image.Dispose();
+            }
+            else
+            {
+                file.SaveAs(toStream);
+            }
         }
     }
 }
