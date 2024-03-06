@@ -18,4 +18,22 @@ namespace JourneyJoy.Models
         public string VehicleID { get; set; }
         public string Detail { get; set; }
     }
+
+    public class VehicleTypeModel
+    {
+        public string UserID { get; set; }
+        public string UserName { get; set; }
+        public string VehicleID { get; set; }
+        public string VehicleType { get; set; }
+        public string VehicleModel { get; set; }
+        public string Title { get; set; }
+        public string VehicleCapacity { get; set; }
+        public string Rating { get; set; }
+        public string TotalSeats { get; set; }
+        public string IsAvailable { get; set; }
+        public string TotalMilage { get; set; }
+        public string ProfileImage { get; set; }
+        public string TotalPrice { get; set; }
+        public string Detail { get; set; }
+    }
 }
