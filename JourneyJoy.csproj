@@ -153,6 +153,7 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Interface\Booking\IBooking.cs" />
     <Compile Include="Interface\Vehicle\IVehicle.cs" />
+    <Compile Include="Models\BookingModel.cs" />
     <Compile Include="Repository\Booking\IBookingRepo.cs" />
     <Compile Include="Repository\Vehicle\IVehicleRepo.cs" />
     <Compile Include="Static\StaticMethods.cs" />
@@ -161,12 +162,8 @@
     <Content Include="Content\Assets\css\DatePicker css\nepali-date-picker.min.css" />
     <Content Include="Content\Assets\css\ErrorCss\Error.css" />
     <Content Include="Content\Assets\css\fontawesome.css" />
-    <Content Include="Content\Assets\css\forms.css" />
-    <Content Include="Content\Assets\css\LogIn-RegisterCss\LogRegCSS.css" />
-    <Content Include="Content\Assets\css\LoginRegCss\LogReg.css" />
     <Content Include="Content\Assets\css\owl.css" />
     <Content Include="Content\Assets\css\templatemo-plot-listing.css" />
-    <Content Include="Content\Assets\css\_Base.css" />
     <Content Include="Content\Assets\css\_layout.css" />
     <Content Include="Content\Assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\Assets\fonts\fontawesome-webfont.svg" />
@@ -189,6 +186,7 @@
     <Content Include="Content\Assets\images\listing-icon-02.png" />
     <Content Include="Content\Assets\images\listing-icon-03.png" />
     <Content Include="Content\Assets\images\listing-icon-heading.png" />
+    <Content Include="Content\Assets\images\payment.png" />
     <Content Include="Content\Assets\images\scooter-icon.png" />
     <Content Include="Content\Assets\images\search-icon-01.png" />
     <Content Include="Content\Assets\images\search-icon-02.png" />
@@ -197,6 +195,7 @@
     <Content Include="Content\Assets\images\search-icon-05.png" />
     <Content Include="Content\Assets\images\tabs-image-03.jpg" />
     <Content Include="Content\Assets\images\tabs-image-05.jpg" />
+    <Content Include="Content\Assets\images\userprofile.png" />
     <Content Include="Content\Assets\images\van.png" />
     <Content Include="Content\Assets\images\white-logo.png" />
     <Content Include="Content\Assets\image\BaseImages\call.svg" />
@@ -219,7 +218,6 @@
     <Content Include="Content\Assets\JavaScript\DatePicker JScript\nepali-date-picker.js" />
     <Content Include="Content\Assets\JavaScript\DatePicker JScript\nepali-date-picker.min.js" />
     <Content Include="Content\Assets\js\animation.js" />
-    <Content Include="Content\Assets\js\booking.js" />
     <Content Include="Content\Assets\js\custom.js" />
     <Content Include="Content\Assets\js\flatpickr.js" />
     <Content Include="Content\Assets\js\global.js" />
