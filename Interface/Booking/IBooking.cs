@@ -16,6 +16,11 @@ namespace JourneyJoy.Interface.Booking
            return _Repo.BookVehicle(vid);
         }
 
+        public CommonModel GetUserBookings(string UID)
+        {
+            return _Repo.GetUserBookings(UID);
+        }
+
         public CommonModel SaveBooking(BookingModel model)
         {
             return _Repo.SaveBooking(model);
@@ -27,6 +32,7 @@ namespace JourneyJoy.Interface.Booking
     {
         CommonModel BookVehicle(string vid);
         CommonModel SaveBooking(BookingModel model);
+        CommonModel GetUserBookings(string UID);
     }
     #endregion
 }

@@ -171,6 +171,7 @@
     <Content Include="Content\Assets\images\banner-bg.jpg" />
     <Content Include="Content\Assets\images\bike.png" />
     <Content Include="Content\Assets\images\black-logo.png" />
+    <Content Include="Content\Assets\images\Bookinglist.png" />
     <Content Include="Content\Assets\images\Bus.png" />
     <Content Include="Content\Assets\images\car.png" />
     <Content Include="Content\Assets\images\car1.jpg" />
