@@ -65,9 +65,10 @@ namespace JourneyJoy.Controllers
                 if (allowedContenttype.Contains(contentType.ToLower()))
                 {
                     string datet = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-                    string myfilename = "JJUpload" + datet + ext.ToLower();
+                    string myfilename = "DrivingLicence" + datet + ext.ToLower();
                     filepath = Path.Combine(Server.MapPath(FileLocationPath), myfilename);
                     model.Image = filepath + myfilename;
+                    model.UID = Session["CustomerID"].ToString();
                 }
                 else
                 {
@@ -79,10 +80,10 @@ namespace JourneyJoy.Controllers
                 {
                     ResizeImage(file, filepath);
                     //return Json(new { Code = "0" });
-                    return RedirectToAction("Index");
+                    return RedirectToAction("DashBoard","User");
                 }
             }
-            return View();
+            return RedirectToAction("BookVehicle");
         }
 
         public void ResizeImage(HttpPostedFileBase file, string toStream)//double scaleFactor,

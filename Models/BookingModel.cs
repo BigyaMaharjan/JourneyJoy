@@ -14,5 +14,7 @@ namespace JourneyJoy.Models
         public string City { get; set; }
         public string DrivingLicence { get; set; }
         public string Image { get; set; }
+        public string UID { get; set; }
+        public string VID { get; set; }
     }
 }
