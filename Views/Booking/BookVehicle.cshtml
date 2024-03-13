@@ -38,13 +38,13 @@
     }
 </style>
 
-<div class="page-heading">
+<div class="page-heading" style="background-image: url(https://r4.wallpaperflare.com/wallpaper/168/817/180/tuning-nissan-skyline-gt-r-r35-liberty-walk-nissan-gtr-wallpaper-e970b8ed91da3deb96a778af1091d69d.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
                 <div class="top-text header-text">
                     <h6>Selected Vehicle</h6>
-                    <h2>Selected Vehicle DescrtiptinS</h2>
+                    <h2>Selected Vehicle Descrtiptins</h2>
                 </div>
             </div>
         </div>
@@ -62,7 +62,7 @@
                                 <div class="menu inmiddle">
                                     <div class="first-thumb active">
                                         <div class="thumb">
-                                            <span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt=""><h4>Vehicle Info</h4></span>
+                                            <span class="icon"><img src="~/Content/Assets/images/default.png" alt=""><h4>Vehicle Info</h4></span>
                                         </div>
                                     </div>
                                     <div>
@@ -88,7 +88,7 @@
                                                             <div class="row">
                                                                 <div class="col-lg-6">
                                                                     <div class="top-icon">
-                                                                        <span class="icon"><img src="~/Content/Assets/images/search-icon-03.png" alt=""><h4>Vehicle Info</h4></span>
+                                                                        <span class="icon"><img src="~/Content/Assets/images/default.png" alt=""><h4>Vehicle Info</h4></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -119,9 +119,11 @@
                                                                                 <a href="#"><img src="~/Content/Assets/images/car1.jpg" alt=""></a>
                                                                             }
                                                                         </div>
-                                                                        <span class="list-item">
-                                                                            Millage: @Model.TotalMilage<br>Spacing: @Model.TotalSeats<br>Capcity: @Model.VehicleCapacity
-                                                                            <br>Price: $ @Model.TotalPrice<
+                                                                        <span class="info">
+                                                                            <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Spacing :</b> @Model.TotalSeats<br>
+                                                                            <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Millage :</b> @Model.TotalMilage Kmpl/kg<br>
+                                                                            <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capcity :</b> @Model.VehicleCapacity<br>
+                                                                            <b>Price:</b> $ @Model.TotalPrice
                                                                         </span>
                                                                     </div>
                                                                 </div>

@@ -14,6 +14,7 @@ namespace JourneyJoy.Repository.Vehicle
             _dao = new DatabaseAccessObject();
         }
 
+        #region Index Page Searches
         public Dictionary<string, string> GetLocationList()
         {
             Dictionary<string, string> response = new Dictionary<string, string>();
@@ -27,10 +28,12 @@ namespace JourneyJoy.Repository.Vehicle
             return response;
         }
 
-        public CommonModel GetRecentlyAddedVehicleList()
+        public CommonModel GetVehicleList(RentSearchModel model)
         {
             var SearchedList = new List<VehicleModel>();
-            var SQL = "Exec sp_SearchVehicleList  @Flag='gral'"; // gl- Get rectently added  List
+            var SQL = "Exec sp_SearchVehicleList  @Flag='gsvcl'"; // gsvcl- Get Searched Vechicle Category List
+            SQL += ",@id=" + _dao.FilterString(model.location);
+            SQL += ",@VehicleCategory=" + _dao.FilterString(model.VehicleCategory);
             var dbresponse = _dao.ExecuteDataTable(SQL);
             if (dbresponse != null)
             {
@@ -38,22 +41,30 @@ namespace JourneyJoy.Repository.Vehicle
                 {
                     SearchedList.Add(new VehicleModel()
                     {
+                        Code = _dao.ParseColumnValue(item, "code").ToString(),
+                        Message = _dao.ParseColumnValue(item, "message").ToString(),
+                        UserID = _dao.ParseColumnValue(item, "UserID").ToString(),
+                        UserName = _dao.ParseColumnValue(item, "UserName").ToString(),
+                        LocationId = _dao.ParseColumnValue(item, "LocationId").ToString(),
+                        LocationName = _dao.ParseColumnValue(item, "LocationName").ToString(),
                         VehicleID = _dao.ParseColumnValue(item, "VehicleID").ToString(),
                         VehicleType = _dao.ParseColumnValue(item, "VehicleType").ToString(),
+                        VehicleMdl = _dao.ParseColumnValue(item, "VehicleModel").ToString(),
+                        Title = _dao.ParseColumnValue(item, "Title").ToString(),
+                        CarCapacity = _dao.ParseColumnValue(item, "VehicleCapacity").ToString(),
                         Rating = _dao.ParseColumnValue(item, "Rating").ToString(),
+                        TotalSeats = _dao.ParseColumnValue(item, "TotalSeats").ToString(),
                         TotalMilage = _dao.ParseColumnValue(item, "TotalMilage").ToString(),
-                        Image = _dao.ParseColumnValue(item, "ProfileImage").ToString(),
                         TotalPrice = _dao.ParseColumnValue(item, "TotalPrice").ToString(),
-                        CreatedBy = _dao.ParseColumnValue(item, "CreatedBy").ToString(),
-                        CreatedDate = _dao.ParseColumnValue(item, "CreatedDate").ToString(),
+                        Image = _dao.ParseColumnValue(item, "ProfileImage").ToString(),
                         Detail = _dao.ParseColumnValue(item, "Detail").ToString(),
-                        VehicleMdl = _dao.ParseColumnValue(item, "Title").ToString(),
+                        IsAvailable = _dao.ParseColumnValue(item, "IsAvailable").ToString()
                     });
                 }
                 return new CommonModel()
                 {
                     Code = ResponseCode.SUCCESS,
-                    Message = "Successfully retrieved recently added vehicle List",
+                    Message = "Successfully retrieved vehicle List",
                     Data = SearchedList
                 };
             }
@@ -67,6 +78,7 @@ namespace JourneyJoy.Repository.Vehicle
                 };
             }
         }
+        #endregion
 
         #region Get Vehicle by (ID / Type)
         public CommonModel GetVehicleById(string iD)
@@ -169,16 +181,10 @@ namespace JourneyJoy.Repository.Vehicle
         }
         #endregion
 
-        public CommonModel GetVehicleList(RentSearchModel model)
+        public CommonModel GetRecentlyAddedVehicleList()
         {
             var SearchedList = new List<VehicleModel>();
-            var SQL = "Exec sp_SearchVehicleList  @Flag='S'"; // gl- Get List
-            SQL += ",@LocationId=" + _dao.FilterString(model.FromLocation);
-            //SQL += ",@ToLocation=" + _dao.FilterString(model.ToLocation);
-            //SQL += ",@FromTime=" + _dao.FilterString(model.FromTime);
-            //SQL += ",@ToTime=" + _dao.FilterString(model.ToTime);
-            //SQL += ",@FromDate=" + _dao.FilterString(model.FromDate);
-            //SQL += ",@ToDate=" + _dao.FilterString(model.ToDate);
+            var SQL = "Exec sp_SearchVehicleList  @Flag='gral'"; // gl- Get rectently added  List
             var dbresponse = _dao.ExecuteDataTable(SQL);
             if (dbresponse != null)
             {
@@ -186,20 +192,24 @@ namespace JourneyJoy.Repository.Vehicle
                 {
                     SearchedList.Add(new VehicleModel()
                     {
+                        VehicleID = _dao.ParseColumnValue(item, "VehicleID").ToString(),
                         VehicleType = _dao.ParseColumnValue(item, "VehicleType").ToString(),
-                        VehicleMdl = _dao.ParseColumnValue(item, "VehicleModel").ToString(),
-                        CarCapacity = _dao.ParseColumnValue(item, "VehicleCapacity").ToString(),
                         Rating = _dao.ParseColumnValue(item, "Rating").ToString(),
-                        TotalSeats = _dao.ParseColumnValue(item, "TotalSeats").ToString(),
                         TotalMilage = _dao.ParseColumnValue(item, "TotalMilage").ToString(),
-                        TotalPrice = _dao.ParseColumnValue(item, "TotalPrice").ToString(),
+                        CarCapacity = _dao.ParseColumnValue(item, "VehicleCapacity").ToString(),
+                        TotalSeats = _dao.ParseColumnValue(item, "TotalSeats").ToString(),
                         Image = _dao.ParseColumnValue(item, "ProfileImage").ToString(),
+                        TotalPrice = _dao.ParseColumnValue(item, "TotalPrice").ToString(),
+                        CreatedBy = _dao.ParseColumnValue(item, "CreatedBy").ToString(),
+                        CreatedDate = _dao.ParseColumnValue(item, "CreatedDate").ToString(),
+                        Detail = _dao.ParseColumnValue(item, "Detail").ToString(),
+                        VehicleMdl = _dao.ParseColumnValue(item, "Title").ToString(),
                     });
                 }
                 return new CommonModel()
                 {
                     Code = ResponseCode.SUCCESS,
-                    Message = "Successfully retrieved vehicle List",
+                    Message = "Successfully retrieved recently added vehicle List",
                     Data = SearchedList
                 };
             }

@@ -183,10 +183,10 @@ namespace JourneyJoy.Controllers
         [HttpPost]
         public ActionResult VehicleList(RentSearchModel model)
         {
-            //var Vehicle = _VehicleBuss.GetVehicleList(model);
-            //List<VehicleModel> responseList = Vehicle.Data;
-            //return View(Vehicle.Data);
-            return View();
+            var Vehicle = _VehicleBuss.GetVehicleList(model);
+            ViewBag.VehicleType = model.VehicleCategory;
+            List<VehicleModel> responseList = Vehicle.Data.MapObjects<VehicleModel>();
+            return View(responseList);
         }
         #endregion
     }
