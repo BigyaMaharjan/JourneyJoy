@@ -21,7 +21,7 @@
                     <div class="row">
                         <div class="col-lg-3 align-self-center">
                             <fieldset>
-                                <select name="area" class="form-select" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
+                                <select name="location" class="form-select" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
                                     <option selected>Choose Location</option>
                                     @foreach (var location in ViewBag.LocationList)
                                     {
@@ -31,13 +31,13 @@
                             </fieldset>
                         </div>
                         @*<div class="col-lg-3 align-self-center">
-                            <fieldset>
-                                <input type="address" name="address" class="searchText" placeholder="Enter a location" autocomplete="on" required>
-                            </fieldset>
-                        </div>*@
+                                <fieldset>
+                                    <input type="address" name="address" class="searchText" placeholder="Enter a location" autocomplete="on" required>
+                                </fieldset>
+                            </div>*@
                         <div class="col-lg-3 align-self-center">
                             <fieldset>
-                                <select name="price" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                                <select name="VehicleCategory" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
                                     <option selected>Choose Vehicle Type</option>
                                     <option value="Bike">Bike</option>
                                     <option value="Van">Van</option>
@@ -80,229 +80,59 @@
             <div class="col-lg-12">
                 <div class="owl-carousel owl-listing">
                     <div class="item">
-                        <div class="row">
-                            @{
-                                var j = 1;
-                            }
-                            @if (Model != null)
+                        @{
+                            var j = 1;
+                        }
+                        @if (Model != null)
+                        {
+                            if (Model.Count() > 0)
                             {
-                                if (Model.Count() > 0)
+                                foreach (var x in Model)
                                 {
-                                    foreach (var x in Model)
-                                    {
+                                    <div class="row">
                                         <div class="col-lg-12">
                                             <div class="listing-item">
                                                 <div class="left-image">
                                                     <a href="#"><img src="~/Content/Assets/images/car1.jpg" alt=""></a>
                                                 </div>
                                                 <div class="right-content align-self-center">
-                                                    <a href="#"><h4>@j.  @x.VehicleType</h4></a>
-                                                    <h6>by: @x.CreatedBy</h6>
+                                                    <a href="#"><h4>@j.  @x.VehicleType (@x.VehicleMdl)</h4></a>
+                                                    <h6>Owner: @x.CreatedBy</h6>
                                                     <ul class="rate">
                                                         <li><i class="fa fa-star-o"></i></li>
                                                         <li><i class="fa fa-star-o"></i></li>
                                                         <li><i class="fa fa-star-o"></i></li>
                                                         <li><i class="fa fa-star-o"></i></li>
                                                         <li><i class="fa fa-star-o"></i></li>
-                                                        <li>(18) Reviews</li>
+                                                        <li>@x.Rating Reviews</li>
                                                     </ul>
-                                                    <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $@x.TotalPrice / month with taxes</span>
+                                                    <span class="price">
+                                                        <div class="icon">
+                                                            <img src="assets/images/listing-icon-01.png" alt="">
+                                                        </div>
+                                                        $@x.TotalPrice / per day with taxes
+                                                    </span>
                                                     <span class="details">Details: <em>@x.Detail</em></span>
                                                     <ul class="info">
-                                                        <li><img src="~/Content/Assets/images/listing-icon-02.png" alt=""> @x.CarCapacity</li>
-                                                        <li><img src="~/Content/Assets/images/listing-icon-03.png" alt=""> @x.TotalMilage</li>
+                                                        <li><img src="~/Content/Assets/images/seats.png" alt=""> @x.CarCapacity</li>
+                                                        <li><img src="~/Content/Assets/images/mileage.png" alt=""> @x.TotalMilage Kmpl/kg</li>
+                                                        <li><img src="~/Content/Assets/images/seats.png" alt=""> @x.TotalSeats</li>
                                                     </ul>
                                                     <div class="main-white-button">
-                                                        <a href="contact.html"><i class="fa fa-eye"></i> Book Now</a>
+                                                        <a href="@Url.Action("BookVehicle", "Booking", new { VID = x.VehicleID })"><i class="fa fa-eye"></i> Book Now</a>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        j++;
-                                    }
-                                }
-                                else
-                                {
-                                    <p>No Record Found</p>
+                                    </div>
+                                    j++;
                                 }
                             }
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-04.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>4. Sunshine Fourth Apartment</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(24) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $3,600 / month with taxes</span>
-                                        <span class="details">Details: <em>3660 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 5 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 3 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-05.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>5. Best House Of the Town</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(32) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $5,600 / month with taxes</span>
-                                        <span class="details">Details: <em>1750 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 6 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 3 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-06.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>6. Amazing Pool Party Villa</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(40) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $3,850 / month with taxes</span>
-                                        <span class="details">Details: <em>3660 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 4 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 3 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-05.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>7. Sunny Apartment</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(24) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $5,450 / month with taxes</span>
-                                        <span class="details">Details: <em>1640 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 8 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 5 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-02.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>8. Third House of Gaming</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(15) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $5,520 / month with taxes</span>
-                                        <span class="details">Details: <em>1660 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 5 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 4 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-12">
-                                <div class="listing-item">
-                                    <div class="left-image">
-                                        <a href="#"><img src="assets/images/listing-06.jpg" alt=""></a>
-                                    </div>
-                                    <div class="right-content align-self-center">
-                                        <a href="#"><h4>9. Relaxing BBQ Party Villa</h4></a>
-                                        <h6>by: Sale Agent</h6>
-                                        <ul class="rate">
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li><i class="fa fa-star-o"></i></li>
-                                            <li>(20) Reviews</li>
-                                        </ul>
-                                        <span class="price"><div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> $4,760 / month with taxes</span>
-                                        <span class="details">Details: <em>2880 sq ft</em></span>
-                                        <ul class="info">
-                                            <li><img src="assets/images/listing-icon-02.png" alt=""> 6 Bedrooms</li>
-                                            <li><img src="assets/images/listing-icon-03.png" alt=""> 4 Bathrooms</li>
-                                        </ul>
-                                        <div class="main-white-button">
-                                            <a href="contact.html"><i class="fa fa-eye"></i> Contact Now</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                            else
+                            {
+                                <p>No Record Found</p>
+                            }
+                        }
                     </div>
                 </div>
             </div>

@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Drawing.Drawing2D;
 using System.Drawing;
+using Newtonsoft.Json;
 
 namespace JourneyJoy.Controllers
 {
@@ -50,38 +51,67 @@ namespace JourneyJoy.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult ConfirmBooking(BookingModel model, HttpPostedFileBase file)
         {
-            var ss = Request.Files.Count;
-            string FileLocationPath = "/Content/Assets/UserUpload/";
-            for (int i = 0; i < Request.Files.Count; i++)
+            if (Session["CustomerID"] != null)
             {
-                file = Request.Files[i];
-            }
-            if (file != null && file.ContentLength > 0)
-            {
-                var contentType = file.ContentType;
-                var allowedContenttype = new[] { "image/jpeg", "image/png", "image/jpg" };
-                var ext = Path.GetExtension(file.FileName);
-                string filepath;
-                if (allowedContenttype.Contains(contentType.ToLower()))
+                string FileLocationPath = "/Content/Assets/UserUpload/";
+                for (int i = 0; i < Request.Files.Count; i++)
                 {
-                    string datet = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-                    string myfilename = "DrivingLicence" + datet + ext.ToLower();
-                    filepath = Path.Combine(Server.MapPath(FileLocationPath), myfilename);
-                    model.Image = filepath + myfilename;
-                    model.UID = Session["CustomerID"].ToString();
+                    file = Request.Files[i];
+                }
+                if (file != null && file.ContentLength > 0)
+                {
+                    var contentType = file.ContentType;
+                    var allowedContenttype = new[] { "image/jpeg", "image/png", "image/jpg" };
+                    var ext = Path.GetExtension(file.FileName);
+                    string filepath;
+                    if (allowedContenttype.Contains(contentType.ToLower()))
+                    {
+                        string datet = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                        string myfilename = "DrivingLicence" + datet + ext.ToLower();
+                        filepath = Path.Combine(Server.MapPath(FileLocationPath), myfilename);
+                        model.Image = filepath + myfilename;
+                        model.UID = Session["CustomerID"].ToString();
+                    }
+                    else
+                    {
+                        //this.ShowPopup(1, "File Must be .jpg,.png,.jpeg");
+                        return Json(new { Code = "0" });
+                    }
+                    var dbresp = _BookingBuss.SaveBooking(model);
+                    if (dbresp.Code == 0)
+                    {
+                        ResizeImage(file, filepath);
+                        return RedirectToAction("DashBoard", "User");
+                    }
                 }
                 else
                 {
-                    //this.ShowPopup(1, "File Must be .jpg,.png,.jpeg");
-                    return Json(new { Code = "0" });
+                    ViewData["renderdata"] = new
+                    {
+                        Icon = "false",
+                        Message = "Image File is Required"
+                    };
                 }
-                var dbresp = _BookingBuss.SaveBooking(model);
-                if (dbresp.Code == 0)
-                {
-                    ResizeImage(file, filepath);
-                    //return Json(new { Code = "0" });
-                    return RedirectToAction("DashBoard","User");
-                }
+            }
+            else
+            {
+                ViewBag.SomeData = "Hello from controller!";
+                //ViewBag.renderdata = new
+                //{
+                //    Icon = "false",
+                //    Message = "Please login before booking"
+                //};
+                //ViewData["renderdata"] = new
+                //{
+                //    Icon = "false",
+                //    Message = "Please login before booking"
+                //};
+                //ViewBag.renderdata = JsonConvert.SerializeObject(new
+                //{
+                //    Icon = "false",
+                //    Message = "Please login before booking"
+                //});
+                return RedirectToAction("LogInRegister", "LogInRegister");
             }
             return RedirectToAction("BookVehicle");
         }

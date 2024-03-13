@@ -118,3 +118,37 @@
         </div>
     </div>
 </div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            debugger;
+            var someData = '@Html.Raw(Json.Encode(ViewBag.SomeData))';
+            console.log(someData); // Output: Hello from controller!
+            const renderData = JSON.parse('@Html.Raw(Json.Encode(ViewBag.renderdata))');
+            if (renderData !== null && typeof renderData === 'object') {
+                var Icon = renderData.Icon;
+                var Message = renderData.Message;
+            }
+
+            if (Message != null && Message != "" && Message.length > 0) {
+
+                const Toast = Swal.mixin({
+                    toast: true,
+                    position: "top-end",
+                    showConfirmButton: false,
+                    timer: 3000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                        toast.onmouseenter = Swal.stopTimer;
+                        toast.onmouseleave = Swal.resumeTimer;
+                    }
+                });
+                Toast.fire({
+                    icon: Icon == "true" ? "success" : "error",
+                    title: Message
+                });
+            }
+        });
+    </script>
+}
