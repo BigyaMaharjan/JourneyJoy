@@ -20,6 +20,7 @@ namespace JourneyJoy.Models
         public string Address { get; set; }
         public string City { get; set; }
         public string PostCode { get; set; }
+        public string Vehicle { get; set; }
         public string Description { get; set; }
         public string Age { get; set; }
         public string Gender { get; set; }

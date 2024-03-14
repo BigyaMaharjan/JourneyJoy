@@ -45,9 +45,32 @@ namespace JourneyJoy.Controllers
         #region Contact Us
         [HttpGet]
         public ActionResult ContactUs()
-        {
+        {                     
             return View();
         }
+        [HttpPost]
+        public ActionResult ContactUs(CustomerModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var contactDetails = _loginBuss.SaveContactInformation(model);
+                if (contactDetails.Code == ResponseCode.SUCCESS)
+                {
+                    return RedirectToAction("ContactUs", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("Contact Not Saved", contactDetails.Message);
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("Contact Not Saved", "Invalid Data Input");
+                return View();
+            }
+            return View(model);
+        }
+
         [HttpGet]
         public ActionResult Category()
         {
