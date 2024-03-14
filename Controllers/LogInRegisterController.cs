@@ -1,6 +1,7 @@
 ﻿using JourneyJoy.Interface.LogIn;
 using JourneyJoy.Models;
 using JourneyJoy.Static;
+using Microsoft.Ajax.Utilities;
 using System;
 using System.Web.Mvc;
 
@@ -17,6 +18,11 @@ namespace JourneyJoy.Controllers
         [HttpGet]
         public ActionResult LogInRegister()
         {
+            if (TempData.ContainsKey("renderredirectdata"))
+            {
+                // Retrieve data from TempData and store it in ViewData
+                ViewData["renderdata"] = TempData["renderredirectdata"];
+            }
             return View();
         }
 

@@ -22,6 +22,10 @@ namespace JourneyJoy.Controllers
             if (!string.IsNullOrEmpty(uid))
             {
                 var userbookedvehicles = _BookingBuss.GetUserBookings(uid);
+                if (TempData.ContainsKey("renderredirectdata"))
+                {
+                    ViewData["renderdata"] = TempData["renderredirectdata"];
+                }
                 ViewBag.UserVehiclesLists = userbookedvehicles.Data;
             }
             return View(model);

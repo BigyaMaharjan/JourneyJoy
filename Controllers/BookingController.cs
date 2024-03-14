@@ -8,7 +8,6 @@ using System.Web;
 using System.Web.Mvc;
 using System.Drawing.Drawing2D;
 using System.Drawing;
-using Newtonsoft.Json;
 
 namespace JourneyJoy.Controllers
 {
@@ -29,6 +28,10 @@ namespace JourneyJoy.Controllers
                 var resultVehicle = _VehicleBuss.GetVehicleById(VID);
                 if (resultVehicle != null)
                 {
+                    if (TempData.ContainsKey("renderredirectdata"))
+                    {
+                        ViewData["renderdata"] = TempData["renderredirectdata"];
+                    }
                     return View(resultVehicle.Data);
                 }
                 return View();
@@ -81,36 +84,19 @@ namespace JourneyJoy.Controllers
                     if (dbresp.Code == 0)
                     {
                         ResizeImage(file, filepath);
+                        TempData["renderredirectdata"] = new { Icon = "true", Message = "Booking Successfull." };
                         return RedirectToAction("DashBoard", "User");
                     }
                 }
                 else
                 {
-                    ViewData["renderdata"] = new
-                    {
-                        Icon = "false",
-                        Message = "Image File is Required"
-                    };
+                    TempData["renderredirectdata"] = new { Icon = "false", Message = "Image File is Required" };
+                    return RedirectToAction("BookVehicle", new { VID = model.VID });
                 }
             }
             else
             {
-                ViewBag.SomeData = "Hello from controller!";
-                //ViewBag.renderdata = new
-                //{
-                //    Icon = "false",
-                //    Message = "Please login before booking"
-                //};
-                //ViewData["renderdata"] = new
-                //{
-                //    Icon = "false",
-                //    Message = "Please login before booking"
-                //};
-                //ViewBag.renderdata = JsonConvert.SerializeObject(new
-                //{
-                //    Icon = "false",
-                //    Message = "Please login before booking"
-                //});
+                TempData["renderredirectdata"] = new { Icon = "false", Message = "Please login before booking" };
                 return RedirectToAction("LogInRegister", "LogInRegister");
             }
             return RedirectToAction("BookVehicle");

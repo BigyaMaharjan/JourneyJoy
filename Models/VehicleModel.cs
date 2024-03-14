@@ -26,6 +26,9 @@ namespace JourneyJoy.Models
         public string Detail { get; set; }
         public string BookingStatus { get; set; }
         public string BID { get; set; }
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
+        public string TotalDays { get; set; }
     }
 
     public class VehicleTypeModel : UserDetails
@@ -64,5 +67,9 @@ namespace JourneyJoy.Models
         public string City { get; set; }
         [Required(AllowEmptyStrings = false, ErrorMessage = "Required")]
         public string DrivingLicence { get; set; }
+        [Display(Name = "From Date")]
+        public string FromDate { get; set; }
+        [Display(Name = "To Date")]
+        public string ToDate { get; set; }
     }
 }

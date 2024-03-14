@@ -39,8 +39,11 @@ namespace JourneyJoy.Repository.Booking
                         TotalMilage = _dao.ParseColumnValue(item, "TotalMilage").ToString(),
                         CarCapacity = _dao.ParseColumnValue(item, "VehicleCapacity").ToString(),
                         Image = _dao.ParseColumnValue(item, "ProfileImage").ToString(),
-                        TotalPrice = _dao.ParseColumnValue(item, "TotalPrice").ToString(),
+                        TotalPrice = _dao.ParseColumnValue(item, "CalculatedPrice").ToString(),
                         Detail = _dao.ParseColumnValue(item, "Detail").ToString(),
+                        FromDate = _dao.ParseColumnValue(item, "ExtraData").ToString(),
+                        ToDate = _dao.ParseColumnValue(item, "ExtraData2").ToString(),
+                        TotalDays = _dao.ParseColumnValue(item, "ExtraData3").ToString(),
                         BookingStatus = _dao.ParseColumnValue(item, "BookingStatus").ToString()
                     });
                 }
@@ -74,6 +77,8 @@ namespace JourneyJoy.Repository.Booking
             SQL += ",@City=" + _dao.FilterString(model.City);
             SQL += ",@DrivingLicence=" + _dao.FilterString(model.DrivingLicence);
             SQL += ",@Image=" + _dao.FilterString(model.Image);
+            SQL += ",@ExtraData=" + _dao.FilterString(model.FromDate);
+            SQL += ",@ExtraData2=" + _dao.FilterString(model.ToDate);
             var dbresponse = _dao.ExecuteDataRow(SQL);
             if (dbresponse != null)
             {
