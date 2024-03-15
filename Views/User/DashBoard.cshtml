@@ -36,6 +36,17 @@
         margin-top: 1px !important; /* Adjust as needed */
     }
 
+    .customcss {
+        margin-top: 16px !important;
+    }
+
+    #payNowButton {
+        background-color: #2cb33b;
+    }
+
+    #CancelBook {
+        background-color: #d13b3b;
+    }
 </style>
 <div class="category-post">
     <div class="container">
@@ -180,18 +191,24 @@
                                                                                 <span class="details">Details: @x.Detail</span><br>
                                                                                 <span class="info">
                                                                                     <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Millage :</b> @x.TotalMilage Kmpl/kg<br>
-                                                                                    <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capcity :</b> @x.CarCapacity<br>
+                                                                                    <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capacity :</b> @x.CarCapacity<br>
                                                                                     <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Total Price :</b> @x.TotalPrice / included tax<br>
                                                                                 </span>
                                                                                 <div id="paymentOptions" class="payment-options" style="display: none;">
                                                                                     <h4>Select Payment Method:</h4>
-                                                                                    <label><input type="radio" name="paymentMethod" value="cashOnDelivery"> Cash on Delivery</label><br>
-                                                                                    <label><input type="radio" name="paymentMethod" value="onlinePayment"> Online Payment</label><br>
+                                                                                    <label><input type="radio" name="paymentMethod" value="cashOnDelivery" id="cashPaymentOption"> Cash on Delivery</label><br>
+                                                                                    <label><input type="radio" name="paymentMethod" value="onlinePayment" id="onlinePaymentOption"> Online Payment</label><br>
+                                                                                    <div id="onlinePaymentImages" style="display: none;">
+                                                                                        <img src="~/Content/Assets/images/PmtImg/esewa.png" alt="eSewa" style="width: 60px; height: 60px;">
+                                                                                        <img src="~/Content/Assets/images/PmtImg/Khalti.png" alt="Khalti" style="width: 60px; height: 60px;">
+                                                                                        <img src="~/Content/Assets/images/PmtImg/ppay.png" alt="PrabhuPay" style="width: 60px; height: 60px;">
+                                                                                    </div>
                                                                                     <button id="confirmPayment">Confirm</button>
                                                                                 </div>
-                                                                                <div class="main-white-button">
-                                                                                    <button type="button" id="payNowButton" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-plus"></i> PayNow</button>
-                                                                                    <a href="@Url.Action("CancellBooking", "Booking", new { VID = @x.VehicleID })"><i class="fa fa-eye"></i> Cancel Booking</a>
+                                                                                <div class="main-white-button customcss">
+                                                                                    @*<button type="button" id="payNowButton" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-plus"></i> PayNow</button>*@
+                                                                                    <a href="#" id="payNowButton"><i class="fa fa-plus"></i> PayNow</a>
+                                                                                    <a href="@Url.Action("CancellBooking", "Booking", new { VID = @x.VehicleID })" id="CancelBook"><i class="fa fa-eye"></i> Cancel Booking</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -241,21 +258,30 @@
     </script>
 
     <script>
-        document.getElementById('payNowButton').addEventListener('click', function () {
-            var paymentOptions = document.getElementById('paymentOptions');
-            paymentOptions.style.display = (paymentOptions.style.display == 'block') ? 'none' : 'block';
-        });
-
-        document.getElementById('confirmPayment').addEventListener('click', function () {
-            var selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-            if (selectedPaymentMethod) {
-                var paymentMethod = selectedPaymentMethod.value;
-                // Perform further actions based on the selected payment method
-                console.log("Selected Payment Method:", paymentMethod);
-            } else {
-                alert("Please select a payment method.");
-            }
+        $(document).ready(function () {
+            $('#payNowButton').click(function (event) {
+                event.preventDefault();
+                // Check if details and info sections are hidden
+                if ($('.details').is(':hidden') && $('.info').is(':hidden')) {
+                    // Show details and info sections
+                    $('.details, .info').show();
+                } else {
+                    // Hide details and info sections
+                    $('.details, .info').hide();
+                }
+                // Toggle visibility of payment options
+                $('#paymentOptions').toggle();
+            });
+            $('#onlinePaymentOption').click(function () {
+                // Toggle visibility of images
+                $('#onlinePaymentImages').show();
+            });
+            $('#cashPaymentOption').click(function () {
+                // Toggle visibility of images
+                $('#onlinePaymentImages').hide();
+            });
         });
     </script>
+
 
 }
