@@ -204,38 +204,50 @@
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
                                                                                 <fieldset>
-                                                                                    @*<input type="text" name="Username" id="Username" placeholder="Username" autocomplete="on" required>*@
                                                                                     @Html.TextBoxFor(m => m.UserName, new { placeholder = "User Name", autocomplete = "on", @required = "required" })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <fieldset>
-                                                                                    @*<input type="email" name="Email" id="Email" placeholder="Email" autocomplete="on" required>*@
                                                                                     @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", autocomplete = "on", @required = "required" })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-12">
                                                                                 <fieldset>
-                                                                                    @*<input type="text" name="Phonenumber" id="Phonenumber" placeholder="Your Mobilenumber" required="">*@
                                                                                     @Html.TextBoxFor(m => m.Phonenumber, new { placeholder = "Phonenumber", autocomplete = "on", @required = "required" })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <fieldset>
                                                                                     @Html.TextBoxFor(m => m.Country, new { placeholder = "Countr", autocomplete = "on", @required = "required" })
-                                                                                    @*<input type="text" name="Country" id="Country" placeholder="Your Country" required="">*@
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <fieldset>
-                                                                                    @*<input type="text" name="City" id="City" placeholder="Your City" required="">*@
                                                                                     @Html.TextBoxFor(m => m.City, new { placeholder = "City", autocomplete = "on", @required = "required" })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-12">
                                                                                 <fieldset>
                                                                                     @Html.TextBoxFor(m => m.DrivingLicence, new { placeholder = "DrivingLicence", autocomplete = "on", @required = "required" })
-                                                                                    @*<input type="text" name="DrivingLicence" id="DrivingLicence" placeholder="Your DrivingLicence number" required="">*@
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    @Html.LabelFor(m => m.VehicleType, "Vehicle Type")
+                                                                                    @Html.TextBoxFor(m => m.VehicleType, new { placeholder = "Vehicle Type", autocomplete = "on", @required = "required", disabled = "disabled" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.LabelFor(m => m.FromDate, "From Date")
+                                                                                    @Html.TextBoxFor(m => m.FromDate, new { placeholder = "From Date", autocomplete = "on", @required = "required", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.LabelFor(m => m.ToDate, "To Date")
+                                                                                    @Html.TextBoxFor(m => m.ToDate, new { placeholder = "To Date", autocomplete = "on", @required = "required", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-6">

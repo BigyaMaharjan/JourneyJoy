@@ -21,6 +21,10 @@ namespace JourneyJoy.Controllers
                 if (selectedTypeList != null)
                 {
                     ViewBag.VehicleType = type;
+                    if (selectedTypeList.Data == null)
+                    {
+                        ViewData["renderdata"] = new { Icon = "false", Message = "No Vehicles Found" };
+                    }
                     return View(selectedTypeList.Data);
                 }
             }
