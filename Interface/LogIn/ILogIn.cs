@@ -21,6 +21,11 @@ namespace JourneyJoy.Interface.LogIn
         {
             return _Repo.RegisterNewUser(model);
         }
+
+        public CommonModel SaveContactInformation(CustomerModel model)
+        {
+            return _Repo.SaveContactInformation(model);
+        }
     }
 
     #region INTERFACE
@@ -28,6 +33,7 @@ namespace JourneyJoy.Interface.LogIn
     {
         CommonModel LogIn(LogInModel model);
         CommonModel RegisterNewUser(LogInModel model);
+        CommonModel SaveContactInformation(CustomerModel model);
     }
     #endregion
 }

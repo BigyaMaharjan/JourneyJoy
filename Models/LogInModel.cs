@@ -18,6 +18,9 @@ namespace JourneyJoy.Models
     public class LogInResponseModel : BaseModel
     {
         public string CustomerID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Vehicle { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
         public string MobileNumber { get; set; }

@@ -18,7 +18,7 @@ namespace JourneyJoy.Controllers
             _loginBuss = login;
             _VehicleBuss = vehicle;
         }
-
+        
         #region Landing Page
         [HttpGet]
         public ActionResult Index()
@@ -42,18 +42,6 @@ namespace JourneyJoy.Controllers
             return View();
         }
 
-        #region Contact Us
-        [HttpGet]
-        public ActionResult ContactUs()
-        {
-            return View();
-        }
-        [HttpGet]
-        public ActionResult Category()
-        {
-            return View();
-        }
-        #endregion
         [HttpPost]
         public ActionResult Index(RentSearchModel model)
         {
@@ -81,102 +69,44 @@ namespace JourneyJoy.Controllers
             }
             return View();
         }
-        #endregion
 
-        #region LogIn/ LogOut | Register
-        [HttpPost]
-        public ActionResult Register(CustomerModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                return RedirectToAction("Login", "Home");
-            }
-            else
-            {
-                ModelState.AddModelError("LogInError", "User Authentication Failed");
-                return View();
-            }
-        }
-
+        #region Contact Us
         [HttpGet]
-        public ActionResult Login()
+        public ActionResult ContactUs()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LogInModel model)
+        public ActionResult ContactUs(CustomerModel model)
         {
-            ModelState.Remove("Firstname");
-            ModelState.Remove("Lastname");
-            ModelState.Remove("Lastname");
-            ModelState.Remove("Mobilenumber");
-            ModelState.Remove("Email");
-            ModelState.Remove("confirmpassword");
             if (ModelState.IsValid)
             {
-                var userCheck = LogInCheck(model);
-                if (userCheck.Item3 == false)
+                var contactDetails = _loginBuss.SaveContactInformation(model);
+                if (contactDetails.Code == ResponseCode.SUCCESS)
                 {
-                    ModelState.AddModelError("LogInError", "User Authentication Failed");
-                }
-                return RedirectToAction(userCheck.Item1, userCheck.Item2);
-            }
-            else
-            {
-                ModelState.AddModelError("LogInError", "User Authentication Failed");
-                return View();
-            }
-        }
-
-        public Tuple<string, string, bool> LogInCheck(LogInModel model)
-        {
-            var dbloginResponse = _loginBuss.LogIn(model);
-            try
-            {
-                if (dbloginResponse.Code == 0)
-                {
-                    //var response = dbloginResponse.Data.MapObject<LogInResponseModel>();
-                    //Session["CustomerID"] = response.CustomerID;
-                    //Session["Username"] = response.Username;
-                    //Session["Email"] = response.Email;
-                    //Session["ProfileImage"] = response.ProfileImage;
-                    //Session["Title"] = response.Title;
-                    //Session["MobileNumber"] = response.MobileNumber;
-                    //Session["Country"] = response.Country;
-                    //Session["City"] = response.City;
-                    //Session["PostCode"] = response.PostCode;
-                    //Session["UserType"] = response.UserType;
-                    //Session["DriverLicenceNumber"] = response.DriverLicenceNumber;
-                    return new Tuple<string, string, bool>("DashBoard", "User", true);
+                    LogInResponseModel responseList = contactDetails.Data.MapObject<LogInResponseModel>();
+                    ViewData["renderdata"] = new { Icon = "true", Message = "User Contact info saved " + responseList.FirstName + " " + responseList.LastName };
                 }
                 else
                 {
-                    return new Tuple<string, string, bool>("Login", "Home", false);
+                    ViewData["renderdata"] = new { Icon = "false", Message = "Something went wrong, Plase try again" };
                 }
             }
-            catch (Exception)
+            else
             {
-                return new Tuple<string, string, bool>("Login", "Home", false);
+                ViewData["renderdata"] = new { Icon = "false", Message = "Contact Not Saved, Invalid Data Input" };
             }
+            return View();
         }
 
-        public ActionResult LogOff()
-        {
-            Session["Username"] = null;
-            return RedirectToAction("Index", "Home");
-        }
-
-        #endregion
-
-        #region DashBoard About Section
         [HttpGet]
-        public ActionResult About()
+        public ActionResult Category()
         {
             return View();
         }
+        #endregion
+
         #endregion
 
         #region Vehicle Search 
