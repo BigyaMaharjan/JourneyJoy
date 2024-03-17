@@ -149,6 +149,47 @@ namespace JourneyJoy.Repository.Login
                 };
             }
         }
+        public CommonModel SaveContactInformation(CustomerModel model)
+        {
+            var CommonModel = new CommonModel();
+            var ResponseModel = new LogInResponseModel();
+            var SqlCommand = "exec sp_ContactUs @flag= 'cu' "; //contact us 
+            SqlCommand += ",@FirstName=" + _dao.FilterString(model.FirstName);
+            SqlCommand += ",@LastName=" + _dao.FilterString(model.LastName);
+            SqlCommand += ",@Vehicle=" + _dao.FilterString(model.Vehicle);
+            SqlCommand += ",@Email=" + _dao.FilterString(model.Email);
+            SqlCommand += ",@Description=" + _dao.FilterString(model.Description);            
+            var Response = _dao.ExecuteDataRow(SqlCommand);
+            if (Response != null)
+            {
+                string code = _dao.ParseColumnValue(Response, "code").ToString();
+                string message = _dao.ParseColumnValue(Response, "message").ToString();
+                if (code == "000" || code == "0")
+                {
+                    return new CommonModel()
+                    {
+                        Code = ResponseCode.SUCCESS,
+                        Message = message,
+                        Data = ResponseModel
+                    };
+                }
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = message,
+                    Data = null
+                };
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Couldn't retrieve the data",
+                    Data = null
+                };
+            }
+        }
     }
 
     #region INTERFACE
