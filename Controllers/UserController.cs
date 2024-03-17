@@ -1,20 +1,33 @@
-﻿using JourneyJoy.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using JourneyJoy.Interface.Booking;
+using JourneyJoy.Models;
 using System.Web.Mvc;
 
 namespace JourneyJoy.Controllers
 {
     public class UserController : Controller
     {
-        // GET: User
+        IBooking _BookingBuss;
+
+        public UserController(IBooking booking)
+        {
+            _BookingBuss = booking;
+        }
+
         [HttpGet]
         public ActionResult DashBoard()
         {
-            TempData["message"] = "LogInSuccess";
             LogInResponseModel model = new LogInResponseModel();
+            TempData["message"] = "LogInSuccess";
+            var uid = Session["CustomerID"].ToString();
+            if (!string.IsNullOrEmpty(uid))
+            {
+                var userbookedvehicles = _BookingBuss.GetUserBookings(uid);
+                if (TempData.ContainsKey("renderredirectdata"))
+                {
+                    ViewData["renderdata"] = TempData["renderredirectdata"];
+                }
+                ViewBag.UserVehiclesLists = userbookedvehicles.Data;
+            }
             return View(model);
         }
 

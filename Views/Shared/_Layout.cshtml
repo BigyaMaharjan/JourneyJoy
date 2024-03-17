@@ -22,6 +22,9 @@
 
     <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="~/Content/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    @*POPUP CDN*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -43,10 +46,10 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        <a href="index.html" class="logo">
+                        @*<a href="index.html" class="logo">*@
                         </a>
                         <ul class="nav">
-                            <li><a href="index.html" class="active">Home</a></li>
+                            <li><a href="@Url.Action("Index","Home")" class="active">Home</a></li>
                             <li><a href="@Url.Action("Category","Home")">Category</a></li>
                             <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
                             @if (@Session["UserName"] != null)
@@ -95,17 +98,16 @@
                         <div class="row">
                             <div class="col-lg-6 col-sm-6">
                                 <ul>
-                                    <li><a href="#">Categories</a></li>
+                                    <li><a href="@Url.Action("Category","Home")">Categories</a></li>
                                     <li><a href="#">Reviews</a></li>
                                     <li><a href="#">Listing</a></li>
-                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="@Url.Action("ContactUs","Home")">Contact Us</a></li>
                                 </ul>
                             </div>
                             <div class="col-lg-6">
                                 <ul>
                                     <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Awards</a></li>
-                                    <li><a href="#">Useful Sites</a></li>
+                                    <li><a href="https://www.adventurevisiontreks.com/trip/car-booking-in-nepal">Useful Sites</a></li>
                                     <li><a href="#">Privacy Policy</a></li>
                                 </ul>
                             </div>
@@ -115,23 +117,16 @@
                 <div class="col-lg-4">
                     <div class="contact-us">
                         <h4>Contact Us</h4>
-                        <p>27th Street of New Town, Digital Villa</p>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <a href="#">010-020-0340</a>
-                            </div>
-                            <div class="col-lg-6">
-                                <a href="#">090-080-0760</a>
-                            </div>
-                        </div>
+                        <p>Nepal | Kathmandu </p>
                     </div>
                 </div>
                 <div class="col-lg-12">
                     <div class="sub-footer">
                         <p>
-                            Copyright © 2021 Plot Listing Co., Ltd. All Rights Reserved.
+                            Copyright © 2024 JourneyJoy. All Rights Reserved.
                             <br>
-                            Design: <a rel="nofollow" href="https://templatemo.com" title="CSS Templates">TemplateMo</a>
+                            Design:
+                        <p>SHINIGAMI</p>
                         </p>
                     </div>
                 </div>
@@ -148,10 +143,40 @@
     <script src="~/Content/Assets/js/animation.js"></script>
     <script src="~/Content/Assets/js/imagesloaded.js"></script>
     <script src="~/Content/Assets/js/custom.js"></script>
-    <script src="~/Content/vendor/datepicker/moment.min.js"></script>
-    <script src="~/Content/vendor/datepicker/daterangepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
     <!-- Main JS-->
     <script src="~/Content/Assets/js/main.js"></script>
+
+    <script>
+         $(document).ready(function () {
+             debugger;
+             var renderData = @Html.Raw(Json.Encode(ViewData["renderdata"]));
+             if (renderData !== null && typeof renderData === 'object') {
+                 var Icon = renderData.Icon;
+                 var Message = renderData.Message;
+             }
+
+             if (Message != null && Message != "" && Message.length > 0) {
+
+                 const Toast = Swal.mixin({
+                     toast: true,
+                     position: "top-end",
+                     showConfirmButton: false,
+                     timer: 3000,
+                     timerProgressBar: true,
+                     didOpen: (toast) => {
+                         toast.onmouseenter = Swal.stopTimer;
+                         toast.onmouseleave = Swal.resumeTimer;
+                     }
+                 });
+                 Toast.fire({
+                     icon: Icon == "true" ? "success" : "error",
+                     title: Message
+                 });
+             }
+             });
+    </script>
 </body>
 </html>

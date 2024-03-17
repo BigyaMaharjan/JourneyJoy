@@ -1,4 +1,5 @@
 ﻿using JourneyJoy.Controllers;
+using JourneyJoy.Interface.Booking;
 using JourneyJoy.Interface.LogIn;
 using JourneyJoy.Interface.Vehicle;
 using System;
@@ -24,6 +25,7 @@ namespace JourneyJoy
             var container = new UnityContainer();
             container.RegisterType<ILogIn, Login>();
             container.RegisterType<IVehicle, Vehicle>();
+            container.RegisterType<IBooking, Booking>();
             return container;
         }
     }

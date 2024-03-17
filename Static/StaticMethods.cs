@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Ajax.Utilities;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -59,6 +60,34 @@ namespace JourneyJoy.Static
                 }
             }
             return Convert.ToBase64String(array, 0, array.Length);
+        }
+
+        public static object CreateDropdownList(Dictionary<string, string> dbResponse)
+        {
+            var response = new Dictionary<string, string>();
+            dbResponse.ForEach(item => { response.Add(item.Key, item.Value); });
+            return response;
+        }
+
+        public static void ForEach<TObject>(this IEnumerable<TObject> collection, Action<TObject> action)
+        {
+            if (action == null)
+            {
+                throw new ArgumentNullException("action");
+            }
+
+            if (collection == null)
+            {
+                return;
+            }
+
+            foreach (TObject item in collection)
+            {
+                item.IfNotNull(delegate (TObject i)
+                {
+                    action(i);
+                });
+            }
         }
     }
 }
