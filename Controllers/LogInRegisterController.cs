@@ -1,7 +1,6 @@
 ﻿using JourneyJoy.Interface.LogIn;
 using JourneyJoy.Models;
 using JourneyJoy.Static;
-using Microsoft.Ajax.Utilities;
 using System;
 using System.Web.Mvc;
 
