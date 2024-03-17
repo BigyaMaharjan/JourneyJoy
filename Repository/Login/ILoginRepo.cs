@@ -107,7 +107,7 @@ namespace JourneyJoy.Repository.Login
         public CommonModel SaveContactInformation(CustomerModel model)
         {
             var ResponseModel = new LogInResponseModel();
-            var SqlCommand = "exec sp_ContactUs @flag= 'cu' "; //contact us 
+            var SqlCommand = "exec sproc_customer_registration @flag= 'cu' "; //contact us 
             SqlCommand += ",@FirstName=" + _dao.FilterString(model.FirstName);
             SqlCommand += ",@LastName=" + _dao.FilterString(model.LastName);
             SqlCommand += ",@Vehicle=" + _dao.FilterString(model.Vehicle);

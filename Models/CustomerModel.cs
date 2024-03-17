@@ -10,7 +10,6 @@ namespace JourneyJoy.Models
         public string Email { get; set; }
         public string Title { get; set; } //Miss,Mrs,Mr
         public string FirstName { get; set; }
-        public string MiddleName { get; set; }
         public string LastName { get; set; }
         public string Country { get; set; }
         public string Address { get; set; }
