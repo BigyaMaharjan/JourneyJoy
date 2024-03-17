@@ -48,6 +48,30 @@ namespace JourneyJoy.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+        public ActionResult ContactUs(CustomerModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var contactDetails = _loginBuss.SaveContactInformation(model);
+                if (contactDetails.Code == ResponseCode.SUCCESS)
+                {
+                    LogInResponseModel responseList = contactDetails.Data.MapObject<LogInResponseModel>();
+                    TempData["renderredirectdata"] = new { Icon = "true", Message = "User Contact info saved " + responseList.FirstName + " " + responseList.LastName };
+                }
+                else
+                {
+                    TempData["renderredirectdata"] = new { Icon = "false", Message = "Something went wrong, Plase try again" };
+                }
+            }
+            else
+            {
+                TempData["renderredirectdata"] = new { Icon = "false", Message = "Contact Not Saved, Invalid Data Input" };
+            }
+            return View();
+        }
+
         [HttpGet]
         public ActionResult Category()
         {

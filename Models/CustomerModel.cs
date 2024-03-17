@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
+﻿
 namespace JourneyJoy.Models
 {
     public class CustomerModel
@@ -27,5 +23,6 @@ namespace JourneyJoy.Models
         public string DriverLicenceImage { get; set; }
         public double RefundableDeposite { get; set; }
         public double GrandTotal { get; set; }
+        public string Vehicle { get; set; }
     }
 }
