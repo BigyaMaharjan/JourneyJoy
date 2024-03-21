@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-heading">
+<div class="page-heading" style="background-image: url(https://r4.wallpaperflare.com/wallpaper/381/77/175/machine-nissan-gtr-nissan-wallpaper-66427934bf6dc5eb3c3a3cfa8b2e0468.jpg); color: yellow">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -17,67 +17,61 @@
     </div>
 </div>
 
-
-    <div class="contact-page">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="inner-content">
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <div id="map">
-                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.277768699496!2d85.28493325822743!3d27.70903024142744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a9122e5dc3%3A0x3eb124f4579db875!2sKathmandu%20Fun%20Park!5e0!3m2!1sen!2sus!4v1709625748803!5m2!1sen!2sus" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                                </div>
+<div class="contact-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="inner-content">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div id="map">
+                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d56516.277768699496!2d85.28493325822743!3d27.70903024142744!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb19a9122e5dc3%3A0x3eb124f4579db875!2sKathmandu%20Fun%20Park!5e0!3m2!1sen!2sus!4v1709625748803!5m2!1sen!2sus" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                             </div>
-                            <div class="col-lg-6 align-self-center">
-                                @*<form id="contact" action="" method="get">*@
-                                @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { id = "contact" }))
-                                {
-                                    <div class="row">
-                                        <div class="col-lg-6">
-                                            <fieldset>
-                                                <input type="firstName" name="firstName" id="firstName" placeholder="FirstName" autocomplete="on" required>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-lg-6">
-                                            <fieldset>
-                                                <input type="lastName" name="lastName" id="lastName" placeholder="LastName" autocomplete="on" required>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <fieldset>
-                                                <input type="text" name="email" id="email" placeholder="Your Email" required="">
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <ul>
-                                                <li><input type="checkbox" name="option1" value="Cars"><span>Cars</span></li>
-                                                <li><input type="checkbox" name="option2" value="Bikes"><span>Bikes</span></li>
-                                                <li><input type="checkbox" name="option3" value="Van"><span>Van</span></li>
-                                                <li><input type="checkbox" name="option4" value="Bus"><span>Bus</span></li>
-                                                <li><input type="checkbox" name="option5" value="Scooter"><span>Scooter</span></li>
-                                            </ul>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <fieldset>
-                                                <textarea name="message" type="text" class="form-control" id="message" placeholder="Message" required=""></textarea>
-                                            </fieldset>
-                                        </div>
-                                        <div class="col-lg-12">
-                                            <fieldset>
-                                                <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane"></i> Send Message</button>
-                                            </fieldset>
-                                        </div>
+                        </div>
+                        <div class="col-lg-6 align-self-center">
+                            @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post, new { id = "contact" }))
+                            {
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                            <input type="name" name="FirstName" id="name" placeholder="Name" autocomplete="on" required>
+                                        </fieldset>
                                     </div>
-                                }
-                                    @*</form>*@
+                                    <div class="col-lg-6">
+                                        <fieldset>
+                                            <input type="surname" name="LastName" id="surname" placeholder="Surname" autocomplete="on" required>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <input type="text" name="Email" id="email" placeholder="Your Email" required="">
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <ul>
+                                            <li><input type="checkbox" name="Vehicle" value="Cars"><span>Cars</span></li>
+                                            <li><input type="checkbox" name="Vehicle" value="Bikes"><span>Bikes</span></li>
+                                            <li><input type="checkbox" name="Vehicle" value="Van"><span>Van</span></li>
+                                            <li><input type="checkbox" name="Vehicle" value="Bus"><span>Bus</span></li>
+                                            <li><input type="checkbox" name="Vehicle" value="Scooter"><span>Scooter</span></li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <textarea name="Description" type="text" class="form-control" id="message" placeholder="Message" required=""></textarea>
+                                        </fieldset>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <fieldset>
+                                            <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane"></i> Send Message</button>
+                                        </fieldset>
+                                    </div>
                                 </div>
+                            }
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-
+</div>

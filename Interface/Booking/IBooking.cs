@@ -1,6 +1,5 @@
 ﻿using JourneyJoy.Models;
 using JourneyJoy.Repository.Booking;
-using System;
 
 namespace JourneyJoy.Interface.Booking
 {
@@ -16,12 +15,30 @@ namespace JourneyJoy.Interface.Booking
         {
            return _Repo.BookVehicle(vid);
         }
+
+        public CommonModel CancellBooking(string BID, string VID)
+        {
+            return _Repo.CancellBooking(BID,VID);
+        }
+
+        public CommonModel GetUserBookings(string UID)
+        {
+            return _Repo.GetUserBookings(UID);
+        }
+
+        public CommonModel SaveBooking(BookingModel model)
+        {
+            return _Repo.SaveBooking(model);
+        }
     }
 
     #region INTERFACE
     public interface IBooking
     {
         CommonModel BookVehicle(string vid);
+        CommonModel SaveBooking(BookingModel model);
+        CommonModel GetUserBookings(string UID);
+        CommonModel CancellBooking(string BID, string VID);
     }
     #endregion
 }

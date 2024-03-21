@@ -12,6 +12,11 @@ namespace JourneyJoy.Interface.LogIn
             _Repo = repo;
         }
 
+        public CommonModel GetUserDetails(string UID)
+        {
+            return _Repo.GetUserDetails(UID);
+        }
+
         public  CommonModel LogIn(LogInModel model)
         {
             return _Repo.Login(model);
@@ -21,18 +26,26 @@ namespace JourneyJoy.Interface.LogIn
         {
             return _Repo.RegisterNewUser(model);
         }
+
         public CommonModel SaveContactInformation(CustomerModel model)
         {
             return _Repo.SaveContactInformation(model);
+        }
+
+        public CommonModel UpdateUserProfile(BookingModel model)
+        {
+            return _Repo.UpdateUserProfile(model);
         }
     }
 
     #region INTERFACE
     public interface ILogIn
     {
+        CommonModel GetUserDetails(string UID);
         CommonModel LogIn(LogInModel model);
         CommonModel RegisterNewUser(LogInModel model);
         CommonModel SaveContactInformation(CustomerModel model);
+        CommonModel UpdateUserProfile(BookingModel model);
     }
     #endregion
 }

@@ -2,115 +2,343 @@
 
 @{
     ViewBag.Title = "BookVehicle";
-    Layout = "~/Views/Shared/_BookingLayout.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    if (Session["UserName"] != null)
+    {
+        Model.UserName = Session["UserName"].ToString();
+    }
+    if (Session["Email"] != null)
+    {
+        Model.Email = Session["Email"].ToString();
+    }
+    if (Session["MobileNumber"] != null)
+    {
+        Model.Phonenumber = Session["MobileNumber"].ToString();
+    }
+    if (Session["Country"] != null)
+    {
+        Model.Country = Session["Country"].ToString();
+    }
+    if (Session["City"] != null)
+    {
+        Model.City = Session["City"].ToString();
+    }
+    if (Session["DriverLicenceNumber"] != null)
+    {
+        Model.DrivingLicence = Session["DriverLicenceNumber"].ToString();
+    }
+    if (Session["ProfileImage"] != null)
+    {
+        Model.ProfileImage = Session["ProfileImage"].ToString();
+    }
+
+
 }
+<style>
+    .inmiddle {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+    }
+</style>
 
-<div class="formbold-main-wrapper">
-    <div class="formbold-form-wrapper">
-        <form action="#" method="POST">
-            <div class="formbold-steps">
-                <ul>
-                    <li class="formbold-step-menu1 active">
-                        <span>1</span>
-                        Vehicle Info
-                    </li>
-                    <li class="formbold-step-menu2">
-                        <span>2</span>
-                        User Info
-                    </li>
-                    <li class="formbold-step-menu3">
-                        <span>3</span>
-                        Payment
-                    </li>
-                </ul>
+<div class="page-heading" style="background-image: url(https://r4.wallpaperflare.com/wallpaper/168/817/180/tuning-nissan-skyline-gt-r-r35-liberty-walk-nissan-gtr-wallpaper-e970b8ed91da3deb96a778af1091d69d.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="top-text header-text">
+                    <h6>Selected Vehicle</h6>
+                    <h2>Selected Vehicle Descrtiptins</h2>
+                </div>
             </div>
-
-            <div class="formbold-form-step-1 active">
-                @Html.Partial("_vehicleInfo")
-            </div>
-
-            <div class="formbold-form-step-2">
-                @Html.Partial("_socialInfo")
-            </div>
-
-            <div class="formbold-form-step-3">
-                @Html.Partial("_userInfo")
-            </div>
-
-            <div class="formbold-form-btn-wrapper">
-                <button class="formbold-back-btn">
-                    Back
-                </button>
-
-                <button class="formbold-btn pmd-ripple-effect btn-success">
-                    Next
-                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g clip-path="url(#clip0_1675_1807)">
-                            <path d="M10.7814 7.33312L7.20541 3.75712L8.14808 2.81445L13.3334 7.99979L8.14808 13.1851L7.20541 12.2425L10.7814 8.66645H2.66675V7.33312H10.7814Z" fill="white" />
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_1675_1807">
-                                <rect width="16" height="16" fill="white" />
-                            </clipPath>
-                        </defs>
-                    </svg>
-                </button>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
-@section scripts{
-    <script>
-        const stepMenuOne = document.querySelector('.formbold-step-menu1')
-        const stepMenuTwo = document.querySelector('.formbold-step-menu2')
-        const stepMenuThree = document.querySelector('.formbold-step-menu3')
 
-        const stepOne = document.querySelector('.formbold-form-step-1')
-        const stepTwo = document.querySelector('.formbold-form-step-2')
-        const stepThree = document.querySelector('.formbold-form-step-3')
-
-        const formSubmitBtn = document.querySelector('.formbold-btn')
-        const formBackBtn = document.querySelector('.formbold-back-btn')
-
-        formSubmitBtn.addEventListener("click", function (event) {
-            event.preventDefault()
-            if (stepMenuOne.className == 'formbold-step-menu1 active') {
-                event.preventDefault()
-
-                stepMenuOne.classList.remove('active')
-                stepMenuTwo.classList.add('active')
-
-                stepOne.classList.remove('active')
-                stepTwo.classList.add('active')
-
-                formBackBtn.classList.add('active')
-                formBackBtn.addEventListener("click", function (event) {
-                    event.preventDefault()
-
-                    stepMenuOne.classList.add('active')
-                    stepMenuTwo.classList.remove('active')
-
-                    stepOne.classList.add('active')
-                    stepTwo.classList.remove('active')
-
-                    formBackBtn.classList.remove('active')
-
-                })
-
-            } else if (stepMenuTwo.className == 'formbold-step-menu2 active') {
-                event.preventDefault()
-
-                stepMenuTwo.classList.remove('active')
-                stepMenuThree.classList.add('active')
-
-                stepTwo.classList.remove('active')
-                stepThree.classList.add('active')
-
-                formBackBtn.classList.remove('active')
-                formSubmitBtn.textContent = 'Submit'
-            } else if (stepMenuThree.className == 'formbold-step-menu3 active') {
-                document.querySelector('form').submit()
-            }
-        })
-    </script>
-}
+<div class="category-post">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="naccs">
+                    <div class="grid">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="menu inmiddle">
+                                    <div class="first-thumb active">
+                                        <div class="thumb">
+                                            <span class="icon"><img src="~/Content/Assets/images/default.png" alt=""><h4>Vehicle Info</h4></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="thumb">
+                                            <span class="icon"><img src="~/Content/Assets/images/userprofile.png" alt=""><h4>User Info</h4></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <div class="thumb">
+                                            <span class="icon"><img src="~/Content/Assets/images/payment.png" alt=""><h4>Pamyment</h4></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <ul class="nacc">
+                                    <li class="active">
+                                        <div>
+                                            <div class="thumb">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="top-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="top-icon">
+                                                                        <span class="icon"><img src="~/Content/Assets/images/default.png" alt=""><h4>Vehicle Info</h4></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    @if (Model != null)
+                                                    {
+                                                        <div class="col-lg-12">
+                                                            <div class="description">
+                                                                <div class="row">
+                                                                    <div class="col-lg-9">
+                                                                        <h4>Description Vehicle - (@Model.Title)</h4>
+                                                                        <p>@Model.Detail</p>
+                                                                        <br>
+                                                                        <p>
+                                                                            <strong>Did you know?</strong>
+                                                                            <br>You can get the best free HTML templates on Too CSS blog. Visit the blog pages and explore fresh and latest website templates.
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="col-lg-3">
+                                                                        <div class="left-image mb-4">
+                                                                            @if (!string.IsNullOrEmpty(Model.ProfileImage))
+                                                                            {
+                                                                                <a href="#"><img src="@Model.ProfileImage" alt=""></a>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <a href="#"><img src="~/Content/Assets/images/car1.jpg" alt=""></a>
+                                                                            }
+                                                                        </div>
+                                                                        <span class="info">
+                                                                            <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Spacing :</b> @Model.TotalSeats<br>
+                                                                            <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Millage :</b> @Model.TotalMilage Kmpl/kg<br>
+                                                                            <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capcity :</b> @Model.VehicleCapacity<br>
+                                                                            <b>Price:</b> $ @Model.TotalPrice
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    <div class="col-lg-12">
+                                                        <div class="general-info">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <h4>General Info / Rules</h4>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ak incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidat doerski. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+                                                                    <span class="list-item">
+                                                                        * Listing should have all the proper documents before being checked in.
+                                                                        <br>** Listing will be checked by our team members.
+                                                                        <br>*** After being sold, it should imediately be removed from our site and properly monitored.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="top-icon">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6">
+                                                            <div class="main-white-button">
+                                                                <a href="#"><i class="fa fa-plus"></i> Next</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="thumb">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="top-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="top-icon">
+                                                                        <span class="icon"><img src="~/Content/Assets/images/userprofile.png" alt=""><h4>User Info</h4></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="description">
+                                                            @using (Html.BeginForm("ConfirmBooking", "Booking", FormMethod.Post, new { enctype = "multipart/form-data", @Id = "contact" }))
+                                                            {
+                                                                @Html.Hidden("VID", Model.VehicleID)
+                                                                @Html.Hidden("UID", Model.UserID)
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        @if (Model.ProfileImage == null)
+                                                                        {
+                                                                            <div class="file-upload">
+                                                                                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Upload Driving Licence</button>
+                                                                                <div class="image-upload-wrap">
+                                                                                    <input class="file-upload-input" type='file' onchange="readURL(this);" name="file" accept="image/*" />
+                                                                                    <div class="drag-text">
+                                                                                        <h3>Drag and drop a file or select add Image</h3>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="file-upload-content">
+                                                                                    <img class="file-upload-image" src="#" alt="your image" />
+                                                                                    <div class="image-title-wrap">
+                                                                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div id="map">
+                                                                                <img src="@Url.Content(Model.ProfileImage)" width="auto" height="650px" alt="Driving Licence">
+                                                                            </div>
+                                                                        }
+                                                                    </div>
+                                                                    <div class="col-lg-6 align-self-center">
+                                                                        @Html.AntiForgeryToken()
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.UserName, new { placeholder = "User Name", autocomplete = "on", @required = "required" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", autocomplete = "on", @required = "required" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.Phonenumber, new { placeholder = "Phonenumber", autocomplete = "on", @required = "required" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.Country, new { placeholder = "Countr", autocomplete = "on", @required = "required" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.City, new { placeholder = "City", autocomplete = "on", @required = "required" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.DrivingLicence, new { placeholder = "DrivingLicence", autocomplete = "on", @required = "required" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-12">
+                                                                                <fieldset>
+                                                                                    @Html.LabelFor(m => m.VehicleType, "Vehicle Type")
+                                                                                    @Html.TextBoxFor(m => m.VehicleType, new { placeholder = "Vehicle Type", autocomplete = "on", @required = "required", disabled = "disabled" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.LabelFor(m => m.FromDate, "From Date")
+                                                                                    @Html.TextBoxFor(m => m.FromDate, new { placeholder = "From Date", autocomplete = "on", @required = "required", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.LabelFor(m => m.ToDate, "To Date")
+                                                                                    @Html.TextBoxFor(m => m.ToDate, new { placeholder = "To Date", autocomplete = "on", @required = "required", type = "date", min = DateTime.Now.ToString("yyyy-MM-dd") })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="main-white-button">
+                                                                                    <button type="submit" class="main-button"><i class="fa fa-paper-plane"></i> Submit</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div>
+                                            <div class="thumb">
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="top-content">
+                                                            <div class="row">
+                                                                <div class="col-lg-6">
+                                                                    <div class="top-icon">
+                                                                        <span class="icon"><img src="~/Content/Assets/images/payment.png" alt=""><h4>Payment</h4></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-6">
+                                                                    <div class="main-white-button">
+                                                                        <a href="#"><i class="fa fa-plus"></i> Check Our Listings</a>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="description">
+                                                            <div class="row">
+                                                                <div class="col-lg-9">
+                                                                    <h4>Description about cars</h4>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ak incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidat doerski. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo.</p>
+                                                                </div>
+                                                                <div class="col-lg-3">
+                                                                    <div class="text-icon">
+                                                                        <h4><img src="assets/images/listing-icon-heading.png" alt=""> Total Listings</h4>
+                                                                    </div>
+                                                                    <span class="list-item">This Week: 800 Listings &amp; 400 Sales<br>This Month: 1,600 Listings &amp; 1,200 Sales<br>This Year: 14,000 Listings &amp; 12,000 Sales</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-12">
+                                                        <div class="general-info">
+                                                            <div class="row">
+                                                                <div class="col-lg-12">
+                                                                    <h4>General Info. about cars</h4>
+                                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ak incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravidat doerski. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.</p>
+                                                                    <span class="list-item">
+                                                                        * Listing should have all the proper documents before being checked in.
+                                                                        <br>** Listing will be checked by our team members.
+                                                                        <br>*** After being sold, it should imediately be removed from our site and properly monitored.
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

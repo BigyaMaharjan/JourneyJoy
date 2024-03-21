@@ -10,6 +10,54 @@ namespace JourneyJoy.Repository.Login
         {
             _dao = new DatabaseAccessObject();
         }
+
+        public CommonModel GetUserDetails(string UID)
+        {
+            var ResponseModel = new LogInResponseModel();
+            var SqlCommand = "exec sp_LogIn @flag= 'gud' "; //Get user Details
+            SqlCommand += ",@UID=" + _dao.FilterString(UID);
+            var Response = _dao.ExecuteDataRow(SqlCommand);
+            if (Response != null)
+            {
+                string code = _dao.ParseColumnValue(Response, "code").ToString();
+                string message = _dao.ParseColumnValue(Response, "message").ToString();
+                if (code == "000" || code == "0")
+                {
+                    ResponseModel.CustomerID = _dao.ParseColumnValue(Response, "UserID").ToString();
+                    ResponseModel.Username = _dao.ParseColumnValue(Response, "UserName").ToString();
+                    ResponseModel.Email = _dao.ParseColumnValue(Response, "Email").ToString();
+                    ResponseModel.Phonenumber = _dao.ParseColumnValue(Response, "MobileNo").ToString();
+                    ResponseModel.Gender = _dao.ParseColumnValue(Response, "UserType").ToString();
+                    ResponseModel.ProfileImage = _dao.ParseColumnValue(Response, "ProfileImage").ToString();
+                    ResponseModel.DrivingLicence = _dao.ParseColumnValue(Response, "DriverLicenceNumber").ToString();
+                    ResponseModel.Country = _dao.ParseColumnValue(Response, "Country").ToString();
+                    ResponseModel.City = _dao.ParseColumnValue(Response, "City").ToString();
+                    ResponseModel.UserType = _dao.ParseColumnValue(Response, "UserType").ToString();
+                    return new CommonModel()
+                    {
+                        Code = ResponseCode.SUCCESS,
+                        Message = message,
+                        Data = ResponseModel
+                    };
+                }
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = message,
+                    Data = null
+                };
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Couldn't retrieve the data",
+                    Data = null
+                };
+            }
+        }
+
         public CommonModel Login(LogInModel model)
         {
             var CommonModel = new CommonModel();
@@ -27,11 +75,11 @@ namespace JourneyJoy.Repository.Login
                     ResponseModel.CustomerID = _dao.ParseColumnValue(Response, "UserID").ToString();
                     ResponseModel.Username = _dao.ParseColumnValue(Response, "UserName").ToString();
                     ResponseModel.Email = _dao.ParseColumnValue(Response, "Email").ToString();
-                    ResponseModel.MobileNumber = _dao.ParseColumnValue(Response, "MobileNo").ToString();
+                    ResponseModel.Phonenumber = _dao.ParseColumnValue(Response, "MobileNo").ToString();
                     ResponseModel.Gender = _dao.ParseColumnValue(Response, "Gender").ToString();
                     ResponseModel.Title = _dao.ParseColumnValue(Response, "Title").ToString();
                     ResponseModel.ProfileImage = _dao.ParseColumnValue(Response, "ProfileImage").ToString();
-                    ResponseModel.DriverLicenceNumber = _dao.ParseColumnValue(Response, "DriverLicenceNumber").ToString();
+                    ResponseModel.DrivingLicence = _dao.ParseColumnValue(Response, "DriverLicenceNumber").ToString();
                     ResponseModel.Country = _dao.ParseColumnValue(Response, "Country").ToString();
                     ResponseModel.City = _dao.ParseColumnValue(Response, "City").ToString();
                     ResponseModel.Bio = _dao.ParseColumnValue(Response, "Bio").ToString();
@@ -78,7 +126,7 @@ namespace JourneyJoy.Repository.Login
                 string code = _dao.ParseColumnValue(Response, "code").ToString();
                 string message = _dao.ParseColumnValue(Response, "message").ToString();
                 if (code == "000" || code == "0")
-                {                    
+                {
                     return new CommonModel()
                     {
                         Code = ResponseCode.SUCCESS,
@@ -103,16 +151,16 @@ namespace JourneyJoy.Repository.Login
                 };
             }
         }
+
         public CommonModel SaveContactInformation(CustomerModel model)
         {
-            var CommonModel = new CommonModel();
             var ResponseModel = new LogInResponseModel();
-            var SqlCommand = "exec sp_ContactUs @flag= 'cu' "; //contact us 
+            var SqlCommand = "exec sproc_customer_registration @flag= 'cu' "; //contact us 
             SqlCommand += ",@FirstName=" + _dao.FilterString(model.FirstName);
             SqlCommand += ",@LastName=" + _dao.FilterString(model.LastName);
             SqlCommand += ",@Vehicle=" + _dao.FilterString(model.Vehicle);
             SqlCommand += ",@Email=" + _dao.FilterString(model.Email);
-            SqlCommand += ",@Description=" + _dao.FilterString(model.Description);            
+            SqlCommand += ",@Bio=" + _dao.FilterString(model.Description);
             var Response = _dao.ExecuteDataRow(SqlCommand);
             if (Response != null)
             {
@@ -120,6 +168,11 @@ namespace JourneyJoy.Repository.Login
                 string message = _dao.ParseColumnValue(Response, "message").ToString();
                 if (code == "000" || code == "0")
                 {
+                    ResponseModel.FirstName = _dao.ParseColumnValue(Response, "FirstName").ToString();
+                    ResponseModel.LastName = _dao.ParseColumnValue(Response, "LastName").ToString();
+                    ResponseModel.Vehicle = _dao.ParseColumnValue(Response, "Vehicle").ToString();
+                    ResponseModel.Email = _dao.ParseColumnValue(Response, "Email").ToString();
+                    ResponseModel.Bio = _dao.ParseColumnValue(Response, "Description").ToString();
                     return new CommonModel()
                     {
                         Code = ResponseCode.SUCCESS,
@@ -130,6 +183,40 @@ namespace JourneyJoy.Repository.Login
                 return new CommonModel()
                 {
                     Code = ResponseCode.FAILED,
+                    Message = message,
+                    Data = null
+                };
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Couldn't retrieve the data",
+                    Data = null
+                };
+            }
+        }
+
+        public CommonModel UpdateUserProfile(BookingModel model)
+        {
+            var ResponseModel = new LogInResponseModel();
+            var SqlCommand = "exec sproc_customer_registration @flag= 'uup' "; //Update User Profile
+            SqlCommand += ",@UserName=" + _dao.FilterString(model.Username);
+            SqlCommand += ",@Email=" + _dao.FilterString(model.Email);
+            SqlCommand += ",@City=" + _dao.FilterString(model.City);
+            SqlCommand += ",@Country=" + _dao.FilterString(model.Country);
+            SqlCommand += ",@DriverLicenceNumber=" + _dao.FilterString(model.DrivingLicence);
+            SqlCommand += ",@UID=" + _dao.FilterString(model.UID);
+            SqlCommand += ",@ProfileImage=" + _dao.FilterString(model.Image);
+            var Response = _dao.ExecuteDataRow(SqlCommand);
+            if (Response != null)
+            {
+                string code = _dao.ParseColumnValue(Response, "code").ToString();
+                string message = _dao.ParseColumnValue(Response, "message").ToString();
+                return new CommonModel()
+                {
+                    Code = (code == "000" || code == "0") ? ResponseCode.SUCCESS : ResponseCode.FAILED,
                     Message = message,
                     Data = null
                 };
@@ -149,9 +236,11 @@ namespace JourneyJoy.Repository.Login
     #region INTERFACE
     public interface ILoginRepo
     {
+        CommonModel GetUserDetails(string uID);
         CommonModel Login(LogInModel model);
         CommonModel RegisterNewUser(LogInModel model);
         CommonModel SaveContactInformation(CustomerModel model);
+        CommonModel UpdateUserProfile(BookingModel model);
     }
     #endregion
 }

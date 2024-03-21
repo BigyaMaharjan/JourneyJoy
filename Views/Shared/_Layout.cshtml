@@ -22,6 +22,9 @@
 
     <link href="~/Content/vendor/select2/select2.min.css" rel="stylesheet" media="all">
     <link href="~/Content/vendor/datepicker/daterangepicker.css" rel="stylesheet" media="all">
+
+    @*POPUP CDN*@
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </head>
 
 <body>
@@ -43,9 +46,7 @@
             <div class="row">
                 <div class="col-12">
                     <nav class="main-nav">
-                        @*<a href="index.html" class="logo">*@
-                        <a href="index.html" class="logo">
-                        </a>
+                        @*<a href="index.html" class="logo"></a>*@
                         <ul class="nav">
                             <li><a href="@Url.Action("Index","Home")" class="active">Home</a></li>
                             <li><a href="@Url.Action("Category","Home")">Category</a></li>
@@ -123,7 +124,8 @@
                         <p>
                             Copyright © 2024 JourneyJoy. All Rights Reserved.
                             <br>
-                            Design: <p>SHINIGAMI</p>
+                            Design:
+                        <p>SHINIGAMI</p>
                         </p>
                     </div>
                 </div>
@@ -140,10 +142,74 @@
     <script src="~/Content/Assets/js/animation.js"></script>
     <script src="~/Content/Assets/js/imagesloaded.js"></script>
     <script src="~/Content/Assets/js/custom.js"></script>
-    <script src="~/Content/vendor/datepicker/moment.min.js"></script>
-    <script src="~/Content/vendor/datepicker/daterangepicker.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/plugins/autoloader/prism-autoloader.min.js"></script>
 
     <!-- Main JS-->
     <script src="~/Content/Assets/js/main.js"></script>
+
+    <script>
+         $(document).ready(function () {
+             debugger;
+             var renderData = @Html.Raw(Json.Encode(ViewData["renderdata"]));
+             if (renderData !== null && typeof renderData === 'object') {
+                 var Icon = renderData.Icon;
+                 var Message = renderData.Message;
+             }
+
+             if (Message != null && Message != "" && Message.length > 0) {
+
+                 const Toast = Swal.mixin({
+                     toast: true,
+                     position: "top-end",
+                     showConfirmButton: false,
+                     timer: 3000,
+                     timerProgressBar: true,
+                     didOpen: (toast) => {
+                         toast.onmouseenter = Swal.stopTimer;
+                         toast.onmouseleave = Swal.resumeTimer;
+                     }
+                 });
+                 Toast.fire({
+                     icon: Icon == "true" ? "success" : "error",
+                     title: Message
+                 });
+             }
+             });
+    </script>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.image-upload-wrap').hide();
+
+                    $('.file-upload-image').attr('src', e.target.result);
+                    $('.file-upload-content').show();
+
+                    $('.image-title').html(input.files[0].name);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+
+            } else {
+                removeUpload();
+            }
+        }
+
+        function removeUpload() {
+            $('.file-upload-input').replaceWith($('.file-upload-input').clone());
+            $('.file-upload-content').hide();
+            $('.image-upload-wrap').show();
+        }
+        $('.image-upload-wrap').bind('dragover', function () {
+            $('.image-upload-wrap').addClass('image-dropping');
+        });
+        $('.image-upload-wrap').bind('dragleave', function () {
+            $('.image-upload-wrap').removeClass('image-dropping');
+        });
+    </script>
 </body>
 </html>

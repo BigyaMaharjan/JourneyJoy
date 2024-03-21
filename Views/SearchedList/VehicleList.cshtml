@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="page-heading">
+<div class="page-heading" style="background-image: url(https://r4.wallpaperflare.com/wallpaper/143/331/609/car-nissan-nissan-gtr-r34-nissan-skyline-gt-r-r34-wallpaper-83aa43ca2825ac0db862fe13d148c201.jpg)">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
@@ -89,7 +89,6 @@
                                                         <div>
                                                             <div class="col-lg-12">
                                                                 <div class="owl-carousel owl-listing">
-
                                                                     <div class="item">
                                                                         <div class="row">
                                                                             <div class="col-lg-12">
@@ -104,27 +103,38 @@
                                                                                     </div>
                                                                                     <div class="right-content align-self-center">
                                                                                         <a href="#"><h4>@x.Title</h4></a>
-                                                                                        <h6>by: @x.UserName</h6>
+                                                                                        <h6>Owner: @x.UserName</h6>
                                                                                         <span class="price">
                                                                                             <div class="icon"><img src="assets/images/listing-icon-01.png" alt=""></div> @x.TotalPrice / included tax
                                                                                         </span>
                                                                                         <span class="details">Details:@x.Detail</span>
                                                                                         <span class="info">
-                                                                                            <img src="assets/images/listing-icon-02.png" alt=""> 2 Milage<br>
-                                                                                            <img src="assets/images/listing-icon-03.png" alt=""> 3 Capicity
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.VehicleCapacity<br>
+                                                                                            <img src="~/Content/Assets/images/mileage.png" alt=""> @x.TotalMilage Kmpl/kg<br>
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.TotalSeats
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
-
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </li>
                                                 }
                                             }
+                                        }
+                                        else
+                                        {
+                                            <div class="left-image">
+                                                <a href="#"><img src="~/Content/Assets/images/gadinotfound.jpg" alt=""></a>
+                                                <div class="hover-content">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <button type="button" onclick="window.history.back();" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-arrow-left"></i> Go Back</button>
+                                            </div>
                                         }
                                     }
 
@@ -162,8 +172,9 @@
                                                                                         </span>
                                                                                         <span class="details">Details:@x.Detail</span>
                                                                                         <span class="info">
-                                                                                            <img src="assets/images/listing-icon-02.png" alt=""> 2 Milage<br>
-                                                                                            <img src="assets/images/listing-icon-03.png" alt=""> 3 Capicity
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.VehicleCapacity<br>
+                                                                                            <img src="~/Content/Assets/images/mileage.png" alt=""> @x.TotalMilage Kmpl/kg<br>
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.TotalSeats
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
@@ -177,6 +188,17 @@
                                                     </li>
                                                 }
                                             }
+                                        }
+                                        else
+                                        {
+                                            <div class="left-image">
+                                                <a href="#"><img src="~/Content/Assets/images/gadinotfound.jpg" alt=""></a>
+                                                <div class="hover-content">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <button type="button" onclick="window.history.back();" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-arrow-left"></i> Go Back</button>
+                                            </div>
                                         }
                                     }
 
@@ -214,8 +236,9 @@
                                                                                         </span>
                                                                                         <span class="details">Details:@x.Detail</span>
                                                                                         <span class="info">
-                                                                                            <img src="assets/images/listing-icon-02.png" alt=""> 2 Milage<br>
-                                                                                            <img src="assets/images/listing-icon-03.png" alt=""> 3 Capicity
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.VehicleCapacity<br>
+                                                                                            <img src="~/Content/Assets/images/mileage.png" alt=""> @x.TotalMilage Kmpl/kg<br>
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.TotalSeats
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
@@ -229,6 +252,17 @@
                                                     </li>
                                                 }
                                             }
+                                        }
+                                        else
+                                        {
+                                            <div class="left-image">
+                                                <a href="#"><img src="~/Content/Assets/images/gadinotfound.jpg" alt=""></a>
+                                                <div class="hover-content">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <button type="button" onclick="window.history.back();" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-arrow-left"></i> Go Back</button>
+                                            </div>
                                         }
                                     }
 
@@ -266,8 +300,9 @@
                                                                                         </span>
                                                                                         <span class="details">Details:@x.Detail</span>
                                                                                         <span class="info">
-                                                                                            <img src="assets/images/listing-icon-02.png" alt=""> 2 Milage<br>
-                                                                                            <img src="assets/images/listing-icon-03.png" alt=""> 3 Capicity
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.VehicleCapacity<br>
+                                                                                            <img src="~/Content/Assets/images/mileage.png" alt=""> @x.TotalMilage Kmpl/kg<br>
+                                                                                            <img src="~/Content/Assets/images/seats.png" alt=""> @x.TotalSeats
                                                                                         </span>
                                                                                     </div>
                                                                                 </div>
@@ -281,6 +316,17 @@
                                                     </li>
                                                 }
                                             }
+                                        }
+                                        else
+                                        {
+                                            <div class="left-image">
+                                                <a href="#"><img src="~/Content/Assets/images/gadinotfound.jpg" alt=""></a>
+                                                <div class="hover-content">
+                                                </div>
+                                            </div>
+                                            <div style="text-align: center; margin-top: 20px;">
+                                                <button type="button" onclick="window.history.back();" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-arrow-left"></i> Go Back</button>
+                                            </div>
                                         }
                                     }
                                 </ul>

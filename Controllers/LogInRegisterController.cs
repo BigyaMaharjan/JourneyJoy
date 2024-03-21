@@ -17,6 +17,11 @@ namespace JourneyJoy.Controllers
         [HttpGet]
         public ActionResult LogInRegister()
         {
+            if (TempData.ContainsKey("renderredirectdata"))
+            {
+                // Retrieve data from TempData and store it in ViewData
+                ViewData["renderdata"] = TempData["renderredirectdata"];
+            }
             return View();
         }
 
@@ -61,8 +66,8 @@ namespace JourneyJoy.Controllers
                 {
                     ModelState.AddModelError("LogInError", "User Authentication Failed");
                 }
+                ViewData["renderredirectdata"] = new { Icon = "true", Message = "Welcome Back " + Session["Username"].ToString() };
                 return RedirectToAction(userCheck.Item1, userCheck.Item2);
-                //return View("LogInRegister", "LogInRegister");
             }
             else
             {
@@ -82,11 +87,11 @@ namespace JourneyJoy.Controllers
                     Session["Email"] = response.Email;
                     Session["ProfileImage"] = response.ProfileImage;
                     Session["Title"] = response.Title;
-                    Session["MobileNumber"] = response.MobileNumber;
+                    Session["MobileNumber"] = response.Phonenumber;
                     Session["Country"] = response.Country;
                     Session["City"] = response.City;
                     Session["UserType"] = response.UserType;
-                    Session["DriverLicenceNumber"] = response.DriverLicenceNumber;
+                    Session["DriverLicenceNumber"] = response.DrivingLicence;
                     return new Tuple<string, string, bool>("DashBoard", "User", true);
                 }
                 else
