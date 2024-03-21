@@ -6,8 +6,6 @@ using System.Linq;
 using System;
 using System.Web;
 using System.Web.Mvc;
-using System.Drawing.Drawing2D;
-using System.Drawing;
 
 namespace JourneyJoy.Controllers
 {
@@ -15,6 +13,7 @@ namespace JourneyJoy.Controllers
     {
         IVehicle _VehicleBuss;
         IBooking _BookingBuss;
+
         public BookingController(IVehicle vehicle, IBooking booking)
         {
             _VehicleBuss = vehicle;
@@ -37,19 +36,8 @@ namespace JourneyJoy.Controllers
                 return View();
             }
             return RedirectToAction("LogInRegister", "LogInRegister");
-            //if (User.Identity.IsAuthenticated)
-            //{
-            //    if (!string.IsNullOrEmpty(VID))
-            //    {
-            //        return View();
-            //    }
-            //    return View();
-            //}
-            //else
-            //{
-            //    return RedirectToAction("LogInRegister", "LogInRegister");
-            //}
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult ConfirmBooking(BookingModel model, HttpPostedFileBase file)
@@ -83,7 +71,7 @@ namespace JourneyJoy.Controllers
                     var dbresp = _BookingBuss.SaveBooking(model);
                     if (dbresp.Code == 0)
                     {
-                        ResizeImage(file, filepath);
+                        Static.StaticMethods.ResizeImage(file, filepath);
                         TempData["renderredirectdata"] = new { Icon = "true", Message = "Booking Successfull." };
                         return RedirectToAction("DashBoard", "User");
                     }
@@ -102,32 +90,23 @@ namespace JourneyJoy.Controllers
             return RedirectToAction("BookVehicle");
         }
 
-        public void ResizeImage(HttpPostedFileBase file, string toStream)//double scaleFactor,
+        public ActionResult CancellBooking(string BID, string VID)
         {
-            if (file.ContentLength > 1 * 1024 * 1024)//1 MB
+            if (!string.IsNullOrEmpty(BID) && !string.IsNullOrEmpty(VID))
             {
-                var image = Image.FromStream(file.InputStream);
-                var newWidth = (int)(600);
-                var newHeight = (int)(600);
-                var thumbnailBitmap = new Bitmap(newWidth, newHeight);
-
-                var thumbnailGraph = Graphics.FromImage(thumbnailBitmap);
-                thumbnailGraph.CompositingQuality = CompositingQuality.HighQuality;
-                thumbnailGraph.SmoothingMode = SmoothingMode.HighQuality;
-                thumbnailGraph.InterpolationMode = InterpolationMode.HighQualityBicubic;
-
-                var imageRectangle = new Rectangle(0, 0, newWidth, newHeight);
-                thumbnailGraph.DrawImage(image, imageRectangle);
-
-                thumbnailBitmap.Save(toStream, image.RawFormat);//image.RawFormat
-
-                thumbnailGraph.Dispose();
-                thumbnailBitmap.Dispose();
-                image.Dispose();
+                var dbresp = _BookingBuss.CancellBooking(BID, VID);
+                if (dbresp.Code == 0)
+                {
+                    TempData["renderredirectdata"] = new { Icon = "true", Message = dbresp.Message };
+                    return RedirectToAction("DashBoard", "User");
+                }
+                TempData["renderredirectdata"] = new { Icon = "false", Message = "Something went wrong!" };
+                return RedirectToAction("DashBoard", "User");
             }
             else
             {
-                file.SaveAs(toStream);
+                TempData["renderredirectdata"] = new { Icon = "false", Message = "Couldn't process your request" };
+                return RedirectToAction("DashBoard", "User");
             }
         }
     }

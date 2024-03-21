@@ -20,5 +20,6 @@ namespace JourneyJoy.Models
         public string FromDate { get; set; }
         public string ToDate { get; set; }
         public string VehicleType { get; set; }
+        public string CurrentAddress { get; set; }
     }
 }

@@ -23,16 +23,17 @@ namespace JourneyJoy.Models
         public string Vehicle { get; set; }
         public string Username { get; set; }
         public string Email { get; set; }
-        public string MobileNumber { get; set; }
+        public string Phonenumber { get; set; }
         public string Gender { get; set; }
         public string Title { get; set; } //Miss,Mrs,Mr
         public string UserType { get; set; } // Hidden (Customer/Merchant/Admin)
         public string ProfileImage { get; set; }
         public string Bio { get; set; }
-        public string DriverLicenceNumber { get; set; }
+        public string DrivingLicence { get; set; }
         public string Country { get; set; }
         public string City { get; set; }
         public string CurrentAddress { get; set; }
+        public string UID { get; set; }
     }
 
     public class RegisterModel
