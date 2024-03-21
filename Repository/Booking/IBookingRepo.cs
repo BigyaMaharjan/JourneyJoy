@@ -19,6 +19,46 @@ namespace JourneyJoy.Repository.Booking
             throw new NotImplementedException();
         }
 
+        public CommonModel CancellBooking(string BID, string VID)
+        {
+            var SQL = "Exec sp_Booking_Vehicle  @Flag='cb'"; // Cancell book
+            SQL += ",@UID=" + _dao.FilterString(BID);
+            SQL += ",@VID=" + _dao.FilterString(VID);
+            var dbresponse = _dao.ExecuteDataRow(SQL);
+            if (dbresponse != null)
+            {
+                string code = _dao.ParseColumnValue(dbresponse, "code").ToString();
+                string message = _dao.ParseColumnValue(dbresponse, "message").ToString();
+                if (code == "000" || code == "0")
+                {
+                    return new CommonModel()
+                    {
+                        Code = ResponseCode.SUCCESS,
+                        Message = "Successfully Cancelled your booking",
+                        Data = null
+                    };
+                }
+                else
+                {
+                    return new CommonModel()
+                    {
+                        Code = ResponseCode.FAILED,
+                        Message = "FAILED",
+                        Data = null
+                    };
+                }
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Database returned NULL",
+                    Data = null
+                };
+            }
+        }
+
         public CommonModel GetUserBookings(string UID)
         {
             var SearchedList = new List<VehicleModel>();
@@ -119,6 +159,7 @@ namespace JourneyJoy.Repository.Booking
     public interface IBookingRepo
     {
         CommonModel BookVehicle(string vid);
+        CommonModel CancellBooking(string BID, string VID);
         CommonModel GetUserBookings(string uID);
         CommonModel SaveBooking(BookingModel model);
     }

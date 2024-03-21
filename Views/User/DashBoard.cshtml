@@ -36,6 +36,21 @@
         margin-top: 1px !important; /* Adjust as needed */
     }
 
+    .customcss {
+        margin-top: 16px !important;
+    }
+
+    #payNowButton {
+        background-color: #2cb33b;
+    }
+
+    #CancelBook {
+        background-color: #d13b3b;
+    }
+
+    .leftPush {
+        margin-right: 265px;
+    }
 </style>
 <div class="category-post">
     <div class="container">
@@ -73,7 +88,7 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-6">
-                                                                    <div class="main-white-button">
+                                                                    <div class="main-white-button" id="updateProfileButtonContainer">
                                                                         <a href="#" id="updateProfileButton"><i class="fa fa-plus"></i> Update Profile</a>
                                                                     </div>
                                                                 </div>
@@ -82,61 +97,78 @@
                                                     </div>
                                                     <div class="col-lg-12">
                                                         <div class="description">
-                                                            <div class="row">
-                                                                <div class="col-lg-3">
-                                                                    <div id="map">
-                                                                        <iframe src="https://maps.google.com/maps?q=Av.+L%C3%BAcio+Costa,+Rio+de+Janeiro+-+RJ,+Brazil&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="650px" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                            @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data", @Id = "contact" }))
+                                                            {
+                                                                @Html.AntiForgeryToken()
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        @if (Model.ProfileImage == null)
+                                                                        {
+                                                                            <div class="file-upload">
+                                                                                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Upload Driving Licence</button>
+                                                                                <div class="image-upload-wrap">
+                                                                                    <input class="file-upload-input" type='file' onchange="readURL(this);" name="file" accept="image/*" />
+                                                                                    <div class="drag-text">
+                                                                                        <h3>Drag and drop a file or select add Image</h3>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="file-upload-content">
+                                                                                    <img class="file-upload-image" src="#" alt="your image" />
+                                                                                    <div class="image-title-wrap">
+                                                                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <div id="map">
+                                                                                <img src="@Url.Content(Model.ProfileImage)" width="auto" height="650px" alt="Driving Licence">
+                                                                            </div>
+                                                                        }
                                                                     </div>
-                                                                </div>
-                                                                <div class="col-lg-9 align-self-center">
-                                                                    @using (Html.BeginForm("UserLogin", "LogInRegister", FormMethod.Post, new { @Id = "contact" }))
-                                                                    {
-                                                                        @Html.AntiForgeryToken();
+                                                                    <div class="col-lg-6 align-self-center">
+                                                                        <p>Edit Details</p>
                                                                         <div class="row">
                                                                             <div class="col-lg-6">
                                                                                 <fieldset>
-                                                                                    <input type="text" name="Username" id="Username" placeholder="Username" autocomplete="on" required disabled>
+                                                                                    @Html.TextBoxFor(m => m.Username, new { placeholder = "User Name", autocomplete = "on", @required = "required", disabled = "disabled" })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-6">
                                                                                 <fieldset>
-                                                                                    <input type="email" name="Email" id="Email" placeholder="Email" autocomplete="on" required disabled>
+                                                                                    @Html.TextBoxFor(m => m.Email, new { placeholder = "Email", autocomplete = "on", @required = "required", disabled = "disabled" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.Phonenumber, new { placeholder = "Mobile Number", autocomplete = "on", @required = "required", disabled = "disabled" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.Country, new { placeholder = "Country", autocomplete = "on", @required = "required", disabled = "disabled" })
+                                                                                </fieldset>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <fieldset>
+                                                                                    @Html.TextBoxFor(m => m.City, new { placeholder = "City", autocomplete = "on", @required = "required", disabled = "disabled" })
                                                                                 </fieldset>
                                                                             </div>
                                                                             <div class="col-lg-12">
                                                                                 <fieldset>
-                                                                                    <input type="text" name="CurrentAddress" id="MobileNumber" placeholder="Your Mobilenumber" required="" disabled>
+                                                                                    @Html.TextBoxFor(m => m.DrivingLicence, new { placeholder = "Driver Licence Number", autocomplete = "on", @required = "required", disabled = "disabled" })
                                                                                 </fieldset>
                                                                             </div>
-                                                                            <div class="col-lg-6">
-                                                                                <fieldset>
-                                                                                    <input type="text" name="Country" id="Country" placeholder="Your Country" required="" disabled>
-                                                                                </fieldset>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <fieldset>
-                                                                                    <input type="text" name="City" id="City" placeholder="Your City" required="" disabled>
-                                                                                </fieldset>
-                                                                            </div>
-                                                                            <div class="col-lg-12">
-                                                                                <fieldset>
-                                                                                    <input type="text" name="DriverLicenceNumber" id="DriverLicenceNumber" placeholder="Your DriverLicenceNumber" required="" disabled>
-                                                                                </fieldset>
-                                                                            </div>
-                                                                            @*<div class="col-lg-12">
-                                                                                    <fieldset>
-                                                                                        <textarea type="text" name="Bio" id="Bio" placeholder="Your Bio" required=""> </textarea>
-                                                                                    </fieldset>
-                                                                                </div>*@
                                                                             <div class="col-lg-6 d-flex align-items-center justify-content-center">
-                                                                                <fieldset>
-                                                                                    <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane"></i> Update Profile</button>
+                                                                                <fieldset id="form-submit-container" style="display: none;">
+                                                                                    <button type="submit" id="form-submit" class="main-button leftPush"><i class="fa fa-paper-plane"></i> Submit</button>
                                                                                 </fieldset>
                                                                             </div>
                                                                         </div>
-                                                                    }
+                                                                    </div>
                                                                 </div>
-                                                            </div>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
@@ -175,28 +207,36 @@
                                                                         <div class="col-lg-6">
                                                                             <div class="right-content align-self-center">
                                                                                 <a href="#"><h4>@x.VehicleType</h4></a>
-                                                                                <h6>Booking Status: @x.BookingStatus</h6><br />
-
-                                                                                <span class="details">Details: @x.Detail</span><br>
+                                                                                <h6>Booking Status: @x.BookingStatus</h6>
+                                                                                <span class="details">Details: @x.Detail</span><br />
                                                                                 <span class="info">
                                                                                     <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Millage :</b> @x.TotalMilage Kmpl/kg<br>
-                                                                                    <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capcity :</b> @x.CarCapacity<br>
-                                                                                    <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Total Price :</b> @x.TotalPrice / included tax<br>
+                                                                                    <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capacity :</b> @x.CarCapacity<br>
+                                                                                    @*<img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;">*@ <b>Total Price :</b> @x.TotalPrice / included tax<br>
                                                                                 </span>
                                                                                 <div id="paymentOptions" class="payment-options" style="display: none;">
                                                                                     <h4>Select Payment Method:</h4>
-                                                                                    <label><input type="radio" name="paymentMethod" value="cashOnDelivery"> Cash on Delivery</label><br>
-                                                                                    <label><input type="radio" name="paymentMethod" value="onlinePayment"> Online Payment</label><br>
-                                                                                    <button id="confirmPayment">Confirm</button>
+                                                                                    <label><input type="radio" name="paymentMethod" value="cashOnDelivery" id="cashPaymentOption"> Cash on Delivery</label><br>
+                                                                                    <label><input type="radio" name="paymentMethod" value="onlinePayment" id="onlinePaymentOption"> Online Payment</label>
+                                                                                    <div id="onlinePaymentImages" style="display: none;">
+                                                                                        <img src="~/Content/Assets/images/PmtImg/esewa.png" alt="eSewa" style="width: 60px; height: 60px;">
+                                                                                        <img src="~/Content/Assets/images/PmtImg/Khalti.png" alt="Khalti" style="width: 60px; height: 60px;">
+                                                                                        <img src="~/Content/Assets/images/PmtImg/ppay.png" alt="PrabhuPay" style="width: 60px; height: 60px;">
+                                                                                    </div>
+                                                                                    @*<button id="confirmPayment">Confirm</button>*@
                                                                                 </div>
-                                                                                <div class="main-white-button">
-                                                                                    <button type="button" id="payNowButton" class="btn btn-secondary btn-group-lg main-button"><i class="fa fa-plus"></i> PayNow</button>
-                                                                                    <a href="@Url.Action("CancellBooking", "Booking", new { VID = @x.VehicleID })"><i class="fa fa-eye"></i> Cancel Booking</a>
+                                                                                <div class="main-white-button customcss">
+                                                                                    <a href="#" id="payNowButton"><i class="fa fa-plus"></i> PayNow</a>
+                                                                                    <a href="@Url.Action("CancellBooking", "Booking", new { BID = @x.BID, VID = x.VehicleID  })" id="CancelBook"><i class="fa fa-eye"></i> Cancel Booking</a>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 }
+                                                            }
+                                                            else
+                                                            {
+                                                                <h3>You havent Boked any vehicles</h3>
                                                             }
                                                         </div>
                                                     </div>
@@ -222,40 +262,56 @@
 
         document.getElementById("updateProfileButton").addEventListener("click", function () {
             event.preventDefault(); // Prevent the default action (navigating to the "#" anchor)
+            debugger;
+            var submitButtonContainer = document.getElementById('form-submit-container');
+
+            if (submitButtonContainer.style.display === 'none') {
+                submitButtonContainer.style.display = 'block';
+            } else {
+                submitButtonContainer.style.display = 'none';
+            }
+
             var inputField = document.getElementById("Username");
             var inputField2 = document.getElementById("Email");
-            var inputField3 = document.getElementById("MobileNumber");
-            var inputField9 = document.getElementById("DriverLicenceNumber");
+            var inputField3 = document.getElementById("Phonenumber");
+            var inputField9 = document.getElementById("DrivingLicence");
             var inputField10 = document.getElementById("Country");
             var inputField11 = document.getElementById("City");
-            var inputField12 = document.getElementById("CurrentAddress");
             inputField.disabled = !inputField.disabled;
             inputField2.disabled = !inputField2.disabled;
             inputField3.disabled = !inputField3.disabled;
             inputField9.disabled = !inputField9.disabled;
             inputField10.disabled = !inputField10.disabled;
             inputField11.disabled = !inputField11.disabled;
-            inputField12.disabled = !inputField12.disabled;
             $('#form-submit').show();
         });
     </script>
 
     <script>
-        document.getElementById('payNowButton').addEventListener('click', function () {
-            var paymentOptions = document.getElementById('paymentOptions');
-            paymentOptions.style.display = (paymentOptions.style.display == 'block') ? 'none' : 'block';
-        });
-
-        document.getElementById('confirmPayment').addEventListener('click', function () {
-            var selectedPaymentMethod = document.querySelector('input[name="paymentMethod"]:checked');
-            if (selectedPaymentMethod) {
-                var paymentMethod = selectedPaymentMethod.value;
-                // Perform further actions based on the selected payment method
-                console.log("Selected Payment Method:", paymentMethod);
-            } else {
-                alert("Please select a payment method.");
-            }
+        $(document).ready(function () {
+            $('#payNowButton').click(function (event) {
+                event.preventDefault();
+                // Check if details and info sections are hidden
+                if ($('.details').is(':hidden') && $('.info').is(':hidden')) {
+                    // Show details and info sections
+                    $('.details, .info').show();
+                } else {
+                    // Hide details and info sections
+                    $('.details, .info').hide();
+                }
+                // Toggle visibility of payment options
+                $('#paymentOptions').toggle();
+            });
+            $('#onlinePaymentOption').click(function () {
+                // Toggle visibility of images
+                $('#onlinePaymentImages').show();
+            });
+            $('#cashPaymentOption').click(function () {
+                // Toggle visibility of images
+                $('#onlinePaymentImages').hide();
+            });
         });
     </script>
+
 
 }
