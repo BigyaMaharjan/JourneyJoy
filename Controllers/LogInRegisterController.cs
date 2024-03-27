@@ -36,13 +36,13 @@ namespace JourneyJoy.Controllers
                 var registernewusers = _loginBuss.RegisterNewUser(model);
                 if (registernewusers.Code == ResponseCode.SUCCESS)
                 {
-                    ModelState.AddModelError("LogInError", "ok");
+                    TempData["renderredirectdata"] = new { Icon = "true", Message = "User registered successfully" };
                 }
                 return RedirectToAction("LogInRegister", "LogInRegister");
             }
             else
             {
-                ModelState.AddModelError("LogInError", "User Authentication Failed");
+                TempData["renderredirectdata"] = new { Icon = "false", Message = "Form Filled is incorrect" };
                 return RedirectToAction("LogInRegister", "LogInRegister");
             }
         }
@@ -64,7 +64,8 @@ namespace JourneyJoy.Controllers
                 var userCheck = LogInCheck(model);
                 if (userCheck.Item3 == false)
                 {
-                    ModelState.AddModelError("LogInError", "User Authentication Failed");
+                    ViewData["renderredirectdata"] = new { Icon = "false", Message = "Username or Password is incorrect" };
+                    return RedirectToAction(userCheck.Item1, userCheck.Item2);
                 }
                 ViewData["renderredirectdata"] = new { Icon = "true", Message = "Welcome Back " + Session["Username"].ToString() };
                 return RedirectToAction(userCheck.Item1, userCheck.Item2);
@@ -96,12 +97,12 @@ namespace JourneyJoy.Controllers
                 }
                 else
                 {
-                    return new Tuple<string, string, bool>("Login", "Home", false);
+                    return new Tuple<string, string, bool>("LogInRegister", "LogInRegister", false);
                 }
             }
             catch (Exception)
             {
-                return new Tuple<string, string, bool>("Login", "Home", false);
+                return new Tuple<string, string, bool>("LogInRegister", "LogInRegister", false);
             }
         }
 

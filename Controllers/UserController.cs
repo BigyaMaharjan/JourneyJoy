@@ -26,17 +26,24 @@ namespace JourneyJoy.Controllers
         {
             LogInResponseModel model = new LogInResponseModel();
             TempData["message"] = "LogInSuccess";
-            var uid = Session["CustomerID"].ToString();
-            if (!string.IsNullOrEmpty(uid))
+            try
             {
-                var userbookedvehicles = _BookingBuss.GetUserBookings(uid);
-                var dbres = _loginBuss.GetUserDetails(uid);
-                model = dbres.Data.MapObject<LogInResponseModel>();
-                if (TempData.ContainsKey("renderredirectdata"))
+                var uid = Session["CustomerID"].ToString();
+                if (!string.IsNullOrEmpty(uid))
                 {
-                    ViewData["renderdata"] = TempData["renderredirectdata"];
+                    var userbookedvehicles = _BookingBuss.GetUserBookings(uid);
+                    var dbres = _loginBuss.GetUserDetails(uid);
+                    model = dbres.Data.MapObject<LogInResponseModel>();
+                    if (TempData.ContainsKey("renderredirectdata"))
+                    {
+                        ViewData["renderdata"] = TempData["renderredirectdata"];
+                    }
+                    ViewBag.UserVehiclesLists = userbookedvehicles.Data;
                 }
-                ViewBag.UserVehiclesLists = userbookedvehicles.Data;
+            }
+            catch (Exception exe)
+            {
+                ViewData["renderdata"] = new { Icon = "false", Message = "Session time out, Please log in Again" };
             }
             return View(model);
         }

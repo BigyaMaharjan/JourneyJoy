@@ -1268,6 +1268,19 @@ form#contact {
         margin-bottom: 30px;
     }
 
+    form#contact select {
+        width: 100%;
+        height: 46px;
+        border-radius: 7px;
+        background-color: transparent;
+        border: 1px solid #8d99af;
+        outline: none;
+        font-size: 15px;
+        font-weight: 300;
+        color: #8d99af;
+        padding: 0px 15px;
+        margin-bottom: 30px;
+    }
     form#contact ul li {
         display: inline-block;
         margin-right: 30px;

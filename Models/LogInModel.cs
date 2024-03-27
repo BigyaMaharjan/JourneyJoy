@@ -15,7 +15,7 @@ namespace JourneyJoy.Models
         public string LogInError { get; set; }
     }
 
-    public class LogInResponseModel : BaseModel
+    public class LogInResponseModel : VehicleModel
     {
         public string CustomerID { get; set; }
         public string FirstName { get; set; }
@@ -41,9 +41,6 @@ namespace JourneyJoy.Models
         [Required(AllowEmptyStrings = false, ErrorMessage = "Required")]
         [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Only Alphabets allowed")]
         public string Firstname { get; set; }
-        [Required(AllowEmptyStrings = false, ErrorMessage = "Required")]
-        [RegularExpression("^[a-zA-Z ]*$", ErrorMessage = "Only Alphabets allowed")]
-        public string Lastname { get; set; }
         [Display(Name = "Mobile Number")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Required")]
         [MaxLength(10, ErrorMessage = "Mobile number should be 10 digit"), MinLength(10, ErrorMessage = "Mobile number should be 10 digit")]
@@ -61,5 +58,6 @@ namespace JourneyJoy.Models
         [MaxLength(16, ErrorMessage = "Maximum 16 characters allowed")]
         [MinLength(8, ErrorMessage = "Minimum 8 characters allowed")]
         public string confirmpassword { get; set; }
+        public string UserType { get; set; }
     }
 }
