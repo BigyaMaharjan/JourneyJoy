@@ -46,6 +46,7 @@ namespace JourneyJoy.Models
         public string IsAvailable { get; set; }
         public string TotalMilage { get; set; }
         public string ProfileImage { get; set; }
+        public string VehicleImage { get; set; }
         public string TotalPrice { get; set; }
         public string Detail { get; set; }
     }

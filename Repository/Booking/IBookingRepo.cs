@@ -138,7 +138,7 @@ namespace JourneyJoy.Repository.Booking
                     return new CommonModel()
                     {
                         Code = ResponseCode.FAILED,
-                        Message = "FAILED",
+                        Message = string.IsNullOrEmpty(message)? "FAILED" : message,
                         Data = null
                     };
                 }
@@ -153,6 +153,58 @@ namespace JourneyJoy.Repository.Booking
                 };
             }
         }
+
+        #region Vendor Add Vehicles
+        public CommonModel AddNewVehicles(LogInResponseModel model)
+        {
+            var SQL = "Exec sp_Booking_Vehicle  @Flag='av'"; // add vehicle
+            SQL += ",@UID=" + _dao.FilterString(model.UID);
+            SQL += ",@VehicleType=" + _dao.FilterString(model.VehicleType);
+            SQL += ",@VehicleModel=" + _dao.FilterString(model.VehicleMdl);
+            SQL += ",@VehicleCapicity=" + _dao.FilterString(model.CarCapacity);
+            SQL += ",@VehicleRating=" + _dao.FilterString(model.Rating);
+            SQL += ",@VehicleSeats=" + _dao.FilterString(model.TotalSeats);
+            SQL += ",@Title=" + _dao.FilterString(model.Title);
+            SQL += ",@Milage=" + _dao.FilterString(model.TotalMilage);
+            SQL += ",@Price=" + _dao.FilterString(model.TotalPrice);
+            SQL += ",@Price=" + _dao.FilterString(model.TotalPrice);
+            SQL += ",@Detail=" + _dao.FilterString(model.Detail);
+            SQL += ",@Image=" + _dao.FilterString(model.ProfileImage);
+            var dbresponse = _dao.ExecuteDataRow(SQL);
+            if (dbresponse != null)
+            {
+                string code = _dao.ParseColumnValue(dbresponse, "code").ToString();
+                string message = _dao.ParseColumnValue(dbresponse, "message").ToString();
+                if (code == "000" || code == "0")
+                {
+                    return new CommonModel()
+                    {
+                        Code = ResponseCode.SUCCESS,
+                        Message = "Successfully retrieved vehicle List",
+                        Data = null
+                    };
+                }
+                else
+                {
+                    return new CommonModel()
+                    {
+                        Code = ResponseCode.FAILED,
+                        Message = string.IsNullOrEmpty(message) ? "FAILED" : message,
+                        Data = null
+                    };
+                }
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Database returned NULL",
+                    Data = null
+                };
+            }
+        }
+        #endregion
     }
 
     #region INTERFACE
@@ -162,6 +214,10 @@ namespace JourneyJoy.Repository.Booking
         CommonModel CancellBooking(string BID, string VID);
         CommonModel GetUserBookings(string uID);
         CommonModel SaveBooking(BookingModel model);
+
+        #region Vendor Add Vehicles
+        CommonModel AddNewVehicles(LogInResponseModel model);
+        #endregion
     }
     #endregion
 }

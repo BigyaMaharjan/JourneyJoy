@@ -33,6 +33,31 @@ namespace JourneyJoy.Repository.Login
                     ResponseModel.Country = _dao.ParseColumnValue(Response, "Country").ToString();
                     ResponseModel.City = _dao.ParseColumnValue(Response, "City").ToString();
                     ResponseModel.UserType = _dao.ParseColumnValue(Response, "UserType").ToString();
+                    if (ResponseModel.UserType.ToLower() == "vendor")
+                    {
+                        var SqlCommandAgain = "exec sp_Booking_Vehicle @flag= 'gvbid' "; //Get vehicles by ID
+                        SqlCommandAgain += ",@UID=" + _dao.FilterString(UID);
+                        var ResponseAgain = _dao.ExecuteDataRow(SqlCommandAgain);
+                        if (ResponseAgain != null)
+                        {
+                            string codeAgain = _dao.ParseColumnValue(Response, "code").ToString();
+                            string messageAgain = _dao.ParseColumnValue(Response, "message").ToString();
+                            if (codeAgain == "000" || codeAgain == "0")
+                            {
+                                ResponseModel.VehicleID = _dao.ParseColumnValue(Response, "VehicleID").ToString();
+                                ResponseModel.VehicleType = _dao.ParseColumnValue(Response, "VehicleType").ToString();
+                                ResponseModel.VehicleMdl = _dao.ParseColumnValue(Response, "VehicleModel").ToString();
+                                ResponseModel.CarCapacity = _dao.ParseColumnValue(Response, "VehicleCapacity").ToString();
+                                ResponseModel.Rating = _dao.ParseColumnValue(Response, "Rating").ToString();
+                                ResponseModel.TotalSeats = _dao.ParseColumnValue(Response, "TotalSeats").ToString();
+                                ResponseModel.TotalMilage = _dao.ParseColumnValue(Response, "TotalMilage").ToString();
+                                ResponseModel.ProfileImage = _dao.ParseColumnValue(Response, "ProfileImage").ToString();
+                                ResponseModel.TotalPrice = _dao.ParseColumnValue(Response, "TotalPrice").ToString();
+                                ResponseModel.Detail = _dao.ParseColumnValue(Response, "Detail").ToString();
+                                ResponseModel.City = _dao.ParseColumnValue(Response, "City").ToString();
+                            }
+                        }
+                    }
                     return new CommonModel()
                     {
                         Code = ResponseCode.SUCCESS,
@@ -115,9 +140,9 @@ namespace JourneyJoy.Repository.Login
             var ResponseModel = new LogInResponseModel();
             var SqlCommand = "exec sp_LogIn @flag= 'reg' "; //customer registration
             SqlCommand += ",@CustomerName=" + _dao.FilterString(model.Firstname);
-            SqlCommand += ",@Lastname=" + _dao.FilterString(model.Lastname);
             SqlCommand += ",@Mobilenumber=" + _dao.FilterString(model.Mobilenumber);
             SqlCommand += ",@Email=" + _dao.FilterString(model.Email);
+            SqlCommand += ",@UserType=" + _dao.FilterString(model.UserType);
             SqlCommand += ",@Password=" + _dao.FilterString(model.password);
             SqlCommand += ",@confirmpassword=" + _dao.FilterString(model.confirmpassword);
             var Response = _dao.ExecuteDataRow(SqlCommand);

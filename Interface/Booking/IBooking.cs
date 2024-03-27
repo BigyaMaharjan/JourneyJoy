@@ -11,6 +11,11 @@ namespace JourneyJoy.Interface.Booking
             _Repo = repo;
         }
 
+        public CommonModel AddNewVehicles(LogInResponseModel model)
+        {
+            return _Repo.AddNewVehicles(model);
+        }
+
         public CommonModel BookVehicle(string vid)
         {
            return _Repo.BookVehicle(vid);
@@ -39,6 +44,10 @@ namespace JourneyJoy.Interface.Booking
         CommonModel SaveBooking(BookingModel model);
         CommonModel GetUserBookings(string UID);
         CommonModel CancellBooking(string BID, string VID);
+
+        #region Vendor Add Vehicles
+        CommonModel AddNewVehicles(LogInResponseModel model);
+        #endregion
     }
     #endregion
 }

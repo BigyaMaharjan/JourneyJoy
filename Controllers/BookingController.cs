@@ -49,31 +49,48 @@ namespace JourneyJoy.Controllers
                 {
                     file = Request.Files[i];
                 }
-                if (file != null && file.ContentLength > 0)
+                if ((file != null && file.ContentLength > 0) || !string.IsNullOrEmpty(model.Image))
                 {
-                    var contentType = file.ContentType;
-                    var allowedContenttype = new[] { "image/jpeg", "image/png", "image/jpg" };
-                    var ext = Path.GetExtension(file.FileName);
                     string filepath;
-                    if (allowedContenttype.Contains(contentType.ToLower()))
+                    model.UID = Session["CustomerID"].ToString();
+                    if (file != null && file.ContentLength > 0)
                     {
-                        string datet = DateTime.Now.ToString("yyyyMMddHHmmssffff");
-                        string myfilename = "DrivingLicence" + datet + ext.ToLower();
-                        filepath = Path.Combine(Server.MapPath(FileLocationPath), myfilename);
-                        model.Image = filepath + myfilename;
-                        model.UID = Session["CustomerID"].ToString();
+                        var contentType = file.ContentType;
+                        var allowedContenttype = new[] { "image/jpeg", "image/png", "image/jpg" };
+                        var ext = Path.GetExtension(file.FileName);
+                        if (allowedContenttype.Contains(contentType.ToLower()))
+                        {
+                            string datet = DateTime.Now.ToString("yyyyMMddHHmmssffff");
+                            string myfilename = "DrivingLicence" + datet + ext.ToLower();
+                            filepath = Path.Combine(Server.MapPath(FileLocationPath), myfilename);
+                            model.Image = filepath + myfilename;
+                        }
+                        else
+                        {
+                            //this.ShowPopup(1, "File Must be .jpg,.png,.jpeg");
+                            return Json(new { Code = "0" });
+                        }
+                        var dbresp1 = _BookingBuss.SaveBooking(model);
+                        if (dbresp1.Code == 0)
+                        {
+                            Static.StaticMethods.ResizeImage(file, filepath);
+                            TempData["renderredirectdata"] = new { Icon = "true", Message = "Booking Successfull." };
+                            return RedirectToAction("DashBoard", "User");
+                        }
                     }
                     else
                     {
-                        //this.ShowPopup(1, "File Must be .jpg,.png,.jpeg");
-                        return Json(new { Code = "0" });
-                    }
-                    var dbresp = _BookingBuss.SaveBooking(model);
-                    if (dbresp.Code == 0)
-                    {
-                        Static.StaticMethods.ResizeImage(file, filepath);
-                        TempData["renderredirectdata"] = new { Icon = "true", Message = "Booking Successfull." };
-                        return RedirectToAction("DashBoard", "User");
+                        var dbresp = _BookingBuss.SaveBooking(model);
+                        if (dbresp.Code == 0)
+                        {
+                            TempData["renderredirectdata"] = new { Icon = "true", Message = "Booking Successfull." };
+                            return RedirectToAction("DashBoard", "User");
+                        }
+                        else
+                        {
+                            TempData["renderredirectdata"] = new { Icon = "false", Message = dbresp.Message };
+                            return RedirectToAction("DashBoard", "User");
+                        }
                     }
                 }
                 else
@@ -109,5 +126,28 @@ namespace JourneyJoy.Controllers
                 return RedirectToAction("DashBoard", "User");
             }
         }
+
+        #region Vendor Add Vehicles
+        public ActionResult AddVehicles(LogInResponseModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dbresp = _BookingBuss.AddNewVehicles(model);
+                if (dbresp.Code == ResponseCode.SUCCESS)
+                {
+                    TempData["renderredirectdata"] = new { Icon = "true", Message = "Successfully Added Vehicle." };
+                }
+                else
+                {
+                    TempData["renderredirectdata"] = new { Icon = "false", Message = "Something went wrong." };
+                }
+            }
+            else
+            {
+                TempData["renderredirectdata"] = new { Icon = "false", Message = "Invalid Vehicle Data provided" };
+            }
+            return RedirectToAction("DashBoard", "User");
+        }
+        #endregion
     }
 }
