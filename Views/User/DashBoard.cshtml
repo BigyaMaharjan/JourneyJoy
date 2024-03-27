@@ -102,7 +102,7 @@
                                                                 @Html.AntiForgeryToken()
                                                                 <div class="row">
                                                                     <div class="col-lg-6">
-                                                                        @if (Model.ProfileImage == null)
+                                                                        @if (string.IsNullOrEmpty(Model.ProfileImage))
                                                                         {
                                                                             <div class="file-upload">
                                                                                 <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Upload Driving Licence</button>
@@ -123,7 +123,7 @@
                                                                         else
                                                                         {
                                                                             <div id="map">
-                                                                                <img src="@Url.Content(Model.ProfileImage)" width="auto" height="650px" alt="Driving Licence">
+                                                                                @*<img src="@Url.Content(Model.ProfileImage)" width="auto" height="650px" alt="Driving Licence">*@
                                                                             </div>
                                                                         }
                                                                     </div>
