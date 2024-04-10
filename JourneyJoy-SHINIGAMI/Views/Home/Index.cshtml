@@ -1,0 +1,141 @@
+﻿@model  IEnumerable<JourneyJoy.Models.VehicleModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="main-banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="top-text header-text">
+                    <h6>Get the Vehicles of your choice</h6>
+                    <h2>Find Nearby Vehicles </h2>
+                </div>
+            </div>
+            @using (Html.BeginForm("VehicleList", "Home", FormMethod.Post, new { @role = "form", @id = "search-form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-3 align-self-center">
+                            <fieldset>
+                                <select name="location" class="form-select" aria-label="Area" id="chooseCategory" onchange="this.form.click()">
+                                    <option selected>Choose Location</option>
+                                    @foreach (var location in ViewBag.LocationList)
+                                    {
+                                        <option value="@location.Value">@location.Key</option>
+                                    }
+                                </select>
+                            </fieldset>
+                        </div>
+                        @*<div class="col-lg-3 align-self-center">
+                                <fieldset>
+                                    <input type="address" name="address" class="searchText" placeholder="Enter a location" autocomplete="on" required>
+                                </fieldset>
+                            </div>*@
+                        <div class="col-lg-3 align-self-center">
+                            <fieldset>
+                                <select name="VehicleCategory" class="form-select" aria-label="Default select example" id="chooseCategory" onchange="this.form.click()">
+                                    <option selected>Choose Vehicle Type</option>
+                                    <option value="Bike">Bike</option>
+                                    <option value="Van">Van</option>
+                                    <option value="Car">Car</option>
+                                    <option value="Bus">Bus</option>
+                                    <option value="Scooter">Scooter</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <button class="main-button"><i class="fa fa-search"></i> Search Now</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-lg-10 offset-lg-1">
+                <ul class="categories">
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Bike" })"><span class="icon"><img src="~/Content/Assets/images/bike.png" alt="Bike"></span> Bike</a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Van" })"><span class="icon"><img src="~/Content/Assets/images/van.png" alt="Van"></span> Van </a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Cars" })"><span class="icon"><img src="~/Content/Assets/images/car.png" alt="Cars"></span> Cars</a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Bus" })"><span class="icon"><img src="~/Content/Assets/images/Bus.png" alt="Bus"></span> Bus </a></li>
+                    <li><a href="@Url.Action("VehicleList", "SearchedList", new { type = "Scooter" })"><span class="icon"><img src="~/Content/Assets/images/scooter-icon.png" alt="Scooter"></span> Scooter </a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="recent-listing">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <h2>Recent Listing</h2>
+                    <h6>Check Them Out</h6>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="owl-carousel owl-listing">
+                    <div class="item">
+                        @{
+                            var j = 1;
+                        }
+                        @if (Model != null)
+                        {
+                            if (Model.Count() > 0)
+                            {
+                                foreach (var x in Model)
+                                {
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <div class="listing-item">
+                                                <div class="left-image">
+                                                    <a href="#"><img src="~/Content/Assets/images/car1.jpg" alt=""></a>
+                                                </div>
+                                                <div class="right-content align-self-center">
+                                                    <a href="#"><h4>@j.  @x.VehicleType (@x.VehicleMdl)</h4></a>
+                                                    <h6>Owner: @x.CreatedBy</h6>
+                                                    <ul class="rate">
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li><i class="fa fa-star-o"></i></li>
+                                                        <li>@x.Rating Reviews</li>
+                                                    </ul>
+                                                    <span class="price">
+                                                        <div class="icon">
+                                                            <img src="assets/images/listing-icon-01.png" alt="">
+                                                        </div>
+                                                        $@x.TotalPrice / per day with taxes
+                                                    </span>
+                                                    <span class="details">Details: <em>@x.Detail</em></span>
+                                                    <ul class="info">
+                                                        <li><img src="~/Content/Assets/images/seats.png" alt=""> @x.CarCapacity</li>
+                                                        <li><img src="~/Content/Assets/images/mileage.png" alt=""> @x.TotalMilage Kmpl/kg</li>
+                                                        <li><img src="~/Content/Assets/images/seats.png" alt=""> @x.TotalSeats</li>
+                                                    </ul>
+                                                    <div class="main-white-button">
+                                                        <a href="@Url.Action("BookVehicle", "Booking", new { VID = x.VehicleID })"><i class="fa fa-eye"></i> Book Now</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    j++;
+                                }
+                            }
+                            else
+                            {
+                                <p>No Record Found</p>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

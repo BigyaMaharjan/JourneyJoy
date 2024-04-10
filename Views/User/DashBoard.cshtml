@@ -3,6 +3,11 @@
 @{
     ViewBag.Title = "DashBoard";
     Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Session["UserType"] != null)
+    {
+        Model.UserType = Session["UserType"].ToString();
+    }
 }
 <div class="page-heading">
     <div class="container">
@@ -66,9 +71,31 @@
                                             <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>Profile</h4></span>
                                         </div>
                                     </div>
+                                    @if (Model.UserType.ToLower() == "customer")
+                                    {
+                                        <div>
+                                            <div class="thumb">
+                                                <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Bookings</h4></span>
+                                            </div>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <div class="thumb">
+                                                <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Add Vehicles</h4></span>
+                                            </div>
+                                        </div>
+                                    }
                                     <div>
                                         <div class="thumb">
-                                            <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Bookings</h4></span>
+                                            <span class="icon">
+                                                <a href="@Url.Action("LogOff","LogInRegister")">
+                                                    <img src="~/Content/Assets/images/logout.png" alt=""><h4>
+                                                        Log Out
+                                                    </h4>
+                                                </a>
+                                            </span>
                                         </div>
                                     </div>
                                 </div>
@@ -176,73 +203,228 @@
                                         </div>
                                     </li>
                                     <li>
-                                        <div>
-                                            <div class="thumb">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-                                                        <div class="top-content">
-                                                            <div class="row">
-                                                                <div class="col-lg-6">
-                                                                    <div class="top-icon">
-                                                                        <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Your Bookings</h4></span>
+                                        @if (Model.UserType.ToLower() == "customer")
+                                        {
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="top-content">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="top-icon">
+                                                                            <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Your Bookings</h4></span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-lg-12">
-                                                        <div class="item">
-                                                            @if (ViewBag.UserVehiclesLists != null)
-                                                            {
-                                                                foreach (var x in ViewBag.UserVehiclesLists)
+                                                        <div class="col-lg-12">
+                                                            <div class="item">
+                                                                @if (ViewBag.UserVehiclesLists != null)
                                                                 {
-                                                                    <div class="row">
-                                                                        <div class="col-lg-6">
-                                                                            <div class="listing-item">
-                                                                                <div class="left-image">
-                                                                                    <a href="#"><img src="~/Content/Assets/images/car2.jpg" alt=""></a>
+                                                                    foreach (var x in ViewBag.UserVehiclesLists)
+                                                                    {
+                                                                        <div class="row">
+                                                                            <div class="col-lg-6">
+                                                                                <div class="listing-item">
+                                                                                    <div class="left-image">
+                                                                                        <a href="#"><img src="~/Content/Assets/images/car2.jpg" alt=""></a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-lg-6">
+                                                                                <div class="right-content align-self-center">
+                                                                                    <a href="#"><h4>@x.VehicleType</h4></a>
+                                                                                    <h6>Booking Status: @x.BookingStatus</h6>
+                                                                                    <span class="details">Details: @x.Detail</span><br />
+                                                                                    <span class="info">
+                                                                                        <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Millage :</b> @x.TotalMilage Kmpl/kg<br>
+                                                                                        <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capacity :</b> @x.CarCapacity<br>
+                                                                                        @*<img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;">*@ <b>Total Price :</b> @x.TotalPrice / included tax<br>
+                                                                                    </span>
+                                                                                    <div id="paymentOptions" class="payment-options" style="display: none;">
+                                                                                        <h4>Select Payment Method:</h4>
+                                                                                        <label><input type="radio" name="paymentMethod" value="cashOnDelivery" id="cashPaymentOption"> Cash on Delivery</label><br>
+                                                                                        <label><input type="radio" name="paymentMethod" value="onlinePayment" id="onlinePaymentOption"> Online Payment</label>
+                                                                                        <div id="onlinePaymentImages" style="display: none;">
+                                                                                            <img src="~/Content/Assets/images/PmtImg/esewa.png" alt="eSewa" style="width: 60px; height: 60px;">
+                                                                                            <img src="~/Content/Assets/images/PmtImg/Khalti.png" alt="Khalti" style="width: 60px; height: 60px;">
+                                                                                            <img src="~/Content/Assets/images/PmtImg/ppay.png" alt="PrabhuPay" style="width: 60px; height: 60px;">
+                                                                                        </div>
+                                                                                        @*<button id="confirmPayment">Confirm</button>*@
+                                                                                    </div>
+                                                                                    <div class="main-white-button customcss">
+                                                                                        <a href="#" id="payNowButton"><i class="fa fa-plus"></i> PayNow</a>
+                                                                                        <a href="@Url.Action("CancellBooking", "Booking", new { BID = @x.BID, VID = x.VehicleID  })" id="CancelBook"><i class="fa fa-eye"></i> Cancel Booking</a>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h3>You havent Boked any vehicles</h3>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="top-content">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="top-icon">
+                                                                            <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>Add Vehicles / Vehicle Lists</h4></span>
+                                                                        </div>
+                                                                    </div>
+                                                                    @*<div class="col-lg-6">
+                                                                            <div class="main-white-button" id="updateProfileButtonContainer">
+                                                                                <a href="#" id="updateProfileButton"><i class="fa fa-plus"></i> Update Profile</a>
+                                                                            </div>
+                                                                        </div>*@
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="description">
+                                                                @using (Html.BeginForm("UpdateUserProfile", "User", FormMethod.Post, new { enctype = "multipart/form-data", @Id = "contact" }))
+                                                                {
+                                                                    @Html.AntiForgeryToken()
+                                                                    <div class="row">
                                                                         <div class="col-lg-6">
-                                                                            <div class="right-content align-self-center">
-                                                                                <a href="#"><h4>@x.VehicleType</h4></a>
-                                                                                <h6>Booking Status: @x.BookingStatus</h6>
-                                                                                <span class="details">Details: @x.Detail</span><br />
-                                                                                <span class="info">
-                                                                                    <img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;"> <b>Millage :</b> @x.TotalMilage Kmpl/kg<br>
-                                                                                    <img src="~/Content/Assets/images/seats.png" alt="" style="width: 20px; height: 20px;"> <b>Capacity :</b> @x.CarCapacity<br>
-                                                                                    @*<img src="~/Content/Assets/images/mileage.png" alt="" style="width: 20px; height: 20px;">*@ <b>Total Price :</b> @x.TotalPrice / included tax<br>
-                                                                                </span>
-                                                                                <div id="paymentOptions" class="payment-options" style="display: none;">
-                                                                                    <h4>Select Payment Method:</h4>
-                                                                                    <label><input type="radio" name="paymentMethod" value="cashOnDelivery" id="cashPaymentOption"> Cash on Delivery</label><br>
-                                                                                    <label><input type="radio" name="paymentMethod" value="onlinePayment" id="onlinePaymentOption"> Online Payment</label>
-                                                                                    <div id="onlinePaymentImages" style="display: none;">
-                                                                                        <img src="~/Content/Assets/images/PmtImg/esewa.png" alt="eSewa" style="width: 60px; height: 60px;">
-                                                                                        <img src="~/Content/Assets/images/PmtImg/Khalti.png" alt="Khalti" style="width: 60px; height: 60px;">
-                                                                                        <img src="~/Content/Assets/images/PmtImg/ppay.png" alt="PrabhuPay" style="width: 60px; height: 60px;">
+                                                                            @if (string.IsNullOrEmpty(Model.ProfileImage))
+                                                                            {
+                                                                                <div class="file-upload">
+                                                                                    <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Upload Vehicle Image</button>
+                                                                                    <div class="image-upload-wrap">
+                                                                                        <input class="file-upload-input" type='file' onchange="readURL(this);" name="file" accept="image/*" />
+                                                                                        <div class="drag-text">
+                                                                                            <h3>Drag and drop a file or select add Image</h3>
+                                                                                        </div>
                                                                                     </div>
-                                                                                    @*<button id="confirmPayment">Confirm</button>*@
+                                                                                    <div class="file-upload-content">
+                                                                                        <img class="file-upload-image" src="#" alt="your image" />
+                                                                                        <div class="image-title-wrap">
+                                                                                            <button type="button" onclick="removeUpload()" class="remove-image">Remove <span class="image-title">Uploaded Image</span></button>
+                                                                                        </div>
+                                                                                    </div>
                                                                                 </div>
-                                                                                <div class="main-white-button customcss">
-                                                                                    <a href="#" id="payNowButton"><i class="fa fa-plus"></i> PayNow</a>
-                                                                                    <a href="@Url.Action("CancellBooking", "Booking", new { BID = @x.BID, VID = x.VehicleID  })" id="CancelBook"><i class="fa fa-eye"></i> Cancel Booking</a>
+                                                                            }
+                                                                            else
+                                                                            {
+                                                                                <div id="map">
+                                                                                    <img src="@Url.Content(Model.ProfileImage)" width="auto" height="650px" alt="Driving Licence">
+                                                                                </div>
+                                                                            }
+                                                                        </div>
+                                                                        <div class="col-lg-6 align-self-center">
+                                                                            <p>Vehicle Details</p>
+                                                                            <div class="row">
+                                                                                <div class="col-lg-12">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Vehicle Type")
+                                                                                        <select name="UserType" id="UserType" required="">
+                                                                                            <option value="Bike">Bike</option>
+                                                                                            <option value="Car">Car</option>
+                                                                                            <option value="Van">Van</option>
+                                                                                            <option value="Bus">Bus</option>
+                                                                                        </select>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Capicity")
+                                                                                        <select name="UserType" id="UserType" required="">
+                                                                                            <option value="1">1</option>
+                                                                                            <option value="2">2</option>
+                                                                                            <option value="3">3</option>
+                                                                                            <option value="4">4</option>
+                                                                                            <option value="5">5</option>
+                                                                                            <option value="6">6</option>
+                                                                                        </select>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Rating")
+                                                                                        <select name="UserType" id="UserType" required="">
+                                                                                            <option value="1">1</option>
+                                                                                            <option value="2">2</option>
+                                                                                            <option value="3">3</option>
+                                                                                            <option value="4">4</option>
+                                                                                            <option value="5">5</option>
+                                                                                        </select>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Seats")
+                                                                                        <select name="UserType" id="UserType" required="">
+                                                                                            <option value="1">1</option>
+                                                                                            <option value="2">2</option>
+                                                                                            <option value="3">3</option>
+                                                                                            <option value="4">4</option>
+                                                                                            <option value="5">5</option>
+                                                                                        </select>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Milage")
+                                                                                        <select name="UserType" id="UserType" required="">
+                                                                                            <option value="1">10</option>
+                                                                                            <option value="2">20</option>
+                                                                                            <option value="3">30</option>
+                                                                                            <option value="4">40</option>
+                                                                                            <option value="5">50</option>
+                                                                                        </select>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Vehicle Model")
+                                                                                        @Html.TextBoxFor(m => m.Phonenumber, new { placeholder = "VehicleModel", autocomplete = "on", @required = "required" })
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
+                                                                                    <fieldset>
+                                                                                        @Html.LabelFor(m => m.Vehicle, "Price")
+                                                                                        @Html.TextBoxFor(m => m.TotalPrice, new { placeholder = "Price", autocomplete = "on", @required = "required" })
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-12">
+                                                                                    <fieldset>
+                                                                                        <button type="submit" id="form-submit" class="main-button "><i class="fa fa-paper-plane"></i> Send Message</button>
+                                                                                    </fieldset>
+                                                                                </div>
+                                                                                <div class="col-lg-6 d-flex align-items-center justify-content-center">
+                                                                                    <fieldset id="form-submit-container" style="display: none;">
+                                                                                        <button type="submit" id="form-submit" class="main-button leftPush"><i class="fa fa-paper-plane"></i> Submit</button>
+                                                                                    </fieldset>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 }
-                                                            }
-                                                            else
-                                                            {
-                                                                <h3>You havent Boked any vehicles</h3>
-                                                            }
+                                                                @if (!string.IsNullOrEmpty(Model.VehicleID))
+                                                                {
+
+                                                                }
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        }
                                     </li>
                                 </ul>
                             </div>
