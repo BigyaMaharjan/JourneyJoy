@@ -1,5 +1,8 @@
 ﻿using JourneyJoy.Database;
 using JourneyJoy.Models;
+using System.Collections.Generic;
+using System.Data;
+using System.Net;
 
 namespace JourneyJoy.Repository.Login
 {
@@ -256,11 +259,144 @@ namespace JourneyJoy.Repository.Login
                 };
             }
         }
+
+        #region ADMIN
+        public CommonModel GetAllUsers()
+        {
+            var ResponseModel = new List<LogInResponseModel>();
+            var SqlCommand = "exec sp_Admin @flag= 'gau' "; //get all users
+            var Response = _dao.ExecuteDataTable(SqlCommand);
+            if (Response != null)
+            {
+                foreach (DataRow item in Response.Rows)
+                {
+                    ResponseModel.Add(new LogInResponseModel()
+                    {
+                        UserID = _dao.ParseColumnValue(item, "UserID").ToString(),
+                        Username = _dao.ParseColumnValue(item, "UserName").ToString(),
+                        Email = _dao.ParseColumnValue(item, "Email").ToString(),
+                        Phonenumber = _dao.ParseColumnValue(item, "MobileNo").ToString(),
+                        Gender = _dao.ParseColumnValue(item, "Gender").ToString(),
+                        UserType = _dao.ParseColumnValue(item, "UserType").ToString(),
+                    });
+                }
+                return new CommonModel()
+                {
+                    Code = ResponseCode.SUCCESS,
+                    Message = "Successfully retrieved User List",
+                    Data = ResponseModel
+                };
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Couldn't retrieve the data",
+                    Data = null
+                };
+            }
+        }
+
+        public CommonModel GetBookedList()
+        {
+            var ResponseModel = new List<LogInResponseModel>();
+            var SqlCommand = "exec sp_Admin @flag= 'gabl' "; //get all booking list
+            var Response = _dao.ExecuteDataTable(SqlCommand);
+            if (Response != null)
+            {
+                foreach (DataRow x in Response.Rows)
+                {
+                    ResponseModel.Add(new LogInResponseModel()
+                    {
+                        UserID = _dao.ParseColumnValue(x, "UserID").ToString(),
+                        Username = _dao.ParseColumnValue(x, "UserName").ToString(),
+                        VehicleID = _dao.ParseColumnValue(x, "VehicleID").ToString(),
+                        Phonenumber = _dao.ParseColumnValue(x, "MobileNo").ToString(),
+                        Email = _dao.ParseColumnValue(x, "Email").ToString(),
+                        UserType = _dao.ParseColumnValue(x, "UserType").ToString(),
+                        BookingStatus = _dao.ParseColumnValue(x, "BookingStatus").ToString(),
+                        FromDate = _dao.ParseColumnValue(x, "FromDate").ToString(),
+                        ToDate = _dao.ParseColumnValue(x, "ToDate").ToString(),
+                        TotalDays = _dao.ParseColumnValue(x, "TotalDays").ToString(),
+                        DrivingLicence = _dao.ParseColumnValue(x, "DriverLicenceNumber").ToString(),
+                        ProfileImage = _dao.ParseColumnValue(x, "ProfileImage").ToString(),
+                    });
+                }
+                return new CommonModel()
+                {
+                    Code = ResponseCode.SUCCESS,
+                    Message = "Successfully retrieved Booked List",
+                    Data = ResponseModel
+                };
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Couldn't retrieve the data",
+                    Data = null
+                };
+            }
+        }
+
+        public CommonModel GetVehicleList()
+        {
+            var ResponseModel = new List<LogInResponseModel>();
+            var SqlCommand = "exec sp_Admin @flag= 'gavl' "; //get all vehicle list
+            var Response = _dao.ExecuteDataTable(SqlCommand);
+            if (Response != null)
+            {
+                foreach (DataRow y in Response.Rows)
+                {
+                    ResponseModel.Add(new LogInResponseModel()
+                    {
+                        UserID = _dao.ParseColumnValue(y, "UserID").ToString(),
+                        Username = _dao.ParseColumnValue(y, "UserName").ToString(),
+                        VehicleID = _dao.ParseColumnValue(y, "VehicleID").ToString(),
+                        Phonenumber = _dao.ParseColumnValue(y, "MobileNo").ToString(),
+                        Email = _dao.ParseColumnValue(y, "Email").ToString(),
+                        UserType = _dao.ParseColumnValue(y, "UserType").ToString(),
+                        Rating = _dao.ParseColumnValue(y, "Rating").ToString(),
+                        Title = _dao.ParseColumnValue(y, "Title").ToString(),
+                        DrivingLicence = _dao.ParseColumnValue(y, "DriverLicenceNumber").ToString(),
+                        ProfileImage = _dao.ParseColumnValue(y, "ProfileImage").ToString(),
+                        TotalMilage = _dao.ParseColumnValue(y, "TotalMilage").ToString(),
+                        TotalPrice = _dao.ParseColumnValue(y, "TotalPrice").ToString(),
+                        TotalSeats = _dao.ParseColumnValue(y, "TotalSeats").ToString(),
+                        CarCapacity = _dao.ParseColumnValue(y, "VehicleCapacity").ToString(),
+                        VehicleMdl = _dao.ParseColumnValue(y, "VehicleModel").ToString(),
+                        VehicleType = _dao.ParseColumnValue(y, "VehicleType").ToString(),
+                        Detail = _dao.ParseColumnValue(y, "Detail").ToString(),
+                    });
+                }
+                return new CommonModel()
+                {
+                    Code = ResponseCode.SUCCESS,
+                    Message = "Successfully retrieved Booked List",
+                    Data = ResponseModel
+                };
+            }
+            else
+            {
+                return new CommonModel()
+                {
+                    Code = ResponseCode.FAILED,
+                    Message = "Couldn't retrieve the data",
+                    Data = null
+                };
+            }
+        }
+        #endregion
     }
 
     #region INTERFACE
     public interface ILoginRepo
     {
+        CommonModel GetAllUsers();
+        CommonModel GetBookedList();
+        CommonModel GetVehicleList();
         CommonModel GetUserDetails(string uID);
         CommonModel Login(LogInModel model);
         CommonModel RegisterNewUser(LogInModel model);

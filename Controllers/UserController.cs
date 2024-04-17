@@ -34,6 +34,16 @@ namespace JourneyJoy.Controllers
                     var userbookedvehicles = _BookingBuss.GetUserBookings(uid);
                     var dbres = _loginBuss.GetUserDetails(uid);
                     model = dbres.Data.MapObject<LogInResponseModel>();
+                    if (model.UserType.ToLower() == "admin")
+                    {
+                        var allUserList = _loginBuss.GetAllUsers();
+                        ViewBag.AllUserList = allUserList.Data;
+                        var allbookedList = _loginBuss.GetBookedList();
+                        ViewBag.GetBookingList = allbookedList.Data;
+                        var allVehicleList = _loginBuss.GetVehicleList();
+                        ViewBag.GetVehicleList = allVehicleList.Data;
+
+                    }
                     if (TempData.ContainsKey("renderredirectdata"))
                     {
                         ViewData["renderdata"] = TempData["renderredirectdata"];
