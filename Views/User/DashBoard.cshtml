@@ -66,38 +66,64 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="menu inmiddle">
-                                    <div class="first-thumb active">
-                                        <div class="thumb">
-                                            <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>Profile</h4></span>
-                                        </div>
-                                    </div>
-                                    @if (Model.UserType.ToLower() == "customer")
+                                    @if (Model.UserType.ToLower() == "admin")
                                     {
-                                        <div>
+                                        <div class="first-thumb active">
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Bookings</h4></span>
+                                                <span class="icon"><img src="~/Content/Assets/images/userlist.png" alt=""><h4>Users List</h4></span>
+                                            </div>
+                                        </div>
+                                        <div class="first-thumb active">
+                                            <div class="thumb">
+                                                <span class="icon"><img src="~/Content/Assets/images/Vehiclelist.png" alt=""><h4>Vehicle List</h4></span>
+                                            </div>
+                                        </div>
+                                        <div class="first-thumb active">
+                                            <div class="thumb">
+                                                <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Booked History</h4></span>
+                                            </div>
+                                        </div>
+                                        <div class="first-thumb active">
+                                            <div class="thumb">
+                                                <span class="icon"><img src="~/Content/Assets/images/payment.png" alt=""><h4>Payment History</h4></span>
                                             </div>
                                         </div>
                                     }
                                     else
                                     {
+                                        <div class="first-thumb active">
+                                            <div class="thumb">
+                                                <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>Profile</h4></span>
+                                            </div>
+                                        </div>
+                                        if (Model.UserType.ToLower() == "customer")
+                                        {
+                                            <div>
+                                                <div class="thumb">
+                                                    <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Bookings</h4></span>
+                                                </div>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div>
+                                                <div class="thumb">
+                                                    <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Add Vehicles</h4></span>
+                                                </div>
+                                            </div>
+                                        }
                                         <div>
                                             <div class="thumb">
-                                                <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Add Vehicles</h4></span>
+                                                <span class="icon">
+                                                    <a href="@Url.Action("LogOff","LogInRegister")">
+                                                        <img src="~/Content/Assets/images/logout.png" alt=""><h4>
+                                                            Log Out
+                                                        </h4>
+                                                    </a>
+                                                </span>
                                             </div>
                                         </div>
                                     }
-                                    <div>
-                                        <div class="thumb">
-                                            <span class="icon">
-                                                <a href="@Url.Action("LogOff","LogInRegister")">
-                                                    <img src="~/Content/Assets/images/logout.png" alt=""><h4>
-                                                        Log Out
-                                                    </h4>
-                                                </a>
-                                            </span>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-12">
@@ -273,6 +299,238 @@
                                                 </div>
                                             </div>
                                         }
+                                        else if (Model.UserType.ToLower() == "admin")
+                                        {
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="top-content">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="top-icon">
+                                                                            <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Users List</h4></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="item">
+                                                                @if (ViewBag.AllUserList != null)
+                                                                {
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">S.N</th>
+                                                                                <th scope="col">Username</th>
+                                                                                <th scope="col">Email</th>
+                                                                                <th scope="col">Mobile Number</th>
+                                                                                <th scope="col">Gender</th>
+                                                                                <th scope="col">User Type</th>
+                                                                                <th scope="col">Driving Licence</th>
+                                                                                @*<th scope="col">Created By</th>
+                                                                                    <th scope="col">Created Date</th>*@
+                                                                                <th scope="col">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        @foreach (var x in ViewBag.AllUserList)
+                                                                        {
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th scope="row">@x.UserID</th>
+                                                                                    <td>@x.Username</td>
+                                                                                    <td>@x.Email</td>
+                                                                                    <td>@x.Phonenumber</td>
+                                                                                    <td>@x.Gender</td>
+                                                                                    <td>@x.UserType</td>
+                                                                                    <td>@x.DrivingLicence</td>
+                                                                                    <td>mdo</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        }
+                                                                    </table>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h3>No users found</h3>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="top-content">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="top-icon">
+                                                                            <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Vehicle List</h4></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="item">
+                                                                @if (ViewBag.GetVehicleList != null)
+                                                                {
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">S.N</th>
+                                                                                <th scope="col">Username</th>
+                                                                                <th scope="col">Email</th>
+                                                                                <th scope="col">Mobile Number</th>
+                                                                                <th scope="col">User Type</th>
+                                                                                <th scope="col">Rating</th>
+                                                                                <th scope="col">Title</th>
+                                                                                <th scope="col">Profile
+                                                                                <th>
+                                                                                <th scope="col">Milage
+                                                                                <th>
+                                                                                <th scope="col">Price
+                                                                                <th>
+                                                                                <th scope="col">Seats
+                                                                                <th>
+                                                                                <th scope="col">Capacity
+                                                                                <th>
+                                                                                <th scope="col">Model
+                                                                                <th>
+                                                                                <th scope="col">Type
+                                                                                <th>
+                                                                                <th scope="col">Detail
+                                                                                <th>
+                                                                                <th scope="col">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        @foreach (var x in ViewBag.GetVehicleList)
+                                                                        {
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th scope="row">@x.UserID</th>
+                                                                                    <td>@x.Username</td>
+                                                                                    <td>@x.Email</td>
+                                                                                    <td>@x.Phonenumber</td>
+                                                                                    <td>@x.UserType</td>
+                                                                                    <td>@x.Rating</td>
+                                                                                    <td>@x.Title</td>
+                                                                                    <td>@x.ProfileImage</td>
+                                                                                    <td>@x.TotalMilage</td>
+                                                                                    <td>@x.TotalPrice</td>
+                                                                                    <td>@x.TotalSeats</td>
+                                                                                    <td>@x.CarCapacity</td>
+                                                                                    <td>@x.VehicleMdl</td>
+                                                                                    <td>@x.VehicleType</td>
+                                                                                    <td>@x.Detail</td>
+                                                                                    <td>mdo</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        }
+                                                                    </table>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h3>No Vehicles found</h3>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="top-content">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="top-icon">
+                                                                            <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Booked History</h4></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="item">
+                                                                @if (ViewBag.allbookedList != null)
+                                                                {
+                                                                    <table class="table table-hover">
+                                                                        <thead>
+                                                                            <tr>
+                                                                                <th scope="col">S.N</th>
+                                                                                <th scope="col">Username</th>
+                                                                                <th scope="col">Email</th>
+                                                                                <th scope="col">Mobile Number</th>
+                                                                                <th scope="col">User Type</th>
+                                                                                <th scope="col">Rating</th>
+                                                                                <th scope="col">Booking Status</th>
+                                                                                <th scope="col">From Date<th>
+                                                                                <th scope="col">To Date<th>
+                                                                                <th scope="col">Total Days<th>
+                                                                                <th scope="col">Driving Licence<th>
+                                                                                <th scope="col">Profile Image<th>
+                                                                                <th scope="col">Action</th>
+                                                                            </tr>
+                                                                        </thead>
+                                                                        @foreach (var x in ViewBag.allbookedList)
+                                                                        {
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <th scope="row">@x.UserID</th>
+                                                                                    <td>@x.Username</td>
+                                                                                    <td>@x.Email</td>
+                                                                                    <td>@x.MobileNo</td>
+                                                                                    <td>@x.UserType</td>
+                                                                                    <td>@x.Rating</td>
+                                                                                    <td>@x.BookingStatus</td>
+                                                                                    <td>@x.FromDate</td>
+                                                                                    <td>@x.ToDate</td>
+                                                                                    <td>@x.TotalDays</td>
+                                                                                    <td>@x.DriverLicenceNumber</td>
+                                                                                    <td>@x.ProfileImage</td>
+                                                                                    <td>mdo</td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        }
+                                                                    </table>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <h3>No Vehicles found</h3>
+                                                                }
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="thumb">
+                                                    <div class="row">
+                                                        <div class="col-lg-12">
+                                                            <div class="top-content">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="top-icon">
+                                                                            <span class="icon"><img src="~/Content/Assets/images/Bookinglist.png" alt=""><h4>Payment History</h4></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-12">
+                                                            <div class="item">
+                                                                <h3>Coming Soon !</h3>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
                                         else
                                         {
                                             <div>
@@ -286,11 +544,6 @@
                                                                             <span class="icon"><img src="~/Content/Assets/images/search-icon-01.png" alt=""><h4>Add Vehicles / Vehicle Lists</h4></span>
                                                                         </div>
                                                                     </div>
-                                                                    @*<div class="col-lg-6">
-                                                                            <div class="main-white-button" id="updateProfileButtonContainer">
-                                                                                <a href="#" id="updateProfileButton"><i class="fa fa-plus"></i> Update Profile</a>
-                                                                            </div>
-                                                                        </div>*@
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -494,6 +747,4 @@
             });
         });
     </script>
-
-
 }

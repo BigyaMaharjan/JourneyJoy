@@ -189,6 +189,9 @@
     <Content Include="Content\Assets\images\nissan.jpg" />
     <Content Include="Content\Assets\images\no-data-found.jpg" />
     <Content Include="Content\Assets\images\payment.png" />
+    <Content Include="Content\Assets\images\PmtImg\esewa.png" />
+    <Content Include="Content\Assets\images\PmtImg\Khalti.png" />
+    <Content Include="Content\Assets\images\PmtImg\ppay.png" />
     <Content Include="Content\Assets\images\scooter-icon.png" />
     <Content Include="Content\Assets\images\search-icon-01.png" />
     <Content Include="Content\Assets\images\search-icon-02.png" />
@@ -196,9 +199,10 @@
     <Content Include="Content\Assets\images\search-icon-05.png" />
     <Content Include="Content\Assets\images\seats.png" />
     <Content Include="Content\Assets\images\tabs-image-03.jpg" />
+    <Content Include="Content\Assets\images\userlist.png" />
     <Content Include="Content\Assets\images\userprofile.png" />
     <Content Include="Content\Assets\images\van.png" />
-    <Content Include="Content\Assets\images\white-logo.png" />
+    <Content Include="Content\Assets\images\Vehiclelist.png" />
     <Content Include="Content\Assets\images\whiteGTR.jpg" />
     <Content Include="Content\Assets\image\BaseImages\call.svg" />
     <Content Include="Content\Assets\image\BaseImages\email.svg" />
